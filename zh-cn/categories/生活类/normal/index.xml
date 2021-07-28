@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>生活类/Normal on Unzybaryl`s Sekai</title>
+    <link>/zh-cn/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/</link>
+    <description>Recent content in 生活类/Normal on Unzybaryl`s Sekai</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright><atom:link href="/zh-cn/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>随记合集</title>
+      <link>/zh-cn/posts/others/essay/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/zh-cn/posts/others/essay/</guid>
+      <description>&lt;p&gt;随记合集&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>广告位招租/Advertising space for rent</title>
+      <link>/zh-cn/posts/others/ads/</link>
+      <pubDate>Sun, 02 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/zh-cn/posts/others/ads/</guid>
+      <description>&lt;p&gt;广告位~广告位~&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>第一次弄博客</title>
+      <link>/zh-cn/posts/others/first-post/</link>
+      <pubDate>Sat, 01 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/zh-cn/posts/others/first-post/</guid>
+      <description>&lt;p&gt;First post&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
