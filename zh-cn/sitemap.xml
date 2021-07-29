@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/zh-cn/posts/others/</loc>
+    <loc>/posts/others/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/</loc>
+    <loc>/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -15,10 +15,10 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="/zh-cn/"
+                href="/"
                 />
   </url><url>
-    <loc>/zh-cn/series/</loc>
+    <loc>/series/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -28,39 +28,19 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="/zh-cn/series/"
+                href="/series/"
                 />
   </url><url>
-    <loc>/zh-cn/posts/others/libeika/</loc>
+    <loc>/posts/others/libeika/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <loc>/tags/%E5%B0%8F%E8%AF%B4/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/tags/%E5%B0%8F%E8%AF%B4/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/tags/%E5%B0%8F%E8%AF%B4/"
-                />
   </url><url>
-    <loc>/zh-cn/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/posts/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/posts/"
-                />
   </url><url>
-    <loc>/zh-cn/tags/</loc>
+    <loc>/tags/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
@@ -70,52 +50,42 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="/zh-cn/tags/"
+                href="/tags/"
                 />
   </url><url>
-    <loc>/zh-cn/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E7%9A%84%E4%BA%BA%E7%89%A9/</loc>
+    <loc>/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E7%9A%84%E4%BA%BA%E7%89%A9/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/posts/math/</loc>
+    <loc>/posts/math/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/posts/math/probability-theory/</loc>
+    <loc>/posts/math/probability-theory/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/tags/%E5%AD%A6%E4%B9%A0%E9%9A%8F%E6%83%B3/</loc>
-    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/tags/%E5%AD%A6%E4%B9%A0%E9%9A%8F%E6%83%B3/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/tags/%E5%AD%A6%E4%B9%A0%E9%9A%8F%E6%83%B3/"
-                />
-  </url><url>
-    <loc>/zh-cn/series/%E6%95%B0%E5%AD%A6%E9%9A%8F%E4%BE%BF%E6%83%B3/</loc>
+    <loc>/tags/%E5%AD%A6%E4%B9%A0%E9%9A%8F%E6%83%B3/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/tags/%E6%97%A0%E8%81%8A/</loc>
+    <loc>/series/%E6%95%B0%E5%AD%A6%E9%9A%8F%E4%BE%BF%E6%83%B3/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E6%97%A0%E8%81%8A/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/posts/others/essay/</loc>
+    <loc>/posts/others/essay/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/posts/others/ads/</loc>
+    <loc>/posts/others/ads/</loc>
     <lastmod>2021-05-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/posts/others/first-post/</loc>
+    <loc>/posts/others/first-post/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2001-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/zh-cn/posts/tech/</loc>
+    <loc>/posts/tech/</loc>
   </url><url>
-    <loc>/zh-cn/categories/</loc>
+    <loc>/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -124,47 +94,17 @@
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="/zh-cn/categories/"
+                href="/categories/"
                 />
   </url><url>
-    <loc>/zh-cn/categories/%E5%B0%8F%E8%AF%B4%E6%94%B6%E9%9B%86%E7%B1%BB/novel/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/categories/%E5%B0%8F%E8%AF%B4%E6%94%B6%E9%9B%86%E7%B1%BB/novel/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/categories/%E5%B0%8F%E8%AF%B4%E6%94%B6%E9%9B%86%E7%B1%BB/novel/"
-                />
+    <loc>/categories/%E5%B0%8F%E8%AF%B4%E6%94%B6%E9%9B%86%E7%B1%BB/novel/</loc>
   </url><url>
-    <loc>/zh-cn/archives/</loc>
+    <loc>/archives/</loc>
   </url><url>
-    <loc>/zh-cn/search/</loc>
+    <loc>/search/</loc>
   </url><url>
-    <loc>/zh-cn/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/maths/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/maths/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/maths/"
-                />
+    <loc>/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/maths/</loc>
   </url><url>
-    <loc>/zh-cn/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/zh-cn/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/"
-                />
+    <loc>/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/</loc>
   </url>
 </urlset>
