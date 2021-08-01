@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/tags/cien-a%C3%B1os-de-soledad/</loc>
+    <lastmod>2021-06-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/others/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
@@ -34,7 +37,20 @@
     <loc>/posts/others/libeika/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/%E5%B0%8F%E8%AF%B4/</loc>
+    <loc>/categories/</loc>
+    <lastmod>2021-06-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/categories/"
+                />
+  </url><url>
+    <loc>/categories/%E5%B0%8F%E8%AF%B4%E7%B1%BB/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
@@ -59,52 +75,40 @@
     <loc>/posts/math/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/math/</loc>
+    <lastmod>2021-05-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/math/probability-theory/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/%E5%AD%A6%E4%B9%A0%E9%9A%8F%E6%83%B3/</loc>
+    <loc>/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/%E6%95%B0%E5%AD%A6%E9%9A%8F%E4%BE%BF%E6%83%B3/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/%E6%97%A0%E8%81%8A/</loc>
+    <loc>/essay/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/essay/</loc>
-    <lastmod>2021-05-04T00:00:00+00:00</lastmod>
+    <loc>/tags/riddiculus/</loc>
+    <lastmod>2021-05-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/ads/</loc>
     <lastmod>2021-05-02T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
+    <lastmod>2021-05-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/about/</loc>
+    <lastmod>2021-05-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/others/first-post/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
-    <lastmod>2001-01-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/tech/</loc>
-  </url><url>
-    <loc>/categories/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/categories/"
-                />
-  </url><url>
-    <loc>/categories/%E5%B0%8F%E8%AF%B4%E6%94%B6%E9%9B%86%E7%B1%BB/novel/</loc>
   </url><url>
     <loc>/archives/</loc>
   </url><url>
     <loc>/search/</loc>
-  </url><url>
-    <loc>/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/maths/</loc>
-  </url><url>
-    <loc>/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/normal/</loc>
   </url>
 </urlset>
