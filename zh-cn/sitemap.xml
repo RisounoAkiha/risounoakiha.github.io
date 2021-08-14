@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tags/cien-a%C3%B1os-de-soledad/</loc>
+    <loc>/posts/others/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/</loc>
+    <loc>/tags/rebeca/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
@@ -17,12 +17,22 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn"
                 href="/"
                 />
   </url><url>
     <loc>/series/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/series/"
+                />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -34,11 +44,16 @@
                 href="/series/"
                 />
   </url><url>
-    <loc>/posts/others/libeika/</loc>
+    <loc>/posts/others/rebeca/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/categories/"
+                />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -58,6 +73,11 @@
   </url><url>
     <loc>/tags/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/tags/"
+                />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
