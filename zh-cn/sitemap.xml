@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tags/melquiades/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <loc>/tags/amaranta/</loc>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -27,7 +27,7 @@
                 />
   </url><url>
     <loc>/series/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old）"
@@ -45,7 +45,7 @@
                 />
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old）"
@@ -63,13 +63,13 @@
                 />
   </url><url>
     <loc>/categories/%E5%B0%8F%E8%AF%B4%E7%B1%BB/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old）"
@@ -86,10 +86,16 @@
                 href="/tags/"
                 />
   </url><url>
-    <loc>/posts/others/melquiades/</loc>
+    <loc>/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E7%9A%84%E4%BA%BA%E7%89%A9/</loc>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/amaranta/</loc>
+    <lastmod>2021-09-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/melquiades/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E7%9A%84%E4%BA%BA%E7%89%A9/</loc>
+    <loc>/posts/others/melquiades/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/rebeca/</loc>
