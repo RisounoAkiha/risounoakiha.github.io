@@ -70,10 +70,15 @@
           <a class="nav-link" href="/series">
             <i class="fas fa-fw fa-columns"></i>专栏
           </a>
-        </li><li class="nav-item">
-          <a class="nav-link" href="/essay/">
+        </li><li class="nav-item dropdown">
+          <a class="nav-link" id="navbarDropdown-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-fw fa-info-circle"></i>随记
           </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown-dropdown" style="padding: -3px;" ><li>
+              
+                <i class="fab fa-fw fa-github"></i>  
+              </a>
+            </li></ul>
         </li><li class="nav-item">
   <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
     aria-controls="offcanvasSettings">
@@ -127,50 +132,58 @@
       <ul class="archive-posts"><li>
           <a class="post-title" href="/posts/math/internet-social-space-1/">【废案/想法】网络社交空间
 </a>
-          <span class="float-end post-date">12-01</span>
+          <span class="float-end post-date">Dec 1</span>
         </li><li>
           <a class="post-title" href="/posts/tech/blog_instruct/">我的Hugo&#43;Github Page搭建博客教程
 </a>
-          <span class="float-end post-date">11-27</span>
+          <span class="float-end post-date">Nov 27</span>
         </li><li>
           <a class="post-title" href="/posts/others/akame/">《斩！赤红之瞳》与《穢翼のユースティア》类似的地方
 </a>
-          <span class="float-end post-date">11-25</span>
+          <span class="float-end post-date">Nov 25</span>
         </li><li>
           <a class="post-title" href="/posts/others/suspect-discuss/">聊聊猜疑
 </a>
-          <span class="float-end post-date">11-05</span>
+          <span class="float-end post-date">Nov 5</span>
         </li><li>
           <a class="post-title" href="/posts/others/suspicion-chain/">猜疑链，怀疑与相信，唯心，宗教与冥想
 </a>
-          <span class="float-end post-date">09-09</span>
+          <span class="float-end post-date">Sep 9</span>
         </li><li>
           <a class="post-title" href="/posts/others/amaranta/">阿玛兰妲——以前的孤独
 </a>
-          <span class="float-end post-date">09-04</span>
+          <span class="float-end post-date">Sep 4</span>
         </li><li>
           <a class="post-title" href="/posts/others/melquiades/">梅尔基亚德斯、炼金室及羊皮卷——我对知识的原始印象（完成度15%）
 </a>
-          <span class="float-end post-date">08-21</span>
+          <span class="float-end post-date">Aug 21</span>
         </li><li>
           <a class="post-title" href="/posts/others/rebeca/">丽贝卡的一生
 </a>
-          <span class="float-end post-date">06-13</span>
-        </li><li>
-          <a class="post-title" href="/posts/math/probability-theory/">学习概率论的一些随意思考
-</a>
-          <span class="float-end post-date">05-25</span>
-        </li><li>
-          <a class="post-title" href="/posts/others/ads/">广告位招租/Advertising Space for Rent
-</a>
-          <span class="float-end post-date">05-02</span>
-        </li><li>
-          <a class="post-title" href="/posts/others/first-post/">第一次弄博客
-</a>
-          <span class="float-end post-date">05-01</span>
+          <span class="float-end post-date">Jun 13</span>
         </li>
       </ul>
     </div><div class="row table-responsive mb-3">
+<ul class="pagination">
+  <li class="page-item">
+    <a href="/archives/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
+  </li>
+  <li class="page-item disabled">
+    <a  class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+  </li>
+  <li class="page-item active">
+    <a class="page-link" href="/archives/">1</a>
+  </li>
+  <li class="page-item">
+    <a class="page-link" href="/archives/page/2/">2</a>
+  </li>
+  <li class="page-item">
+    <a href="/archives/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+  </li>
+  <li class="page-item">
+    <a href="/archives/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+  </li>
+</ul>
 
 </div>
 </div>
@@ -196,9 +209,7 @@
 <div class="copyright mb-2">
   Copyright © 2021-2021 Unaybaryl. All Rights Reserved.
 </div>
-<div class="powered-by mb-2">
-  Powered by <a href="https://gohugo.io" target="_blank">Hugo</a> and the <a href="https://github.com/razonyang/hugo-theme-bootstrap" target="_blank">Bootstrap</a> theme.
-</div></footer>
+</footer>
 <a id="btnScrollToTop" class="btn-scroll-to-top">
   <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
 </a>

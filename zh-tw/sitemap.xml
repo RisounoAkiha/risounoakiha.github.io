@@ -10,6 +10,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn（old）"
                 href="/zh-cnold/categories/"
                 />
@@ -24,6 +29,11 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/"
                 />
     <xhtml:link
                 rel="alternate"
@@ -44,6 +54,11 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/series/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn（old）"
                 href="/zh-cnold/series/"
                 />
@@ -58,6 +73,11 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/tags/"
                 />
     <xhtml:link
                 rel="alternate"
