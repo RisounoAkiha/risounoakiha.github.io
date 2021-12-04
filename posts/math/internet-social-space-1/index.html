@@ -45,7 +45,7 @@
 }); 
 </script>
 </head><body><header><nav class="navbar navbar-expand-xl fixed-top">
-  <div class="container">
+  <div class="container-fluid">
     <a class="navbar-brand" href="/">
       <img class="logo" alt="Logo" src="/images/profile1.jpg" loading="lazy">
       Unzybaryl
@@ -124,7 +124,7 @@
   </div>
 </nav>
 </header>
-<main role="main" class="container">
+<main role="main" class="container-fluid">
       <div class="row content">
 <div class="col-lg-8">
   <div class="container"><nav class="row" aria-label="breadcrumb">
@@ -137,9 +137,7 @@
   
     
 
-    <a class="action btn-reward" role="button" data-bs-toggle="modal" data-bs-target="#rewardModal" title="打赏">
-  <i class="fas fa-fw fa-medal"></i>
-</a>
+    
     <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
   data-bs-trigger="focus" tabindex="0"
   data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
@@ -216,32 +214,7 @@
 <li>在社交过程中，信息存在着非常大的损耗和变化，这与对象之间的理解能力，表达能力的差值和对象属于的社交集合有关，很多时候都不在一个频道上。脑袋是自己的脑袋，所见之事是自己眼睛见到的，是自己在想自己的事情。如一位母亲见到了一名陌生的环卫工人，教导孩子以后好好学习。而那名环卫工人是家人呢？第一反应应该不是这样。</li>
 <li>社交内容限制</li>
 <li>社交博弈</li>
-</ol></div><div class="modal fade" id="rewardModal" tabindex="-1" aria-labelledby="rewardModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content surface">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rewardModalLabel"><i class="fas fa-fw fa-medal"></i>打赏</h5>
-        <a href="#" data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-fw fa-times"></i></a>
-      </div>
-      <div class="modal-body">
-        <ul class="nav nav-tabs mb-3" role="tablist"><li class="nav-item" role="presentation">
-            <a class="nav-link active" id="reward-alipay-tab" data-bs-toggle="tab" href="#reward-alipay" role="tab" aria-controls="reward-alipay" aria-selected="true">
-              <i class="fab fa-fw fa-alipay"></i>支付宝
-            </a>
-          </li><li class="nav-item" role="presentation">
-            <a class="nav-link" id="reward-wechat-tab" data-bs-toggle="tab" href="#reward-wechat" role="tab" aria-controls="reward-wechat" aria-selected="true">
-              <i class="fab fa-fw fa-weixin"></i>微信
-            </a>
-          </li></ul>
-        <div class="tab-content" id="rewardTabContent"><div class="tab-pane fade post-reward-content show active" id="reward-alipay" role="tabpanel" aria-labelledby="reward-alipay-tab">
-            <img class="img-fluid post-reward-img" src="/images/reward/alipay.png" loading="lazy" />
-          </div><div class="tab-pane fade post-reward-content show" id="reward-wechat" role="tabpanel" aria-labelledby="reward-wechat-tab">
-            <img class="img-fluid post-reward-img" src="/images/reward/wechat.png" loading="lazy" />
-          </div></div>
-      </div>
-    </div>
-  </div>
-</div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+</ol></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
   <div class="post-nav w-50"><div class="prev-post btn btn-sm">
       <a href="/posts/tech/blog_instruct/">我的Hugo&#43;Github Page搭建博客教程
 </a>
@@ -278,6 +251,8 @@
 </a></li><li><a href="/posts/others/akame/">《斩！赤红之瞳》与《穢翼のユースティア》类似的地方
 </a></li><li><a href="/posts/others/suspect-discuss/">聊聊猜疑
 </a></li><li><a href="/posts/others/suspicion-chain/">猜疑链，怀疑与相信，唯心，宗教与冥想
+</a></li><li><a href="/posts/others/amaranta/">阿玛兰妲——以前的孤独
+</a></li><li><a href="/posts/others/melquiades/">梅尔基亚德斯、炼金室及羊皮卷——我对知识的原始印象（完成度15%）
 </a></li></ul>
 </section><section class="taxonomy-categories row surface">
       <h4>
@@ -288,7 +263,7 @@
         </a><a href="/categories/%E5%B0%8F%E8%AF%B4%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="小说类">
           小说类 <span class="badge rounded-pill">3</span>
         </a><a href="/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="数学类">
-          数学类 <span class="badge rounded-pill">3</span>
+          数学类 <span class="badge rounded-pill">2</span>
         </a><a href="/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="技术类">
           技术类 <span class="badge rounded-pill">1</span>
         </a></div>
@@ -296,10 +271,10 @@
       <h4>
         <a href="/series">专栏</a>
       </h4>
-      <div><a href="/series/%E6%95%B0%E5%AD%A6%E9%9A%8F%E4%BE%BF%E6%83%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="数学随便想">
-          数学随便想 <span class="badge rounded-pill">3</span>
-        </a><a href="/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E7%9A%84%E4%BA%BA%E7%89%A9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独的人物">
+      <div><a href="/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC%E7%9A%84%E4%BA%BA%E7%89%A9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独的人物">
           百年孤独的人物 <span class="badge rounded-pill">3</span>
+        </a><a href="/series/%E6%95%B0%E5%AD%A6%E9%9A%8F%E4%BE%BF%E6%83%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="数学随便想">
+          数学随便想 <span class="badge rounded-pill">2</span>
         </a></div>
     </section><section class="taxonomy-tags row surface">
       <h4>
@@ -307,8 +282,6 @@
       </h4>
       <div><a href="/tags/thoughts/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="thoughts">
           thoughts <span class="badge rounded-pill">3</span>
-        </a><a href="/tags/probability/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="probability">
-          probability <span class="badge rounded-pill">2</span>
         </a><a href="/tags/riddiculus/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="riddiculus">
           riddiculus <span class="badge rounded-pill">2</span>
         </a><a href="/tags/amaranta/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="amaranta">
@@ -321,13 +294,15 @@
           internet <span class="badge rounded-pill">1</span>
         </a><a href="/tags/melquiades/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="melquiades">
           melquiades <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/probability/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="probability">
+          probability <span class="badge rounded-pill">1</span>
         </a><a href="/tags/rebeca/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="rebeca">
           rebeca <span class="badge rounded-pill">1</span>
         </a></div>
     </section></div>
 </aside>
 </div>
-    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"><li class="nav-item">
+    </main><footer class="footer mt-auto py-3 text-center container-fluid"><nav class="social-links nav my-2 justify-content-center"><li class="nav-item">
     <a class="nav-link social-link" href="mailto:unzybaryl@gmail.com" title="Email">
       <i class="fas fa-fw fa-2x fa-envelope"></i>
     </a>
@@ -350,7 +325,6 @@
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61a3a841eb844c6c"></script>
 
-                
-                <div class="addthis_inline_share_toolbox"></div>
+              
             </body>
 </html>
