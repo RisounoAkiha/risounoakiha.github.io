@@ -6,7 +6,16 @@
     <description>Recent content in Others on Unzybaryl`s Sekai</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Mon, 20 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/others/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="/posts/others/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2021年的总结</title>
+      <link>/posts/others/2021/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/2021/</guid>
+      <description>&lt;p&gt;今年是Eustia的一年。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>数学类的博客内容以后很难写……</title>
       <link>/posts/others/aboutmath/</link>
