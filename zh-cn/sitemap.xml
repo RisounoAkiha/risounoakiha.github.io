@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/others/magia/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <loc>/posts/others/asphodelus/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -31,8 +31,11 @@
                 href="/"
                 />
   </url><url>
+    <loc>/posts/others/connect/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/series/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -55,10 +58,10 @@
                 />
   </url><url>
     <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -81,13 +84,13 @@
                 />
   </url><url>
     <loc>/tags/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -110,9 +113,15 @@
                 />
   </url><url>
     <loc>/series/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E3%81%BE%E3%81%A9%E3%81%8B%E3%83%9E%E3%82%AE%E3%82%AB/</loc>
-    <lastmod>2022-02-08T00:00:00+00:00</lastmod>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/</loc>
+    <lastmod>2022-02-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/mataashita/</loc>
+    <lastmod>2022-02-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/magia/</loc>
     <lastmod>2022-02-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/andimhome/</loc>
