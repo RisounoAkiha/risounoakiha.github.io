@@ -24,6 +24,28 @@
                 href="/zh-cnold/categories/"
                 />
   </url><url>
+    <loc>/zh-cnold/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/"
+                />
+  </url><url>
     <loc>/zh-cnold/series/</loc>
     <xhtml:link
                 rel="alternate"
@@ -66,28 +88,6 @@
                 rel="alternate"
                 hreflang="zh-cn（old）"
                 href="/zh-cnold/tags/"
-                />
-  </url><url>
-    <loc>/zh-cnold/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/"
                 />
   </url>
 </urlset>
