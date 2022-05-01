@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -24,6 +24,70 @@
                 hreflang="zh-cn"
                 href="/"
                 />
+  </url><url>
+    <loc>/tags/magisk/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/root/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/tech/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/categories/"
+                />
+  </url><url>
+    <loc>/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/tags/"
+                />
+  </url><url>
+    <loc>/posts/tech/phone-root/</loc>
+    <lastmod>2022-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
@@ -54,60 +118,11 @@
                 href="/series/"
                 />
   </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/categories/"
-                />
-  </url><url>
     <loc>/posts/others/british-history-2/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E6%96%87%E5%AD%97%E7%B1%BB/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/tags/"
-                />
   </url><url>
     <loc>/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
@@ -181,16 +196,10 @@
     <loc>/download/</loc>
     <lastmod>2021-12-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/tech/</loc>
-    <lastmod>2021-11-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2021-11-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/blog_instruct/</loc>
-    <lastmod>2021-11-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/</loc>
     <lastmod>2021-11-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/akame/</loc>
