@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>昨日鳥のSekai</title>
+    <title>機能鳥のSekai</title>
     <link>/</link>
-    <description>Recent content on 昨日鳥のSekai</description>
+    <description>Recent content on 機能鳥のSekai</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 31 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>日语笔记1</title>
+      <link>/posts/others/japanese-study-1/</link>
+      <pubDate>Tue, 31 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/japanese-study-1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>日语正式学习开坑</title>
+      <link>/posts/others/japanese-study-0/</link>
+      <pubDate>Mon, 30 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/japanese-study-0/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>记一次简单的救砖经历</title>
       <link>/posts/tech/phone-root/</link>
