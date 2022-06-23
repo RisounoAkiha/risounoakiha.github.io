@@ -2,17 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/others/continued-story/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/others/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -34,14 +28,20 @@
                 href="/categories/"
                 />
   </url><url>
-    <loc>/tags/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+    <loc>/tags/%E5%9B%BE%E7%81%B5/</loc>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/turing/</loc>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -64,7 +64,7 @@
                 />
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -85,6 +85,15 @@
                 hreflang="zh-cn"
                 href="/"
                 />
+  </url><url>
+    <loc>/posts/others/continued-story/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
+    <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E9%B2%81%E8%B7%AF%E4%BF%AE/</loc>
     <lastmod>2022-06-19T00:00:00+00:00</lastmod>
@@ -185,9 +194,6 @@
     <lastmod>2022-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/thoughts/</loc>
-    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2022-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/recent1/</loc>
