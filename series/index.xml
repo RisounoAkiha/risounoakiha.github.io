@@ -6,7 +6,16 @@
     <description>Recent content in 专栏 on 機能鳥のSekai</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Fri, 17 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>动漫歌曲</title>
+      <link>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</link>
+      <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>数学随想</title>
       <link>/series/%E6%95%B0%E5%AD%A6%E9%9A%8F%E6%83%B3/</link>
@@ -26,11 +35,11 @@
     </item>
     
     <item>
-      <title>英国史</title>
-      <link>/series/%E8%8B%B1%E5%9B%BD%E5%8F%B2/</link>
+      <title>书籍片段</title>
+      <link>/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>/series/%E8%8B%B1%E5%9B%BD%E5%8F%B2/</guid>
+      <guid>/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/</guid>
       <description></description>
     </item>
     
@@ -40,24 +49,6 @@
       <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
       
       <guid>/series/%E7%A9%A2%E7%BF%BC%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%83%86%E3%82%A3%E3%82%A2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>魔法少女まどか☆マギカ</title>
-      <link>/series/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E3%81%BE%E3%81%A9%E3%81%8B%E3%83%9E%E3%82%AE%E3%82%AB/</link>
-      <pubDate>Fri, 11 Feb 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/series/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E3%81%BE%E3%81%A9%E3%81%8B%E3%83%9E%E3%82%AE%E3%82%AB/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>百年孤独</title>
-      <link>/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</link>
-      <pubDate>Sat, 04 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/series/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</guid>
       <description></description>
     </item>
     
