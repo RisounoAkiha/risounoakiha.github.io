@@ -11,6 +11,9 @@
     <loc>/posts/others/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/tags/thoughts/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/series/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -33,6 +36,9 @@
                 hreflang="zh-cn"
                 href="/series/"
                 />
+  </url><url>
+    <loc>/posts/others/onethingafteranthor/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
@@ -70,6 +76,9 @@
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
@@ -131,9 +140,6 @@
     <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/turing/</loc>
-    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/continued-story/</loc>
@@ -206,9 +212,6 @@
     <lastmod>2022-04-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/i-love-text/</loc>
-    <lastmod>2022-04-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/thoughts/</loc>
     <lastmod>2022-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/recent1/</loc>
