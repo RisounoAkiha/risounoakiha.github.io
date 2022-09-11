@@ -2,17 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/others/soratane/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/others/asphodelus/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/others/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/shiriusunoyuuenn/</loc>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -35,10 +32,10 @@
                 />
   </url><url>
     <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -61,19 +58,13 @@
                 />
   </url><url>
     <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E5%B0%A4%E6%96%AF%E6%8F%90%E4%BA%9A/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -96,7 +87,7 @@
                 />
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -117,6 +108,21 @@
                 hreflang="zh-cn"
                 href="/"
                 />
+  </url><url>
+    <loc>/tags/%E9%9F%B3%E4%B9%90/</loc>
+    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/soratane/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/asphodelus/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%B0%A4%E6%96%AF%E6%8F%90%E4%BA%9A/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/</loc>
+    <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/%E7%A9%A2%E7%BF%BC%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%83%86%E3%82%A3%E3%82%A2/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
