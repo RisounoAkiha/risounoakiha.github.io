@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tech on 機能鳥のSekai</title>
+    <title>Tech on psychohistory daishouri!!!</title>
     <link>/posts/tech/</link>
-    <description>Recent content in Tech on 機能鳥のSekai</description>
+    <description>Recent content in Tech on psychohistory daishouri!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
     <lastBuildDate>Sun, 01 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
