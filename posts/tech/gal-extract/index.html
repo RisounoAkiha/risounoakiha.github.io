@@ -12,7 +12,7 @@
 <meta name="description" content="" /><meta itemprop="name" content="记第一次从gal中解包提取素材和剧本">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2022-11-06T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2022-11-06T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1542">
+<meta itemprop="wordCount" content="1215">
 <meta itemprop="keywords" content="galgame,," /><meta property="og:title" content="记第一次从gal中解包提取素材和剧本" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
@@ -160,7 +160,7 @@
     <i class="fas fa-fw fa-calendar-alt"></i>2022-11-06
   </span>
   <span class="post-reading-time me-2">
-    <i class="fas fa-fw fa-coffee"></i>4 分钟阅读
+    <i class="fas fa-fw fa-coffee"></i>3 分钟阅读
   </span><a href="/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/" class="post-taxonomy">#技术类</a><a href="/tags/galgame/" class="post-taxonomy">#galgame</a></div>
 
 
@@ -197,10 +197,7 @@
 <div align=center>
 <img src="/images/gal-extract_2.png"  width="80%" />  
 </div>
-<p>由于已经过了半个月了记忆模糊了，我只是把整个流程叙述一遍，至于过程，反反复复搞了4个多小时吧，都是一步一步边搜索边操作的。</p>
-<p>recovery方面，我分别尝试了官方rec和twrp。官方rec每次利用usb修复的时候中途都会失败，原因不明，因而使用了twrp。twrp刷入时使用了&rsquo;fastboot flash recovery'，但是每次重启时却又没安装成功，于是只能使用低版本的twrp，recovery到这里就解决了，可以顺利进入twrp。</p>
-<p>接下来就是使用sideload线刷第三方rom了，这一部分比较顺利，但是sideload总会出错，查了一下发现是好像传的东西超过2gb的话就会有问题，于是只能委曲求全找比较小的第三方rom，最终成功刷入miui。</p>
-<p>这里推测可能性有两种，一是编码不对，二是编码大体是对的，但更重要的在于BGI系统自定义了许多的编码，或者是打乱了正常的编码。于是乎想要解决这个问题，我要么自己去核对推测编码自己破解，要么去找现成的轮子，别人已做的工作。我肯定选择后者，于是我开始了搜索，在汉化吧里面搜索“BGI”时我发现了线索，这将我引到了github，然后一下子找到了decoder。</p>
+这里推测可能性有两种，一是编码不对，二是编码大体是对的，但更重要的在于BGI系统自定义了许多的编码，或者是打乱了正常的编码。于是乎想要解决这个问题，我要么自己去核对推测编码自己破解，要么去找现成的轮子，别人已做的工作。我肯定选择后者，于是我开始了搜索，在汉化吧里面搜索“BGI”时我发现了线索，这将我引到了github，然后一下子找到了decoder。
 <div align=center>
 <img src="/images/gal-extract_3.png"  width="80%" />  
 </div>
@@ -229,7 +226,10 @@
       <a href="/posts/others/lighting-ball/">《球状闪电》
 </a>
     </div></div>
-  <div class="post-nav flex-row-reverse"></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/others/subarashikihibi-1/">素晴日剧本片段
+</a>
+    </div></div>
 </div><section class="related-posts">
     <h3>相关文章</h3>
     <ul class="related-posts"><li><a href="/posts/others/soratane/"> 空種 -そらたね-
@@ -249,13 +249,13 @@
       </div>
 </section><section class="recent-posts row surface">
   <h4>最近文章</h4>
-  <ul><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+  <ul><li><a href="/posts/others/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
 </a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
 </a></li><li><a href="/posts/others/shiriusunoyuuenn/">シリウスの遊園 -Hacka-
 </a></li><li><a href="/posts/others/soratane/"> 空種 -そらたね-
 </a></li><li><a href="/posts/others/asphodelus/">Asphodelus
 </a></li><li><a href="/posts/others/the-whole-sky/">満天
-</a></li><li><a href="/posts/others/turing/">图灵生日快乐
 </a></li></ul>
 </section><section class="taxonomy-categories row surface">
       <h4>
@@ -266,7 +266,7 @@
         </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
           普通类 <span class="badge rounded-pill">8</span>
         </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
-          文字类 <span class="badge rounded-pill">6</span>
+          文字类 <span class="badge rounded-pill">7</span>
         </a><a href="/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="技术类">
           技术类 <span class="badge rounded-pill">3</span>
         </a><a href="/categories/%E6%95%B0%E5%AD%A6%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="数学类">
@@ -288,19 +288,23 @@
           数学随想 <span class="badge rounded-pill">2</span>
         </a><a href="/series/%E6%97%A5%E8%AF%AD%E5%AD%A6%E4%B9%A0/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="日语学习">
           日语学习 <span class="badge rounded-pill">1</span>
+        </a><a href="/series/%E7%B4%A0%E6%99%B4%E6%97%A5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="素晴日">
+          素晴日 <span class="badge rounded-pill">1</span>
         </a></div>
     </section><section class="taxonomy-tags row surface">
       <h4>
         <a href="/tags">标签</a>
       </h4>
-      <div><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+      <div><a href="/tags/%E4%B8%80%E4%BA%9B%E6%96%87%E5%AD%97/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="一些文字">
+          一些文字 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
           魔法少女小圆 <span class="badge rounded-pill">4</span>
         </a><a href="/tags/anime/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="anime">
           anime <span class="badge rounded-pill">3</span>
-        </a><a href="/tags/%E4%B8%80%E4%BA%9B%E6%96%87%E5%AD%97/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="一些文字">
-          一些文字 <span class="badge rounded-pill">3</span>
         </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
           百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="galgame">
+          galgame <span class="badge rounded-pill">2</span>
         </a><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
           kalafina <span class="badge rounded-pill">2</span>
         </a><a href="/tags/thoughts/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="thoughts">
@@ -313,8 +317,6 @@
           英国史 <span class="badge rounded-pill">2</span>
         </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
           fate/zero <span class="badge rounded-pill">1</span>
-        </a><a href="/tags/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="galgame">
-          galgame <span class="badge rounded-pill">1</span>
         </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
           magisk <span class="badge rounded-pill">1</span>
         </a><a href="/tags/root/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="root">
