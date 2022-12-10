@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tags/galgame/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <loc>/posts/others/fairytale/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/kalafina/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -28,75 +34,8 @@
                 href="/"
                 />
   </url><url>
-    <loc>/posts/tech/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/categories/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/categories/"
-                />
-  </url><url>
-    <loc>/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/tags/"
-                />
-  </url><url>
-    <loc>/posts/tech/gal-extract/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/others/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/others/lighting-ball/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E4%B8%80%E4%BA%9B%E6%96%87%E5%AD%97/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/series/</loc>
-    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -118,6 +57,85 @@
                 href="/series/"
                 />
   </url><url>
+    <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/kizuato/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/categories/"
+                />
+  </url><url>
+    <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/tags/"
+                />
+  </url><url>
+    <loc>/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/galgame/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/tech/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/tech/gal-extract/</loc>
+    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/lighting-ball/</loc>
+    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E4%B8%80%E4%BA%9B%E6%96%87%E5%AD%97/</loc>
+    <lastmod>2022-09-16T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/</loc>
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
@@ -128,12 +146,6 @@
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/shiriusunoyuuenn/</loc>
-    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/%E9%9F%B3%E4%B9%90/</loc>
@@ -153,9 +165,6 @@
   </url><url>
     <loc>/series/%E7%A9%A2%E7%BF%BC%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B9%E3%83%86%E3%82%A3%E3%82%A2/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/kalafina/</loc>
-    <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/the-whole-sky/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
