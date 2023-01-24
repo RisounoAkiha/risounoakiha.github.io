@@ -2,17 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/others/fairytale/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/kalafina/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <loc>/tags/galgame/</loc>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -35,7 +32,7 @@
                 />
   </url><url>
     <loc>/series/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -58,13 +55,10 @@
                 />
   </url><url>
     <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/others/kizuato/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -87,13 +81,13 @@
                 />
   </url><url>
     <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -115,11 +109,20 @@
                 href="/tags/"
                 />
   </url><url>
-    <loc>/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/</loc>
+    <loc>/posts/others/kotoba/</loc>
+    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/fairytale/</loc>
     <lastmod>2022-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/galgame/</loc>
-    <lastmod>2022-11-06T00:00:00+00:00</lastmod>
+    <loc>/tags/kalafina/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/kizuato/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/</loc>
+    <lastmod>2022-12-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/</loc>
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
