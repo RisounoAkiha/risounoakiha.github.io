@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tweet on psychohistory daishouri!!!</title>
+    <link>/categories/tweet/</link>
+    <description>Recent content in tweet on psychohistory daishouri!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/categories/tweet/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>消耗物资作战</title>
+      <link>/posts/tweet/20230201/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tweet/20230201/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
