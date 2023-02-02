@@ -172,13 +172,7 @@
     <loc>/posts/others/the-whole-sky/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/%E5%9B%BE%E7%81%B5/</loc>
-    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/others/turing/</loc>
-    <lastmod>2022-06-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/continued-story/</loc>
@@ -188,6 +182,9 @@
     <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/stolz/</loc>
+    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2022-06-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/magisk/</loc>
