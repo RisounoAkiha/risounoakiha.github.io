@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Galgame on psychohistory daishouri!!!</title>
+    <link>/series/galgame/</link>
+    <description>Recent content in Galgame on psychohistory daishouri!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Tue, 24 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/galgame/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>届かない恋</title>
+      <link>/posts/others/todokanaikoi/</link>
+      <pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/todokanaikoi/</guid>
+      <description>&lt;p&gt;丸户史明真神。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>言葉と旋律</title>
+      <link>/posts/others/kotoba/</link>
+      <pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/kotoba/</guid>
+      <description>&lt;p&gt;温柔美好的未来。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>记第一次从gal中解包提取素材和剧本</title>
+      <link>/posts/tech/gal-extract/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/gal-extract/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title> 空種 -そらたね-</title>
+      <link>/posts/others/soratane/</link>
+      <pubDate>Sun, 31 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/soratane/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Asphodelus</title>
+      <link>/posts/others/asphodelus/</link>
+      <pubDate>Sun, 31 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/asphodelus/</guid>
+      <description>&lt;p&gt;今年二月的坑填了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>【预告】穢翼のユースティア游戏回顾</title>
+      <link>/posts/others/eustia_1/</link>
+      <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/eustia_1/</guid>
+      <description>&lt;p&gt;预告一下这个系列，回忆一下这部作品，里面的很多台词都引我深思。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
