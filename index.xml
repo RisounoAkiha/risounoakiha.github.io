@@ -9,10 +9,19 @@
     <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>消耗物资作战</title>
-      <link>/posts/tweet/20230201/</link>
+      <link>/tweet/20230201/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>/posts/tweet/20230201/</guid>
+      <guid>/tweet/20230201/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>炎</title>
+      <link>/posts/others/homura/</link>
+      <pubDate>Wed, 25 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/homura/</guid>
       <description></description>
     </item>
     
@@ -53,11 +62,29 @@
     </item>
     
     <item>
+      <title>素晴日剧本片段</title>
+      <link>/bin/subarashikihibi-1/</link>
+      <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/bin/subarashikihibi-1/</guid>
+      <description>&lt;p&gt;原句，部分词翻译（网络搜索，和整句翻译（来源于汉化组等）&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>记第一次从gal中解包提取素材和剧本</title>
       <link>/posts/tech/gal-extract/</link>
       <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>/posts/tech/gal-extract/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984</title>
+      <link>/bin/free-talk/</link>
+      <pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/bin/free-talk/</guid>
       <description></description>
     </item>
     
@@ -108,10 +135,10 @@
     
     <item>
       <title>图灵生日快乐</title>
-      <link>/posts/others/turing/</link>
+      <link>/tweet/turing/</link>
       <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
       
-      <guid>/posts/others/turing/</guid>
+      <guid>/tweet/turing/</guid>
       <description></description>
     </item>
     
@@ -131,6 +158,15 @@
       
       <guid>/posts/others/stolz/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>日语笔记1</title>
+      <link>/bin/japanese-study-1/</link>
+      <pubDate>Tue, 31 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/bin/japanese-study-1/</guid>
+      <description>&lt;p&gt;（我已经厌烦了这种重复抄写笔记的方式，所以没有笔记2了——2022.11.13）&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -162,19 +198,19 @@
     
     <item>
       <title>I  love Text</title>
-      <link>/posts/others/i-love-text/</link>
+      <link>/tweet/i-love-text/</link>
       <pubDate>Wed, 13 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>/posts/others/i-love-text/</guid>
+      <guid>/tweet/i-love-text/</guid>
       <description></description>
     </item>
     
     <item>
       <title>最近（3.31）</title>
-      <link>/posts/others/recent1/</link>
+      <link>/tweet/recent1/</link>
       <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
       
-      <guid>/posts/others/recent1/</guid>
+      <guid>/tweet/recent1/</guid>
       <description></description>
     </item>
     
@@ -224,6 +260,15 @@
     </item>
     
     <item>
+      <title>一些无穷级数</title>
+      <link>/bin/math_history_1/</link>
+      <pubDate>Sat, 11 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/bin/math_history_1/</guid>
+      <description>&lt;p&gt;随便写写最近所看到的数学。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>【预告】穢翼のユースティア游戏回顾</title>
       <link>/posts/others/eustia_1/</link>
       <pubDate>Thu, 09 Dec 2021 00:00:00 +0000</pubDate>
@@ -233,12 +278,12 @@
     </item>
     
     <item>
-      <title>下载资源</title>
-      <link>/download/</link>
-      <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
+      <title>【废案/想法】网络社交空间</title>
+      <link>/bin/internet-social-space-1/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0800</pubDate>
       
-      <guid>/download/</guid>
-      <description>&lt;p&gt;有一些我需要方便下载的东西会放在这里，主要蓝奏云的链接有些丑了。&lt;/p&gt;</description>
+      <guid>/bin/internet-social-space-1/</guid>
+      <description>&lt;p&gt;以前没写完的，写作日期为2021-05-07。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -257,6 +302,15 @@
       
       <guid>/posts/others/akame/</guid>
       <description>&lt;p&gt;所谓既视感，就是既视感。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>聊聊猜疑</title>
+      <link>/bin/suspect-discuss/</link>
+      <pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/bin/suspect-discuss/</guid>
+      <description>&lt;p&gt;随便写点什么。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -296,11 +350,11 @@
     </item>
     
     <item>
-      <title>随记合集</title>
-      <link>/essay/</link>
+      <title>随记合集（21.5-22.1）</title>
+      <link>/tweet/essay/</link>
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>/essay/</guid>
+      <guid>/tweet/essay/</guid>
       <description>&lt;p&gt;随记合集&lt;/p&gt;</description>
     </item>
     
