@@ -2,37 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/tweet/</loc>
-    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/"
-                />
-  </url><url>
-    <loc>/tweet/20230201/</loc>
-    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/categories/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -55,7 +26,7 @@
                 />
   </url><url>
     <loc>/series/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -77,23 +48,8 @@
                 href="/series/"
                 />
   </url><url>
-    <loc>/posts/others/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/others/homura/</loc>
-    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/</loc>
-    <lastmod>2023-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -114,6 +70,59 @@
                 hreflang="zh-cn"
                 href="/tags/"
                 />
+  </url><url>
+    <loc>/posts/others/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/sweet-heart-cherry/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/"
+                />
+  </url><url>
+    <loc>/posts/others/sayorana/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2023-02-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tweet/</loc>
+    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tweet/20230201/</loc>
+    <lastmod>2023-02-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/homura/</loc>
+    <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/galgame/</loc>
     <lastmod>2023-01-24T00:00:00+00:00</lastmod>
@@ -148,7 +157,7 @@
     <loc>/posts/tech/</loc>
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/%E6%8A%80%E6%9C%AF%E7%B1%BB/</loc>
+    <loc>/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/</loc>
     <lastmod>2022-11-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/gal-extract/</loc>

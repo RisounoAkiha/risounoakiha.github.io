@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>打怪升级 on ZXQ!!!</title>
+    <link>/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/</link>
+    <description>Recent content in 打怪升级 on ZXQ!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Sun, 06 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>记第一次从gal中解包提取素材和剧本</title>
+      <link>/posts/tech/gal-extract/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/gal-extract/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次简单的救砖经历</title>
+      <link>/posts/tech/phone-root/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/phone-root/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>我的Hugo&#43;Github page搭建博客教程</title>
+      <link>/posts/tech/blog_instruct/</link>
+      <pubDate>Sat, 27 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/blog_instruct/</guid>
+      <description>&lt;p&gt;(多图警告！）给一些需要的朋友，互联网本身也有很多教程，反正有疑问的地方可以通过网站给出的链接询问~&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
