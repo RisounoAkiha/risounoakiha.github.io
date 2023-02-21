@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -26,7 +26,7 @@
                 />
   </url><url>
     <loc>/series/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -49,7 +49,7 @@
                 />
   </url><url>
     <loc>/tags/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -71,14 +71,14 @@
                 href="/tags/"
                 />
   </url><url>
-    <loc>/tags/kalafina/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <loc>/series/galgame/</loc>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-tw"
@@ -101,27 +101,33 @@
                 />
   </url><url>
     <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/akujo/</loc>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/others/shinai/</loc>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/</loc>
+    <lastmod>2023-02-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/kalafina/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/kimigahikarini/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2023-02-19T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/series/galgame/</loc>
-    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/others/white-album/</loc>
-    <lastmod>2023-02-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/</loc>
     <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/others/sweet-heart-cherry/</loc>
