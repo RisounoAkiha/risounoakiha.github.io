@@ -2,6 +2,9 @@
  
 title GIT一键提交
 color 3
+cd D:\hugo_0.82.1_Windows-64bit\www3
+hugo
+cd D:\hugo_0.82.1_Windows-64bit\www3\public
 echo 当前目录是：%cd%
 echo;
  
