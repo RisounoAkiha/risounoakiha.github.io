@@ -6,7 +6,16 @@
     <description>Recent content on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 07 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kali添加环境变量</title>
+      <link>/posts/tech/env-var/</link>
+      <pubDate>Fri, 07 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/env-var/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title> 親愛なる世界へ</title>
       <link>/posts/others/shinainaru/</link>
@@ -419,6 +428,42 @@
       
       <guid>/posts/others/first-post/</guid>
       <description>&lt;p&gt;First post&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/posts/tech/linux-command/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/linux-command/</guid>
+      <description>经常用到的linux指令记录 1#立刻关机 2shutdown -h now 3halt 4poweroff 5#立刻重启 6shutdown -r now 7#找程序路径 8whereis ifconfig 9#通过http下载文件 10wget -c url 11#下载github仓</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/posts/tech/networking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/networking/</guid>
+      <description>第一章 计算机网络和因特网 1.1什么是因特网 主机host，端系统end system。端系统通过通信链路communication link（同轴</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/posts/tech/subdomain/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/subdomain/</guid>
+      <description>来源：https://github.com/s7safe/Rad-Team-tools。我改一些格式和补充一些东西。（下面均在linux环境</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/posts/tech/typora/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/typora/</guid>
+      <description>转载至：https://blog.csdn.net/D_huili/article/details/125301376 Typora指令 Ctrl + 1</description>
     </item>
     
   </channel>
