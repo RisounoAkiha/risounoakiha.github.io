@@ -6,7 +6,34 @@
     <description>Recent content in Tech on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Fri, 07 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>红队常用工具</title>
+      <link>/posts/tech/subdomain/</link>
+      <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/subdomain/</guid>
+      <description>&lt;p&gt;来源：https://github.com/s7safe/Rad-Team-tools。我的文章全都是学习文章，不是原创文章，之后不再说明。原创会特地标注。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>linux常用指令</title>
+      <link>/posts/tech/linux-command/</link>
+      <pubDate>Sat, 08 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/linux-command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typora指令</title>
+      <link>/posts/tech/typora/</link>
+      <pubDate>Sat, 08 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/typora/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Kali添加环境变量</title>
       <link>/posts/tech/env-var/</link>
