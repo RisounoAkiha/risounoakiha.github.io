@@ -6,7 +6,16 @@
     <description>Recent content on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sun, 09 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>每日英语阅读</title>
+      <link>/posts/others/english-reading/</link>
+      <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/english-reading/</guid>
+      <description>&lt;p&gt;主要是看reddit，不想看economist。&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>红队常用工具</title>
       <link>/posts/tech/subdomain/</link>
