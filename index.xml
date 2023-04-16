@@ -6,14 +6,68 @@
     <description>Recent content on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Wed, 12 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SRC之越权漏洞案例</title>
+      <link>/posts/tech/authorization/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/authorization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>实战 | 对某bc站的一次渗透</title>
+      <link>/posts/tech/penetration-2/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>探究公众号接口漏洞：从后台登录口到旁站getshell</title>
+      <link>/posts/tech/penetration/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文件导出功能的SSRF</title>
+      <link>/posts/tech/ssrf-2/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/ssrf-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次仅有“小学二年级水平”的linux服务器应急</title>
+      <link>/posts/tech/emergency/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/emergency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>全回显SSRF测试两则</title>
+      <link>/posts/tech/ssrf/</link>
+      <pubDate>Sat, 15 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/ssrf/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>每日英语阅读</title>
       <link>/posts/others/english-reading/</link>
       <pubDate>Wed, 12 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>/posts/others/english-reading/</guid>
-      <description>&lt;p&gt;主要是看reddit，不想看economist。&lt;/p&gt;</description>
+      <description></description>
     </item>
     
     <item>
@@ -22,7 +76,7 @@
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
       <guid>/posts/tech/subdomain/</guid>
-      <description>&lt;p&gt;来源：https://github.com/s7safe/Rad-Team-tools。我的文章全都是学习文章，不是原创文章，之后不再说明。原创会特地标注。&lt;/p&gt;</description>
+      <description></description>
     </item>
     
     <item>
