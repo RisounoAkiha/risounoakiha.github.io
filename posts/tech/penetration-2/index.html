@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>实战 | 对某bc站的一次渗透 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+    <title>实战 | 对某bc站的一次渗透及Mssql注入和提权 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
 <link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
 <link rel="manifest" href="/images/favicons/manifest.json">
 <link rel="icon" href="/images/favicons/favicon.ico">
 <meta name="keywords" content="" />
-<meta name="description" content="" /><meta itemprop="name" content="实战 | 对某bc站的一次渗透">
+<meta name="description" content="" /><meta itemprop="name" content="实战 | 对某bc站的一次渗透及Mssql注入和提权">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2023-04-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="459">
-<meta itemprop="keywords" content="," /><meta property="og:title" content="实战 | 对某bc站的一次渗透" />
+<meta itemprop="wordCount" content="477">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="实战 | 对某bc站的一次渗透及Mssql注入和提权" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/tech/penetration-2/" /><meta property="article:section" content="posts" />
@@ -21,7 +21,7 @@
 <meta property="article:modified_time" content="2023-04-16T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="实战 | 对某bc站的一次渗透"/>
+<meta name="twitter:title" content="实战 | 对某bc站的一次渗透及Mssql注入和提权"/>
 <meta name="twitter:description" content=""/>
 <meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
 <link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
@@ -128,7 +128,7 @@
       <div class="row content">
 <div class="col-lg-8">
   <div class="container"><nav class="row" aria-label="breadcrumb">
-  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">实战 | 对某bc站的一次渗透</li></ol>
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">实战 | 对某bc站的一次渗透及Mssql注入和提权</li></ol>
 </nav><article class="post row surface"><div class="post-panel-wrapper">
   <div class="post-panel d-flex flex-column">
     <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
@@ -148,7 +148,7 @@
 </a>
   </div>
 </div>
-<h1 class="post-title my-3">实战 | 对某bc站的一次渗透
+<h1 class="post-title my-3">实战 | 对某bc站的一次渗透及Mssql注入和提权
 </h1><div class="post-meta mb-3">
   <span class="post-date me-2">
     <i class="fas fa-fw fa-calendar-alt"></i>2023-04-16
@@ -213,9 +213,10 @@
 </li>
 </ol>
 <h2 id="一些补充">一些补充</h2>
-<ol start="2">
-<li>Secondary Logon Service是其中的一个辅助登录服务。 Microsoft Windows的辅助登录服务存在特权提升漏洞ms16-032，对应补丁文件是KB3139914。我之前见过根据systeminfo自动跑出没有打补丁漏洞的脚本，不知道遗忘到哪去了。</li>
-<li>我最近得去补补sql注入的知识了……以前学的笔记删掉了，得重新学。</li>
+<ol>
+<li>Secondary Logon Service是其中的一个辅助登录服务。 Microsoft Windows的辅助登录服务存在特权提升漏洞ms16-032，对应补丁文件是KB3139914。我之前见过根据systeminfo自动跑出没有打补丁漏洞的脚本，不知道遗忘到哪去了</li>
+<li>CS如何提权上线</li>
+<li>我最近得去补补ms的sql注入的知识了……以前学的笔记删掉了，得重新学。那就开始复习！！</li>
 </ol></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
   <div class="post-nav w-50"><div class="prev-post btn btn-sm">
       <a href="/posts/tech/penetration/">探究公众号接口漏洞：从后台登录口到旁站getshell
@@ -278,13 +279,13 @@
       </div>
 </section><section class="recent-posts row surface">
   <h4>最近文章</h4>
-  <ul><li><a href="/posts/tech/authorization/">SRC之越权漏洞案例
-</a></li><li><a href="/posts/tech/penetration-2/">实战 | 对某bc站的一次渗透
-</a></li><li><a href="/posts/tech/penetration/">探究公众号接口漏洞：从后台登录口到旁站getshell
-</a></li><li><a href="/posts/tech/ssrf-2/">文件导出功能的SSRF
-</a></li><li><a href="/posts/tech/emergency/">记一次仅有“小学二年级水平”的linux服务器应急
-</a></li><li><a href="/posts/tech/ssrf/">全回显SSRF测试两则
-</a></li><li><a href="/posts/others/english-reading/">每日英语阅读
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
 </a></li></ul>
 </section><section class="taxonomy-categories row surface">
       <h4>
@@ -293,7 +294,7 @@
       <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
           二次元 <span class="badge rounded-pill">23</span>
         </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
-          打怪升级 <span class="badge rounded-pill">13</span>
+          打怪升级 <span class="badge rounded-pill">23</span>
         </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
           文字类 <span class="badge rounded-pill">6</span>
         </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">

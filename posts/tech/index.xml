@@ -6,7 +6,97 @@
     <description>Recent content in Tech on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Socket代理</title>
+      <link>/posts/tech/intranet-3/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/intranet-3/</guid>
+      <description>&lt;p&gt;这靶场可以好好打打……&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>内网文件传输</title>
+      <link>/posts/tech/intranet-2/</link>
+      <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/intranet-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>反弹shell</title>
+      <link>/posts/tech/shell/</link>
+      <pubDate>Tue, 25 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/shell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux主机信息收集</title>
+      <link>/posts/tech/linux/</link>
+      <pubDate>Mon, 24 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>域内凭据获取</title>
+      <link>/posts/tech/windows-2/</link>
+      <pubDate>Mon, 24 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/windows-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows内网信息收集</title>
+      <link>/posts/tech/intranet/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/intranet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows密码凭证获取</title>
+      <link>/posts/tech/windows/</link>
+      <pubDate>Sun, 23 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MSSQL注入</title>
+      <link>/posts/tech/sql-2/</link>
+      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/sql-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oracle数据库注入</title>
+      <link>/posts/tech/sql-3/</link>
+      <pubDate>Thu, 20 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/sql-3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL手工注入</title>
+      <link>/posts/tech/sql/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/sql/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>SRC之越权漏洞案例</title>
       <link>/posts/tech/authorization/</link>
@@ -17,7 +107,7 @@
     </item>
     
     <item>
-      <title>实战 | 对某bc站的一次渗透</title>
+      <title>实战 | 对某bc站的一次渗透及Mssql注入和提权</title>
       <link>/posts/tech/penetration-2/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
       
@@ -63,10 +153,10 @@
     
     <item>
       <title>红队常用工具</title>
-      <link>/posts/tech/subdomain/</link>
+      <link>/posts/tech/information/</link>
       <pubDate>Sun, 09 Apr 2023 00:00:00 +0000</pubDate>
       
-      <guid>/posts/tech/subdomain/</guid>
+      <guid>/posts/tech/information/</guid>
       <description></description>
     </item>
     

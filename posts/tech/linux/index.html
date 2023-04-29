@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Linux主机信息收集 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="Linux主机信息收集">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-24T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-04-24T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1439">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="Linux主机信息收集" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/linux/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-24T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-04-24T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linux主机信息收集"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">Linux主机信息收集</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">Linux主机信息收集
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-04-24
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>3 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#系统架构">系统架构</a></li>
+    <li><a href="#进程">进程</a></li>
+    <li><a href="#用户和组">用户和组</a></li>
+    <li><a href="#ssh服务信息">SSH服务信息</a></li>
+    <li><a href="#服务状态">服务状态</a></li>
+    <li><a href="#安全">安全</a></li>
+    <li><a href="#网络">网络</a></li>
+    <li><a href="#文件系统">文件系统</a></li>
+    <li><a href="#程序">程序</a></li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><p>后台执行病毒：<code>./virus &amp;</code>（后面加一个&amp;）</p>
+<p>metepreter获取交互式shell：<code>python -c &quot;import pty;pty.spawn('/bin/bash')&quot;</code></p>
+<h2 id="系统架构">系统架构</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#系统信息</span>
+<span class="ln"> 2</span>uname -a
+<span class="ln"> 3</span><span class="c1">#登录提示或系统标识</span>
+<span class="ln"> 4</span>cat /etc/issue
+<span class="ln"> 5</span><span class="c1">#被解析获取信息的描述行</span>
+<span class="ln"> 6</span>cat /etc/*-release //debien
+<span class="ln"> 7</span>cat /etc/redhat-release //red hat
+<span class="ln"> 8</span><span class="c1">#内核版本，gcc版本，内核编译时间，用户名</span>
+<span class="ln"> 9</span>cat /proc/version
+<span class="ln">10</span><span class="c1">#调整监视linux内核操作各种活动的文件</span>
+<span class="ln">11</span>cat /proc/sys/kernel/version
+</code></pre></div><h2 id="进程">进程</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#列出当前进程快照</span>
+<span class="ln"> 2</span>ps -elf
+<span class="ln"> 3</span>ps aux
+<span class="ln"> 4</span><span class="c1">#杀死进程</span>
+<span class="ln"> 5</span><span class="nb">kill</span> -9 pid
+<span class="ln"> 6</span><span class="c1">#运行时的需要信息（proc是虚拟文件系统称为过程信息的伪文件系统）</span>
+<span class="ln"> 7</span>ls -al /proc/
+<span class="ln"> 8</span><span class="c1">#关于对应PID99的进程的信息</span>
+<span class="ln"> 9</span>ls -al /proc/99
+<span class="ln">10</span><span class="c1">#进程实时显示</span>
+<span class="ln">11</span>top
+</code></pre></div><h2 id="用户和组">用户和组</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#用户的UID和GID</span>
+<span class="ln"> 2</span>id
+<span class="ln"> 3</span><span class="c1">#登录到Linux服务器的人员</span>
+<span class="ln"> 4</span>w
+<span class="ln"> 5</span><span class="c1">#当前用户名</span>
+<span class="ln"> 6</span>whoami
+<span class="ln"> 7</span><span class="c1">#最后一次登录的用户</span>
+<span class="ln"> 8</span>last
+<span class="ln"> 9</span><span class="c1">#登录失败的记录</span>
+<span class="ln">10</span>lastb
+<span class="ln">11</span><span class="c1">#打印用户登录日志/var/log/lastlog文件的内容(var目录有各种软件的日志)</span>
+<span class="ln">12</span>lastlog
+<span class="ln">13</span><span class="c1">#用户信息</span>
+<span class="ln">14</span>cat /etc/passwd
+<span class="ln">15</span><span class="c1">#root访问，散列密码数据</span>
+<span class="ln">16</span>cat /etc/shadow
+<span class="ln">17</span><span class="c1">#sudo命令需要遵守的规则</span>
+<span class="ln">18</span>cat /etc/sudoers
+<span class="ln">19</span><span class="c1">#sudo版本字符串</span>
+<span class="ln">20</span>sudo -V
+<span class="ln">21</span><span class="c1">#列出目前用户可执行与无法执行的命令</span>
+<span class="ln">22</span>sudo -l
+<span class="ln">23</span>
+</code></pre></div><h2 id="ssh服务信息">SSH服务信息</h2>
+<p>私钥需要权限600。最好不要开密码登录，防止ssh爆破。</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#SSH登录</span>
+<span class="ln"> 2</span>ssh 用户名@ip
+<span class="ln"> 3</span><span class="c1">#查看公钥认证</span>
+<span class="ln"> 4</span>cat ~/.ssh/authorized_keys
+<span class="ln"> 5</span><span class="c1">#公钥</span>
+<span class="ln"> 6</span>Cat ~/.ssh/id_rsa.pub
+<span class="ln"> 7</span><span class="c1">#私钥</span>
+<span class="ln"> 8</span>cat ~/.ssh/id_rsa
+<span class="ln"> 9</span><span class="c1">#OpenSSH控制端配置文件</span>
+<span class="ln">10</span>cat /etc/ssh/ssh_config
+<span class="ln">11</span><span class="c1">#OpenSSH服务端配置文件</span>
+<span class="ln">12</span>cat /etc/ssh/sshd_config
+</code></pre></div><h2 id="服务状态">服务状态</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#检查所有服务状态</span>
+<span class="ln"> 2</span>service --status-all
+<span class="ln"> 3</span><span class="c1">#列出安装在文件系统中的所有单元</span>
+<span class="ln"> 4</span>systemctl -a
+<span class="ln"> 5</span><span class="c1">#启动某个服务</span>
+<span class="ln"> 6</span>service servicename start
+<span class="ln"> 7</span>systemctl start servicename
+<span class="ln"> 8</span><span class="c1">#停止某个服务</span>
+<span class="ln"> 9</span>service servicename stop
+<span class="ln">10</span>systemctl stop servicename
+<span class="ln">11</span><span class="c1">#显示某个服务状态信息</span>
+<span class="ln">12</span>service servicename status
+<span class="ln">13</span>systemctl status servicename
+<span class="ln">14</span><span class="c1">#查看端口号对应的服务</span>
+<span class="ln">15</span>cat /etc/services
+</code></pre></div><h2 id="安全">安全</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#列出所有规则链</span>
+<span class="ln"> 2</span>iptables -L
+<span class="ln"> 3</span><span class="c1">#删除选定规则链的所有规则</span>
+<span class="ln"> 4</span>tptables -F
+<span class="ln"> 5</span><span class="c1">#A指定规则，p是协议，m模板，j是行为。下面这个是一条规则，具体学习参考文档。</span>
+<span class="ln"> 6</span>iptables -A INPUT -p icmp -m icmp -icmp-type <span class="m">0</span> -j ACCEPT
+<span class="ln"> 7</span><span class="c1">#允许来自str端口80的tcp连接</span>
+<span class="ln"> 8</span>iptables -A INPUT -p tcp -m tcp -sport <span class="m">80</span> -m -state RELATED,ESTABLISHED -j ACCEPT
+<span class="ln"> 9</span><span class="c1">#允许从/到dst端口80的tcp连接</span>
+<span class="ln">10</span>iptables -A OUTPUT -p tcp -m tcp -dport <span class="m">80</span> -m -state NEW,RELATED,ESTABLISHED -j ACCEPT
+<span class="ln">11</span><span class="c1">#允许来自src端口80的udp连接</span>
+<span class="ln">12</span>iptables -A INPUT -p udp -m udp -sport <span class="m">53</span> -m -state RELATED,ESTABLISHED -j ACCEPT
+</code></pre></div><h2 id="网络">网络</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#显示当前可用的所有接口</span>
+<span class="ln"> 2</span>ifconfig -a
+<span class="ln"> 3</span><span class="c1">#显示或设置系统的主机名称</span>
+<span class="ln"> 4</span>hostname
+<span class="ln"> 5</span><span class="c1">#网络状态</span>
+<span class="ln"> 6</span>netstat -antp
+<span class="ln"> 7</span>netstat -anltup
+<span class="ln"> 8</span><span class="c1">#列出打开的文件</span>
+<span class="ln"> 9</span>lsof -nPi
+<span class="ln">10</span><span class="c1">#显示操作IP路由表</span>
+<span class="ln">11</span>route -e
+<span class="ln">12</span><span class="c1">#DNS域名解析配置</span>
+<span class="ln">13</span>cat /etc/resolv.conf
+<span class="ln">14</span><span class="c1">#host文件</span>
+<span class="ln">15</span>cat /etc/hosts
+<span class="ln">16</span><span class="c1">#网卡配置信息</span>
+<span class="ln">17</span>cat /etc/network/interfaces
+<span class="ln">18</span><span class="c1">#网络配置信息</span>
+<span class="ln">19</span>cat /etc/sysconfig/network
+<span class="ln">20</span><span class="c1">#网络的DARPA网络和符号名称</span>
+<span class="ln">21</span>cat /etc/networks
+</code></pre></div><h2 id="文件系统">文件系统</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#linux系统环境和启动程序</span>
+<span class="ln"> 2</span>cat /etc/profile
+<span class="ln"> 3</span><span class="c1">#shell的启动文件</span>
+<span class="ln"> 4</span>cat /etc/bashrc
+<span class="ln"> 5</span><span class="c1">#适用于当前用户的bashrc</span>
+<span class="ln"> 6</span>cat ~/.bash_profile
+<span class="ln"> 7</span><span class="c1">#bash命令的历史记录</span>
+<span class="ln"> 8</span>cat ~/.bash_history
+<span class="ln"> 9</span><span class="c1">#立刻写入history</span>
+<span class="ln">10</span><span class="nb">history</span> -w 
+<span class="ln">11</span><span class="c1">#所有日志文件</span>
+<span class="ln">12</span>ls -al /var/log
+<span class="ln">13</span><span class="c1">#找粘滞键（只有目录所有者，文件所有者可以在这里删除或重命名）</span>
+<span class="ln">14</span><span class="c1">#/是所有目录，perm是权限，type是类型，d是目录，0是stdin，1是stdout，2是标准报错，2&gt;/dev/null是将报错信息忽略，/dev/null是特殊文件，不输出的意思。</span>
+<span class="ln">15</span>find / -perm -100 -type d 2&gt;/dev/null
+<span class="ln">16</span><span class="c1">#SGID（作为组运行，而不是启动它的用户）</span>
+<span class="ln">17</span>find / -perm -g<span class="o">=</span>s -type f 2&gt;/dev/null
+<span class="ln">18</span><span class="c1">#SUID（作为所有者运行，而不是启动它的用户）</span>
+<span class="ln">19</span>find / -perm -u<span class="o">=</span>s -type f 2&gt;/dev/null
+<span class="ln">20</span><span class="c1">#找出可写的文件夹</span>
+<span class="ln">21</span>find / -writable -type d 2&gt;/dev/null
+<span class="ln">22</span>find / -perm -222 -type d 2&gt;/dev/null
+<span class="ln">23</span>find / -perm -o w -type d 2&gt;/dev/null
+<span class="ln">24</span><span class="c1">#可执行的文件夹</span>
+<span class="ln">25</span>find / -perm -o x -type d 2&gt;/dev/null
+<span class="ln">26</span><span class="c1">#可写可执行</span>
+<span class="ln">27</span>find / <span class="o">(</span>-perm -o x -perm -o w<span class="o">)</span> -type d 2&gt;/dev/null
+<span class="ln">28</span><span class="c1">#可写</span>
+<span class="ln">29</span>find / -xdev -type d <span class="o">(</span>-perm -0002 -a ! -perm -1000<span class="o">)</span> -print
+<span class="ln">30</span><span class="c1">#找不是所有者的文件</span>
+<span class="ln">31</span>find /dir -xdev <span class="o">(</span>-nouser -o -nogroup<span class="o">)</span> -print
+</code></pre></div><h2 id="程序">程序</h2>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span><span class="c1">#计划任务</span>
+<span class="ln"> 2</span>crontab -l
+<span class="ln"> 3</span>cat /etc/contab
+<span class="ln"> 4</span><span class="c1">#计划任务文件</span>
+<span class="ln"> 5</span>ls -alh /var/spool/cron
+<span class="ln"> 6</span>ls -ak /etc/cron*
+<span class="ln"> 7</span>cat /etc/cron*
+<span class="ln"> 8</span><span class="c1">#列出所有用户的crontab文件</span>
+<span class="ln"> 9</span>ls -al /var/spool/cron/crontabs
+<span class="ln">10</span><span class="c1">#打印root用户的crontab</span>
+<span class="ln">11</span>car /var/spool/cron/crontabs/root
+</code></pre></div></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/windows-2/">域内凭据获取
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/tech/shell/">反弹shell
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">バカです　何度もバカだって言ってるじゃないですか</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

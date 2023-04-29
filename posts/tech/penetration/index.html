@@ -12,7 +12,7 @@
 <meta name="description" content="" /><meta itemprop="name" content="探究公众号接口漏洞：从后台登录口到旁站getshell">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-04-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2023-04-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="341">
+<meta itemprop="wordCount" content="425">
 <meta itemprop="keywords" content="," /><meta property="og:title" content="探究公众号接口漏洞：从后台登录口到旁站getshell" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
@@ -172,19 +172,13 @@
   <div class="offcanvas-body">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#文章思路流程">文章思路流程</a>
-      <ul>
-        <li><a href="#getshell">getshell</a></li>
-        <li><a href="#随便看看">随便看看</a></li>
-      </ul>
-    </li>
-    <li><a href="#思考">思考</a></li>
+    <li><a href="#文章思路流程">文章思路流程</a></li>
+    <li><a href="#补充">补充</a></li>
   </ul>
 </nav>
   </div>
 </div><div class="post-content mb-3" ><p><a href="https://xz.aliyun.com/t/12321">https://xz.aliyun.com/t/12321</a></p>
 <h2 id="文章思路流程">文章思路流程</h2>
-<h3 id="getshell">getshell</h3>
 <ol>
 <li>登录url为/index.php?c=home&amp;action=login，是参数控制的行为。<strong>扫目录</strong>得到管理员登录后台。/index.php?c=home&amp;action=admin_login</li>
 <li><strong>弱口令</strong>登录进入后台。</li>
@@ -192,22 +186,20 @@
 <li>通过ICP/IP备案发现<strong>旁站</strong>（这个域名的备案号结尾是2，可那个网站是备案号是1，直接搜索备案号看看）</li>
 <li>旁站一模一样进入后台</li>
 <li>注册普通用户（这个站没有限制手机号），通过其中的上传头像处<strong>文件上传</strong>getshell。</li>
-</ol>
-<h3 id="随便看看">随便看看</h3>
-<ul>
 <li>敏感文件到处看看。</li>
-</ul>
-<h2 id="思考">思考</h2>
+</ol>
+<h2 id="补充">补充</h2>
 <ul>
 <li>扫目录的地方需要注意，要是是user_login可能更容易注意到吧。</li>
-<li>发现旁站的过程也需要注意</li>
+<li>发现旁站的过程也需要注意，备案查询：https://beian.miit.gov.cn/#/Integrated/index</li>
+<li>xia SQL：https://github.com/smxiazi/xia_sql</li>
 </ul></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
   <div class="post-nav w-50"><div class="prev-post btn btn-sm">
       <a href="/posts/tech/ssrf-2/">文件导出功能的SSRF
 </a>
     </div></div>
   <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
-      <a href="/posts/tech/penetration-2/">实战 | 对某bc站的一次渗透
+      <a href="/posts/tech/penetration-2/">实战 | 对某bc站的一次渗透及Mssql注入和提权
 </a>
     </div></div>
 </div><section class="related-posts">
@@ -263,13 +255,13 @@
       </div>
 </section><section class="recent-posts row surface">
   <h4>最近文章</h4>
-  <ul><li><a href="/posts/tech/authorization/">SRC之越权漏洞案例
-</a></li><li><a href="/posts/tech/penetration-2/">实战 | 对某bc站的一次渗透
-</a></li><li><a href="/posts/tech/penetration/">探究公众号接口漏洞：从后台登录口到旁站getshell
-</a></li><li><a href="/posts/tech/ssrf-2/">文件导出功能的SSRF
-</a></li><li><a href="/posts/tech/emergency/">记一次仅有“小学二年级水平”的linux服务器应急
-</a></li><li><a href="/posts/tech/ssrf/">全回显SSRF测试两则
-</a></li><li><a href="/posts/others/english-reading/">每日英语阅读
+  <ul><li><a href="/posts/tech/intranet-3/">Socket代理
+</a></li><li><a href="/posts/tech/intranet-2/">内网文件传输
+</a></li><li><a href="/posts/tech/shell/">反弹shell
+</a></li><li><a href="/posts/tech/linux/">Linux主机信息收集
+</a></li><li><a href="/posts/tech/windows-2/">域内凭据获取
+</a></li><li><a href="/posts/tech/intranet/">Windows内网信息收集
+</a></li><li><a href="/posts/tech/windows/">Windows密码凭证获取
 </a></li></ul>
 </section><section class="taxonomy-categories row surface">
       <h4>
@@ -278,7 +270,7 @@
       <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
           二次元 <span class="badge rounded-pill">23</span>
         </a><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
-          打怪升级 <span class="badge rounded-pill">13</span>
+          打怪升级 <span class="badge rounded-pill">23</span>
         </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
           文字类 <span class="badge rounded-pill">6</span>
         </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
