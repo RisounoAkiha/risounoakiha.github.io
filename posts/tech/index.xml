@@ -6,7 +6,88 @@
     <description>Recent content in Tech on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Thu, 27 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一篇文章带你从XSS入门到进阶</title>
+      <link>/posts/tech/xss-2/</link>
+      <pubDate>Sat, 06 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/xss-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>一次bypass Xss-waf的经历</title>
+      <link>/posts/tech/xss/</link>
+      <pubDate>Thu, 04 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/xss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>信息收集工具</title>
+      <link>/posts/tech/information-2/</link>
+      <pubDate>Tue, 02 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/information-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>一次对企业内部EHR系统的渗透测试</title>
+      <link>/posts/tech/penetration-7/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>【漏洞挖掘】记一次网站漏洞挖掘</title>
+      <link>/posts/tech/penetration-5/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>快速挖掘技巧&#43;某学校实战案例分享</title>
+      <link>/posts/tech/penetration-3/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>文章归档</title>
+      <link>/posts/tech/archive/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/archive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次地级市某行业专项攻防演练</title>
+      <link>/posts/tech/penetration-4/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次实战逻辑漏洞挖掘</title>
+      <link>/posts/tech/penetration-6/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-6/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Socket代理</title>
       <link>/posts/tech/intranet-3/</link>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>渗透测试 on ZXQ!!!</title>
+    <link>/series/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 渗透测试 on ZXQ!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>实战 | 对某bc站的一次渗透及Mssql注入和提权</title>
+      <link>/posts/tech/penetration-2/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>探究公众号接口漏洞：从后台登录口到旁站getshell</title>
+      <link>/posts/tech/penetration/</link>
+      <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
