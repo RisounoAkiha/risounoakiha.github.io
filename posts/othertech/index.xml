@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>otherTech on ZXQ!!!</title>
+    <link>/posts/othertech/</link>
+    <description>Recent content in otherTech on ZXQ!!!</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Mon, 15 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/othertech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据结构</title>
+      <link>/posts/othertech/data-structure/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/othertech/data-structure/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

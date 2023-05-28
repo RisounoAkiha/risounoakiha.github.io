@@ -6,7 +6,79 @@
     <description>Recent content in 渗透测试 on ZXQ!!!</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sun, 16 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>对母校的一次渗透测试</title>
+      <link>/posts/tech/penetration-10/</link>
+      <pubDate>Mon, 15 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>实战 | 一次敏感信息到接口fuzz-RCE</title>
+      <link>/posts/tech/penetration-9/</link>
+      <pubDate>Fri, 12 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>一次对企业内部EHR系统的渗透测试</title>
+      <link>/posts/tech/penetration-7/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次校园内网的edusrc漏洞挖掘</title>
+      <link>/posts/tech/penetration-8/</link>
+      <pubDate>Mon, 01 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>【漏洞挖掘】记一次网站漏洞挖掘</title>
+      <link>/posts/tech/penetration-5/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>快速挖掘技巧&#43;某学校实战案例分享</title>
+      <link>/posts/tech/penetration-3/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次地级市某行业专项攻防演练</title>
+      <link>/posts/tech/penetration-4/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次实战逻辑漏洞挖掘</title>
+      <link>/posts/tech/penetration-6/</link>
+      <pubDate>Sun, 30 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/penetration-6/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>实战 | 对某bc站的一次渗透及Mssql注入和提权</title>
       <link>/posts/tech/penetration-2/</link>
