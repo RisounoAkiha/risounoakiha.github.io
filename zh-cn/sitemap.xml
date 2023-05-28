@@ -54,13 +54,13 @@
                 href="/"
                 />
   </url><url>
-    <loc>/posts/tech/xss-4/</loc>
-    <lastmod>2023-05-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/categories/%E6%89%93%E6%80%AA%E5%8D%87%E7%BA%A7/</loc>
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
+    <lastmod>2023-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/tech/xss-4/</loc>
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/</loc>
