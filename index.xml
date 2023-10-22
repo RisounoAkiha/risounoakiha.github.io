@@ -6,7 +6,16 @@
     <description>Recent content on Akiha</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Fri, 07 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>僕が死のうと思ったのは</title>
+      <link>/posts/others/bokugashinouto/</link>
+      <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/others/bokugashinouto/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Kali添加环境变量</title>
       <link>/posts/tech/env-var/</link>

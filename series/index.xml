@@ -6,22 +6,22 @@
     <description>Recent content on Akiha</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>动漫歌曲</title>
+      <link>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</link>
+      <pubDate>Mon, 16 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Galgame</title>
       <link>/series/galgame/</link>
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>/series/galgame/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>动漫歌曲</title>
-      <link>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</link>
-      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</guid>
       <description></description>
     </item>
     
