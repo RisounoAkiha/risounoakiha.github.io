@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Galgame on Akiha</title>
+    <title>Galgame on さぁ、君、取りたまえ</title>
     <link>/series/galgame/</link>
-    <description>Recent content in Galgame on Akiha</description>
+    <description>Recent content in Galgame on さぁ、君、取りたまえ</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
     <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/galgame/index.xml" rel="self" type="application/rss+xml" />
@@ -50,15 +50,6 @@
       
       <guid>/posts/others/todokanaikoi/</guid>
       <description>&lt;p&gt;丸户史明真神。最平衡的三角关系，友情与爱情。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>言葉と旋律</title>
-      <link>/posts/others/kotoba/</link>
-      <pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/others/kotoba/</guid>
-      <description>&lt;p&gt;温柔美好的未来。&lt;/p&gt;</description>
     </item>
     
     <item>

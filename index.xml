@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Akiha</title>
+    <title>さぁ、君、取りたまえ</title>
     <link>/</link>
-    <description>Recent content on Akiha</description>
+    <description>Recent content on さぁ、君、取りたまえ</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Mon, 16 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3.21-23学习记录</title>
+      <link>/posts/tech/20240321/</link>
+      <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/20240321/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>僕が死のうと思ったのは</title>
       <link>/posts/others/bokugashinouto/</link>

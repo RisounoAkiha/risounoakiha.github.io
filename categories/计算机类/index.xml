@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机类 on さぁ、君、取りたまえ</title>
+    <link>/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/</link>
+    <description>Recent content in 计算机类 on さぁ、君、取りたまえ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Thu, 21 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3.21-23学习记录</title>
+      <link>/posts/tech/20240321/</link>
+      <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/20240321/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kali添加环境变量</title>
+      <link>/posts/tech/env-var/</link>
+      <pubDate>Fri, 07 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/env-var/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记第一次从gal中解包提取素材和剧本</title>
+      <link>/posts/tech/gal-extract/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/gal-extract/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次简单的救砖经历</title>
+      <link>/posts/tech/phone-root/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/phone-root/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>我的Hugo&#43;Github page搭建博客教程</title>
+      <link>/posts/tech/blog_instruct/</link>
+      <pubDate>Sat, 27 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/blog_instruct/</guid>
+      <description>&lt;p&gt;(多图警告！）给一些需要的朋友，互联网本身也有很多教程，反正有疑问的地方可以通过网站给出的链接询问~&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
