@@ -6,7 +6,16 @@
     <description>Recent content on さぁ、君、取りたまえ</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Mon, 29 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>心理研究(1)</title>
+      <link>/posts/theory/20240504/</link>
+      <pubDate>Sat, 04 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/theory/20240504/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>面试准备-Spring</title>
       <link>/posts/tech/interview-1/</link>
