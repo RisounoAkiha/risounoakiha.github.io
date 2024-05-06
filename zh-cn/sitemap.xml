@@ -57,13 +57,13 @@
     <loc>/posts/</loc>
     <lastmod>2024-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/%E7%90%86%E8%AE%BA%E7%B1%BB/</loc>
+    <loc>/categories/%E7%A7%91%E5%AD%A6/</loc>
     <lastmod>2024-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/</loc>
     <lastmod>2024-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B1%BB/</loc>
+    <loc>/categories/%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
     <lastmod>2024-04-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/interview-1/</loc>
@@ -104,13 +104,13 @@
     <loc>/posts/tech/20240321/</loc>
     <lastmod>2024-03-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/</loc>
+    <loc>/posts/anime/</loc>
     <lastmod>2023-10-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/</loc>
     <lastmod>2023-10-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/bokugashinouto/</loc>
+    <loc>/posts/anime/bokugashinouto/</loc>
     <lastmod>2023-10-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/</loc>
@@ -119,43 +119,43 @@
     <loc>/posts/tech/env-var/</loc>
     <lastmod>2023-04-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/shinainaru/</loc>
+    <loc>/posts/anime/shinainaru/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/galgame/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/akujo/</loc>
+    <loc>/posts/anime/akujo/</loc>
     <lastmod>2023-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/shinai/</loc>
+    <loc>/posts/anime/shinai/</loc>
     <lastmod>2023-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/kimigahikarini/</loc>
+    <loc>/posts/anime/kimigahikarini/</loc>
     <lastmod>2023-02-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/white-album/</loc>
+    <loc>/posts/anime/white-album/</loc>
     <lastmod>2023-02-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/sweet-heart-cherry/</loc>
+    <loc>/posts/anime/sweet-heart-cherry/</loc>
     <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/sayorana/</loc>
+    <loc>/posts/anime/sayorana/</loc>
     <lastmod>2023-02-12T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/homura/</loc>
+    <loc>/posts/anime/homura/</loc>
     <lastmod>2023-01-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/todokanaikoi/</loc>
+    <loc>/posts/anime/todokanaikoi/</loc>
     <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/kotoba/</loc>
+    <loc>/posts/anime/kotoba/</loc>
     <lastmod>2023-01-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/fairytale/</loc>
+    <loc>/posts/anime/fairytale/</loc>
     <lastmod>2022-12-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/kizuato/</loc>
+    <loc>/posts/anime/kizuato/</loc>
     <lastmod>2022-12-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/bin/</loc>
@@ -170,34 +170,31 @@
     <loc>/bin/free-talk/</loc>
     <lastmod>2022-10-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/lighting-ball/</loc>
+    <loc>/posts/literature/</loc>
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/series/%E4%B9%A6%E7%B1%8D%E7%89%87%E6%AE%B5/</loc>
+    <loc>/posts/literature/lighting-ball/</loc>
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E6%96%87%E5%AD%97%E7%B1%BB/</loc>
     <lastmod>2022-09-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/shiriusunoyuuenn/</loc>
+    <loc>/posts/anime/shiriusunoyuuenn/</loc>
     <lastmod>2022-09-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/soratane/</loc>
+    <loc>/posts/anime/soratane/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/asphodelus/</loc>
+    <loc>/posts/anime/asphodelus/</loc>
     <lastmod>2022-07-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/the-whole-sky/</loc>
+    <loc>/posts/anime/the-whole-sky/</loc>
     <lastmod>2022-07-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/continued-story/</loc>
+    <loc>/posts/anime/continued-story/</loc>
     <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/stolz/</loc>
-    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
+    <loc>/posts/tech/stolz/</loc>
     <lastmod>2022-06-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/bin/japanese-study-1/</loc>
@@ -206,10 +203,10 @@
     <loc>/posts/tech/phone-root/</loc>
     <lastmod>2022-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/british-history-2/</loc>
+    <loc>/posts/literature/british-history-2/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/british-history-1/</loc>
+    <loc>/posts/literature/british-history-1/</loc>
     <lastmod>2022-04-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tweet/</loc>
@@ -218,25 +215,31 @@
     <loc>/tweet/essay2/</loc>
     <lastmod>2022-02-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/connect/</loc>
+    <loc>/posts/anime/connect/</loc>
     <lastmod>2022-02-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/mataashita/</loc>
+    <loc>/posts/anime/mataashita/</loc>
     <lastmod>2022-02-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/magia/</loc>
+    <loc>/posts/anime/magia/</loc>
     <lastmod>2022-02-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/andimhome/</loc>
+    <loc>/posts/anime/andimhome/</loc>
     <lastmod>2022-01-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/2021/</loc>
+    <loc>/posts/other/2021/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/other/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/bin/math_history_1/</loc>
     <lastmod>2021-12-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/eustia_1/</loc>
+    <loc>/posts/anime/eustia_1/</loc>
     <lastmod>2021-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/bin/internet-social-space-1/</loc>
@@ -245,34 +248,34 @@
     <loc>/posts/tech/blog_instruct/</loc>
     <lastmod>2021-11-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/akame/</loc>
+    <loc>/posts/anime/akame/</loc>
     <lastmod>2021-11-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/bin/suspect-discuss/</loc>
     <lastmod>2021-11-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/amaranta/</loc>
+    <loc>/posts/literature/amaranta/</loc>
     <lastmod>2021-09-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/melquiades/</loc>
+    <loc>/posts/literature/melquiades/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/rebeca/</loc>
+    <loc>/posts/literature/rebeca/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/probability-theory/</loc>
+    <loc>/posts/tech/probability-theory/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tweet/essay/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/ads/</loc>
+    <loc>/posts/other/ads/</loc>
     <lastmod>2021-05-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/about/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/others/first-post/</loc>
+    <loc>/posts/other/first-post/</loc>
     <lastmod>2021-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
@@ -296,6 +299,8 @@
                 hreflang="zh-cn"
                 href="/tags/"
                 />
+  </url><url>
+    <loc>/posts/science/</loc>
   </url><url>
     <loc>/archives/</loc>
   </url><url>

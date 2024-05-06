@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数学与计算机 on さぁ、君、取りたまえ</title>
+    <link>/categories/%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+    <description>Recent content in 数学与计算机 on さぁ、君、取りたまえ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
+    <lastBuildDate>Mon, 29 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>面试准备-Spring</title>
+      <link>/posts/tech/interview-1/</link>
+      <pubDate>Mon, 29 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/interview-1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>3.24学习记录</title>
+      <link>/posts/tech/20240324/</link>
+      <pubDate>Sun, 24 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/20240324/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>3.21-23学习记录</title>
+      <link>/posts/tech/20240321/</link>
+      <pubDate>Thu, 21 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/20240321/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kali添加环境变量</title>
+      <link>/posts/tech/env-var/</link>
+      <pubDate>Fri, 07 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/env-var/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记第一次从gal中解包提取素材和剧本</title>
+      <link>/posts/tech/gal-extract/</link>
+      <pubDate>Sun, 06 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/gal-extract/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stolz定理和一道例题</title>
+      <link>/posts/tech/stolz/</link>
+      <pubDate>Fri, 17 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/stolz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记一次简单的救砖经历</title>
+      <link>/posts/tech/phone-root/</link>
+      <pubDate>Sun, 01 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/phone-root/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>我的Hugo&#43;Github page搭建博客教程</title>
+      <link>/posts/tech/blog_instruct/</link>
+      <pubDate>Sat, 27 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/blog_instruct/</guid>
+      <description>&lt;p&gt;(多图警告！）给一些需要的朋友，互联网本身也有很多教程，反正有疑问的地方可以通过网站给出的链接询问~&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>学习概率论的一些随意思考</title>
+      <link>/posts/tech/probability-theory/</link>
+      <pubDate>Tue, 25 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/probability-theory/</guid>
+      <description>&lt;p&gt;阅读本篇对考试没有什么帮助，感兴趣就随便看看，看之后反而可能会学不懂概率，因为用的符号有些不一样~&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
