@@ -86,10 +86,10 @@
     <loc>/series/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-05-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/theory/</loc>
+    <loc>/posts/science/</loc>
     <lastmod>2024-05-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/theory/20240504/</loc>
+    <loc>/posts/science/20240504/</loc>
     <lastmod>2024-05-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E7%A7%91%E5%AD%A6/</loc>
@@ -98,7 +98,7 @@
     <loc>/posts/tech/interview-1/</loc>
     <lastmod>2024-04-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/theory/20240406/</loc>
+    <loc>/posts/science/20240406/</loc>
     <lastmod>2024-04-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/20240324/</loc>
@@ -302,8 +302,6 @@
                 hreflang="zh-cn"
                 href="/tags/"
                 />
-  </url><url>
-    <loc>/posts/science/</loc>
   </url><url>
     <loc>/archives/</loc>
   </url><url>
