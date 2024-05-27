@@ -173,15 +173,28 @@
   <div class="offcanvas-body">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#sql语法">SQL语法</a></li>
-    <li><a href="#ddl">DDL</a></li>
-    <li><a href="#dql">DQL</a></li>
-    <li><a href="#dcl">DCL</a></li>
+    <li><a href="#sql语法">SQL语法</a>
+      <ul>
+        <li><a href="#ddl">DDL</a></li>
+        <li><a href="#dql">DQL</a></li>
+        <li><a href="#dcl">DCL</a></li>
+      </ul>
+    </li>
+    <li><a href="#函数">函数</a></li>
+    <li><a href="#约束">约束</a></li>
+    <li><a href="#多表查询">多表查询</a></li>
+    <li><a href="#事务">事务</a></li>
+    <li><a href="#索引">索引</a></li>
+    <li><a href="#sql优化">SQL优化</a></li>
+    <li><a href="#视图">视图</a></li>
+    <li><a href="#存储过程函数触发器">存储过程/函数/触发器</a></li>
+    <li><a href="#锁">锁</a></li>
+    <li><a href="#innodb引擎事务原理mvcc">Innodb引擎/事务原理/MVCC</a></li>
   </ul>
 </nav>
   </div>
 </div><div class="post-content mb-3" ><h2 id="sql语法">SQL语法</h2>
-<h2 id="ddl">DDL</h2>
+<h3 id="ddl">DDL</h3>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- DDL 数据库操作
 </span><span class="ln"> 2</span><span class="c1"></span><span class="k">SHOW</span> <span class="k">DATABASES</span><span class="p">;</span> <span class="c1">-- 查询所有数据库
 </span><span class="ln"> 3</span><span class="c1"></span><span class="k">SELECT</span> <span class="k">DATABASE</span><span class="p">();</span> <span class="c1">-- 查询当前数据库
@@ -245,7 +258,7 @@
 </span><span class="ln">61</span><span class="c1"></span><span class="k">delete</span> <span class="k">from</span> <span class="n">tb</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">1</span> <span class="k">and</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;赵四&#39;</span><span class="p">;</span>
 <span class="ln">62</span><span class="c1">-- 删除索引
 </span><span class="ln">63</span><span class="c1"></span><span class="k">delete</span> <span class="k">from</span> <span class="n">tb</span><span class="p">;</span>
-</code></pre></div><h2 id="dql">DQL</h2>
+</code></pre></div><h3 id="dql">DQL</h3>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- DQL 数据查询语言
 </span><span class="ln"> 2</span><span class="c1">-- select 字段列表 from 表名列表 where 条件列表 group by 分组字段列表 having 分组后的条件列表 order by 排序字段列表 limit 分页参数
 </span><span class="ln"> 3</span><span class="c1">-- 查询多个字段
@@ -330,7 +343,7 @@
 </span><span class="ln">82</span><span class="c1"></span><span class="k">alter</span> <span class="k">user</span> <span class="s1">&#39;bnaod&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="k">identified</span> <span class="k">with</span> <span class="n">mysql_native_password</span> <span class="k">by</span> <span class="s1">&#39;newpassword&#39;</span><span class="p">;</span>
 <span class="ln">83</span><span class="c1">-- 删除用户
 </span><span class="ln">84</span><span class="c1"></span><span class="k">drop</span> <span class="k">user</span> <span class="s1">&#39;bnaod&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-</code></pre></div><h2 id="dcl">DCL</h2>
+</code></pre></div><h3 id="dcl">DCL</h3>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- DCL 数据控制语言 管理用户,控制访问
 </span><span class="ln"> 2</span><span class="c1">-- DCL 管理用户
 </span><span class="ln"> 3</span><span class="c1">-- 查询用户
@@ -353,7 +366,7 @@
 </span><span class="ln">20</span><span class="c1"></span><span class="k">grant</span> <span class="k">all</span> <span class="k">on</span> <span class="n">learndatabase</span><span class="p">.</span><span class="o">*</span> <span class="k">to</span> <span class="s1">&#39;bnaod&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
 <span class="ln">21</span><span class="c1">-- 撤销权限
 </span><span class="ln">22</span><span class="c1"></span><span class="k">revoke</span> <span class="k">all</span> <span class="k">on</span> <span class="n">learndatabase</span><span class="p">.</span><span class="o">*</span> <span class="k">from</span> <span class="s1">&#39;bnaod&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
-</code></pre></div><h1 id="函数">函数</h1>
+</code></pre></div><h2 id="函数">函数</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- 函数
 </span><span class="ln"> 2</span><span class="c1">-- 字符串函数
 </span><span class="ln"> 3</span><span class="c1">-- concat字符串拼接函数, lower转小写, upper转大写
@@ -429,7 +442,7 @@
 <span class="ln">73</span>       <span class="n">name</span><span class="p">,</span>
 <span class="ln">74</span>       <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">age</span><span class="o">&gt;=</span><span class="mi">50</span> <span class="k">then</span> <span class="s1">&#39;老毕登&#39;</span> <span class="k">when</span> <span class="n">age</span><span class="o">&gt;=</span><span class="mi">15</span> <span class="k">then</span><span class="s1">&#39;中壁灯&#39;</span> <span class="k">else</span> <span class="s1">&#39;小壁灯&#39;</span> <span class="n">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">nickname</span>
 <span class="ln">75</span><span class="k">from</span> <span class="n">tb</span> <span class="p">;</span>
-</code></pre></div><h1 id="约束">约束</h1>
+</code></pre></div><h2 id="约束">约束</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- 约束
 </span><span class="ln"> 2</span><span class="c1">-- 这些东西idea可以直接图像界面改动.
 </span><span class="ln"> 3</span><span class="c1"></span>
@@ -488,7 +501,7 @@
 </span><span class="ln">56</span><span class="c1">-- on update在更新时要进行的行为,on delete在删除时要进行的行为
 </span><span class="ln">57</span><span class="c1"></span><span class="k">alter</span> <span class="k">table</span> <span class="k">user</span> <span class="k">add</span> <span class="k">constraint</span> <span class="n">fk_user_dept_id</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">references</span> <span class="nf">dept</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="k">cascade</span> <span class="k">on</span> <span class="k">delete</span> <span class="k">cascade</span><span class="p">;</span>
 <span class="ln">58</span><span class="k">alter</span> <span class="k">table</span> <span class="k">user</span> <span class="k">add</span> <span class="k">constraint</span> <span class="n">fk_user_dept_id</span> <span class="k">foreign</span> <span class="k">key</span> <span class="p">(</span><span class="n">dept_id</span><span class="p">)</span> <span class="k">references</span> <span class="nf">dept</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="k">on</span> <span class="k">update</span> <span class="kt">set</span> <span class="no">null</span> <span class="k">on</span> <span class="k">delete</span> <span class="kt">set</span> <span class="no">null</span> <span class="p">;</span>
-</code></pre></div><h1 id="多表查询">多表查询</h1>
+</code></pre></div><h2 id="多表查询">多表查询</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- 多表查询
 </span><span class="ln"> 2</span><span class="c1">-- 一对多,就是一个外键
 </span><span class="ln"> 3</span><span class="c1">-- 多对多,需要维护一个中间表,两个外键
@@ -558,7 +571,7 @@
 </span><span class="ln">67</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="n">status</span><span class="p">)</span> <span class="k">in</span> <span class="p">(</span><span class="k">select</span> <span class="n">age</span><span class="p">,</span> <span class="n">status</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">1</span> <span class="k">or</span> <span class="n">id</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 <span class="ln">68</span><span class="c1">-- 查询年龄小于50的员工信息和部门信息
 </span><span class="ln">69</span><span class="c1"></span><span class="k">select</span> <span class="n">e</span><span class="p">.</span><span class="o">*</span><span class="p">,</span> <span class="n">d</span><span class="p">.</span><span class="o">*</span> <span class="k">from</span> <span class="p">(</span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="k">user</span> <span class="k">where</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">)</span> <span class="n">e</span> <span class="k">left</span> <span class="k">join</span> <span class="n">dept</span> <span class="n">d</span> <span class="k">on</span> <span class="n">e</span><span class="p">.</span><span class="n">dept_id</span> <span class="o">=</span> <span class="n">d</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
-</code></pre></div><h1 id="事务">事务</h1>
+</code></pre></div><h2 id="事务">事务</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">  1</span><span class="c1">-- 事务
 </span><span class="ln">  2</span><span class="c1">-- 准备
 </span><span class="ln">  3</span><span class="c1"></span><span class="k">create</span> <span class="k">table</span> <span class="nf">account</span><span class="p">(</span>
@@ -660,7 +673,7 @@
 </span><span class="ln"> 99</span><span class="c1"></span><span class="n">start</span> <span class="n">transaction</span> <span class="p">;</span>
 <span class="ln">100</span><span class="k">insert</span> <span class="k">into</span> <span class="nf">account</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">money</span><span class="p">)</span> <span class="k">VALUES</span> <span class="p">(</span><span class="no">null</span><span class="p">,</span> <span class="s1">&#39;zangsan&#39;</span><span class="p">,</span> <span class="mi">3000</span><span class="p">);</span> <span class="c1">-- 2这边先insert
 </span><span class="ln">101</span><span class="c1"></span><span class="n">commit</span> <span class="p">;</span> <span class="c1">-- 3先提交,这时已经有这一行了.
-</span></code></pre></div><h1 id="索引">索引</h1>
+</span></code></pre></div><h2 id="索引">索引</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">  1</span><span class="c1">-- mysql体系结构
 </span><span class="ln">  2</span><span class="c1">-- 连接池(授权认证), 服务层(sql接口,sql分析优化,函数执行), 引擎层(数据存储和提取), 存储层
 </span><span class="ln">  3</span><span class="c1"></span>
@@ -853,7 +866,7 @@
 </span><span class="ln">190</span><span class="c1">-- 5. 尽量使用联合索引. 查询时联合索引很多时候可以覆盖索引, 节省存储空间, 避免回表
 </span><span class="ln">191</span><span class="c1">-- 6. 控制索引数量, 索引越多, 维护代价越大, 影响增删改效率
 </span><span class="ln">192</span><span class="c1">-- 7. 如果索引列不能存储NULL值, 创建表时使用NOT NULL约束它. 当优化器知道每列是否包含null值时, 它可以更好确定那个索引最有效用于查询
-</span></code></pre></div><h1 id="sql优化">SQL优化</h1>
+</span></code></pre></div><h2 id="sql优化">SQL优化</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- SQL优化
 </span><span class="ln"> 2</span><span class="c1">-- 插入数据, insert优化
 </span><span class="ln"> 3</span><span class="c1">-- 1.批量插入, 一次性插入500-1000条, 特别大量的插入分成多个insert
@@ -936,7 +949,7 @@
 </span><span class="ln">80</span><span class="c1">-- 使用主键索引
 </span><span class="ln">81</span><span class="c1"></span><span class="k">update</span> <span class="n">student</span> <span class="kt">set</span> <span class="n">no</span><span class="o">=</span><span class="s1">&#39;20010101&#39;</span> <span class="k">where</span> <span class="n">id</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="c1">-- 此时事务加的行锁, 对其他并发事务修改其他行没有影响
 </span><span class="ln">82</span><span class="c1"></span><span class="k">update</span> <span class="n">student</span> <span class="kt">set</span> <span class="n">no</span><span class="o">=</span><span class="s1">&#39;20010101&#39;</span> <span class="k">where</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;韦一笑&#39;</span><span class="p">;</span> <span class="c1">-- 当name字段没有索引时,此时加的是表锁, 对表的其他行均不能使用update变更
-</span></code></pre></div><h1 id="视图">视图</h1>
+</span></code></pre></div><h2 id="视图">视图</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- 视图
 </span><span class="ln"> 2</span><span class="c1">-- 介绍: 视图是一种虚拟存在的表. 视图中的数据并不在数据库中实际存在, 行和列数据来定义自定义视图的查询中使用的表, 并且是在使用视图时动态生成的
 </span><span class="ln"> 3</span><span class="c1">-- 作用: 1.简单:简化用户对数据的理解, 也可以简化他们的操作. 那些被经常使用的查询可以被定义为视图
@@ -996,7 +1009,7 @@
 <span class="ln">57</span><span class="k">select</span> <span class="o">*</span> <span class="k">from</span> <span class="n">tb_user_view</span><span class="p">;</span>
 <span class="ln">58</span><span class="c1">-- 2.查询学生选修的课程(三表联查),为了简化操作,定义视图
 </span><span class="ln">59</span><span class="c1"></span><span class="k">create</span> <span class="n">view</span> <span class="n">tb_stu_cource_view</span> <span class="k">as</span> <span class="k">select</span> <span class="n">s</span><span class="p">.</span><span class="n">name</span> <span class="n">student_name</span><span class="p">,</span> <span class="n">s</span><span class="p">.</span><span class="n">no</span> <span class="n">student_no</span><span class="p">,</span> <span class="n">c</span><span class="p">.</span><span class="n">name</span> <span class="n">course_name</span> <span class="k">from</span> <span class="n">student</span> <span class="n">s</span><span class="p">,</span> <span class="n">student_course</span> <span class="n">sc</span><span class="p">,</span> <span class="n">course</span> <span class="n">c</span> <span class="k">where</span> <span class="n">s</span><span class="p">.</span><span class="n">id</span><span class="o">=</span><span class="n">sc</span><span class="p">.</span><span class="n">studentid</span> <span class="k">and</span> <span class="n">sc</span><span class="p">.</span><span class="n">courseid</span><span class="o">=</span><span class="n">c</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
-</code></pre></div><h1 id="存储过程函数触发器">存储过程/函数/触发器</h1>
+</code></pre></div><h2 id="存储过程函数触发器">存储过程/函数/触发器</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">  1</span><span class="c1">-- 存储过程: 事先经过编译并存储在数据库中的一段SQL语句的集合, 调用存储过程可以简化应用开发人员的很多工作,
 </span><span class="ln">  2</span><span class="c1">-- 减少数据在数据库和应用服务器之间的传输,对提高数据处理的效率有好处
 </span><span class="ln">  3</span><span class="c1">-- 存储过程的思想很简单, 就是数据库SQL语言层面的代码封装与重用
@@ -1420,7 +1433,7 @@
 <span class="ln">421</span>    <span class="k">insert</span> <span class="k">into</span> <span class="nf">user_logs</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">operation</span><span class="p">,</span> <span class="n">operation_time</span><span class="p">,</span> <span class="n">operation_id</span><span class="p">,</span> <span class="n">operation_params</span><span class="p">)</span> <span class="k">values</span>
 <span class="ln">422</span>        <span class="p">(</span><span class="no">null</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="nf">now</span><span class="p">(),</span> <span class="n">old</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="nf">concat</span><span class="p">(</span><span class="s1">&#39;删除前数据: &#39;</span><span class="p">,</span> <span class="n">old</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">old</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">old</span><span class="p">.</span><span class="n">gender</span><span class="p">,</span> <span class="n">old</span><span class="p">.</span><span class="n">gender</span><span class="p">));</span>
 <span class="ln">423</span><span class="n">end</span><span class="p">;</span>
-</code></pre></div><h1 id="锁">锁</h1>
+</code></pre></div><h2 id="锁">锁</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln"> 1</span><span class="c1">-- 锁
 </span><span class="ln"> 2</span><span class="c1">-- 分类: 全局锁, 表级锁, 行级锁.
 </span><span class="ln"> 3</span><span class="c1"></span>
@@ -1505,7 +1518,7 @@
 </span><span class="ln">82</span><span class="c1">-- 3. 索引上的范围查询(唯一索引), 会访问到不满足条件的第一个值为止.
 </span><span class="ln">83</span><span class="c1"></span><span class="k">select</span> <span class="o">*</span> <span class="n">form</span> <span class="n">stu</span> <span class="k">where</span> <span class="n">id</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">;</span> <span class="c1">-- 唯一索引范围查询. 假设查出来的有31 50 ,那么会给31加S锁, 还会给50加临键锁, 还会将50到正无穷也加S锁
 </span><span class="ln">84</span><span class="c1">-- 间隙锁的目的是防止其他事务插入间隙, 间隙锁可以共存, 一个事务采用的间隙锁不会阻止另一个事务在同一间隙采用间隙锁.
-</span></code></pre></div><h1 id="innodb引擎事务原理mvcc">Innodb引擎/事务原理/MVCC</h1>
+</span></code></pre></div><h2 id="innodb引擎事务原理mvcc">Innodb引擎/事务原理/MVCC</h2>
 <div class="highlight"><pre class="chroma"><code class="language-mysql" data-lang="mysql"><span class="ln">  1</span><span class="c1">-- Innodb引擎
 </span><span class="ln">  2</span><span class="c1">-- 逻辑存储结构
 </span><span class="ln">  3</span><span class="c1">-- 表空间tablespace: ibd文件, 一个mysql实例可以对应多个表空间, 用于存储记录, 索引等数据.
