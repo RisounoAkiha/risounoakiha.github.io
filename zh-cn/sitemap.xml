@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/categories/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
+    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn（old2）"
@@ -24,47 +24,6 @@
                 hreflang="zh-cn"
                 href="/categories/"
                 />
-  </url><url>
-    <loc>/posts/science/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-tw"
-                href="/zh-tw/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old2）"
-                href="/zh-cnold2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn（old）"
-                href="/zh-cnold/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="/"
-                />
-  </url><url>
-    <loc>/posts/science/20240611/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E7%A7%91%E5%AD%A6/</loc>
-    <lastmod>2024-06-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/science/20240607/</loc>
-    <lastmod>2024-06-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/science/20240602/</loc>
-    <lastmod>2024-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/</loc>
     <lastmod>2024-05-25T00:00:00+00:00</lastmod>
@@ -95,7 +54,30 @@
     <loc>/posts/tech/</loc>
     <lastmod>2024-05-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/science/20240525/</loc>
+    <loc>/</loc>
+    <lastmod>2024-05-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-tw"
+                href="/zh-tw/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old2）"
+                href="/zh-cnold2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn（old）"
+                href="/zh-cnold/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="/"
+                />
+  </url><url>
+    <loc>/posts/</loc>
     <lastmod>2024-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</loc>
@@ -107,14 +89,8 @@
     <loc>/posts/tech/java-1/</loc>
     <lastmod>2024-05-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/science/20240504/</loc>
-    <lastmod>2024-05-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/posts/tech/interview-1/</loc>
     <lastmod>2024-04-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/science/20240406/</loc>
-    <lastmod>2024-04-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/tech/20240324/</loc>
     <lastmod>2024-03-24T00:00:00+00:00</lastmod>
@@ -212,7 +188,13 @@
     <loc>/posts/anime/continued-story/</loc>
     <lastmod>2022-06-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/science/stolz/</loc>
+    <loc>/posts/other/</loc>
+    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/other/stolz/</loc>
+    <lastmod>2022-06-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
     <lastmod>2022-06-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/bin/japanese-study-1/</loc>
@@ -248,12 +230,6 @@
     <loc>/posts/other/2021/</loc>
     <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/other/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>/bin/math_history_1/</loc>
     <lastmod>2021-12-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -281,7 +257,7 @@
     <loc>/posts/literature/rebeca/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/science/probability-theory/</loc>
+    <loc>/posts/other/probability-theory/</loc>
     <lastmod>2021-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tweet/essay/</loc>
@@ -317,6 +293,8 @@
                 hreflang="zh-cn"
                 href="/tags/"
                 />
+  </url><url>
+    <loc>/posts/science/</loc>
   </url><url>
     <loc>/archives/</loc>
   </url><url>
