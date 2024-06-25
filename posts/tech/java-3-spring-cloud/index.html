@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpringCloud学习笔记 - さぁ、君、取りたまえ</title><link rel="apple-touch-icon" href="/images/favicons/apple-touch-icon.png" sizes="180x180">
+<link rel="icon" href="/images/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/images/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+<link rel="manifest" href="/images/favicons/manifest.json">
+<link rel="icon" href="/images/favicons/favicon.ico">
+<meta name="keywords" content="" />
+<meta name="description" content="" /><meta itemprop="name" content="SpringCloud学习笔记">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2024-05-25T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2024-05-25T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1777">
+<meta itemprop="keywords" content=",,," /><meta property="og:title" content="SpringCloud学习笔记" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/tech/java-3-spring-cloud/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-05-25T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2024-05-25T00:00:00&#43;00:00" /><meta property="og:site_name" content="さぁ、君、取りたまえ" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="SpringCloud学习笔记"/>
+<meta name="twitter:description" content=""/>
+<meta data-name="palette" content="blue"><link rel=stylesheet href="/css/bundle.min.9819e4e2411e150748363de90ec254ddcda514cc29bb1238a532433adb77735b.css" integrity="sha256-mBnk4kEeFQdINj3pDsJU3c2lFMwpuxI4pTJDOtt3c1s=" crossorigin="anonymous"><script src="/js/bundle.min.e32615bc744413570374d5b28e8c02ec03c7b28c31485b6fcc5b6174a08766d9.js" integrity="sha256-4yYVvHREE1cDdNWyjowC7APHsowxSFtvzFthdKCHZtk=" crossorigin="anonymous"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.css" rel="stylesheet">
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/katex.min.js"></script>
+<script defer src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js"> </script>
+<script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    macros: {
+      "\\ge": "\\geqslant",
+      "\\le": "\\leqslant",
+      "\\geq": "\\geqslant",
+      "\\leq": "\\leqslant"
+	}
+  });
+}); 
+</script>
+<meta property="og:type" content="index"/>
+<meta property="og:title" content="Unzybaryl`s Sekai" />
+<meta property="og:image" content="https://eustia.me/images/profile1.jpg" />
+<meta property="og:url" content="https://eustia.me/" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/flatblowfish/cave-draw/dist/cave-draw.min.js"></script></head><body><header><nav class="navbar navbar-expand-xl fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      
+      ティアなのです！
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-1 mb-2 mb-lg-0"><form class="search-bar d-flex ms-1" action="/search">
+  <div class="input-group input-group-sm">
+    <button class="btn btn-search disabled position-absolute left-0" type="submit"><i class="fas fa-fw fa-search"></i></button>
+    <input class="form-control rounded-pill" id="searchQuery" name="q" type="search" aria-label="Search">
+  </div>
+</form></ul><ul class="navbar-nav me-1 mb-2 mb-lg-0 me-1 ms-auto"><li class="nav-item">
+          <a class="nav-link" href="/archives">
+            <i class="fas fa-fw fa-file-archive"></i>归档
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/about/">
+            <i class="fas fa-fw fa-info-circle"></i>关于
+          </a>
+        </li><li class="nav-item">
+          <a class="nav-link" href="/bin/">
+            <i class="fas fa-fw fa-bookmark"></i>废案
+          </a>
+        </li><li class="nav-item">
+  <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasSettings" role="button"
+    aria-controls="offcanvasSettings">
+    <i class="fas fa-fw fa-sliders-h"></i> 设置
+  </a>
+</li>
+
+<div class="offcanvas offcanvas-end surface h-100" tabindex="-1" id="offcanvasSettings"
+  aria-labelledby="offcanvasSettingsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" w id="offcanvasSettingsLabel"><i class="fas fa-fw fa-sliders-h"></i> 设置</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body"><section class="setting">
+  <form class="row">
+    <div class="col-auto">
+      <label><i class="fas fa-fw fa-adjust"></i> 模式</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" id="modeSwitcher">
+      </div>
+    </div>
+  </form>
+</section>
+<section class="setting">
+  <form class="font-size-switcher-form row">
+    <div class="col-auto">
+      <label for="fontSize" class="form-label"><i class="fas fa-fw fa-font"></i> 字体大小</label>
+    </div>
+    <div class="col-auto ms-auto">
+      <input type="range" class="form-range" min="-2" max="2" id="fontSize">
+    </div>
+  </form>
+</section>
+
+</div>
+</div></ul>
+    </div>
+  </div>
+</nav>
+</header>
+<main role="main" class="container">
+      <div class="row content">
+<div class="col-lg-8">
+  <div class="container"><nav class="row" aria-label="breadcrumb">
+  <ol class="breadcrumb surface"><li class="breadcrumb-item"><a href="/">主页</a></li><li class="breadcrumb-item"><a href="/posts/">文章</a></li><li class="breadcrumb-item"><a href="/posts/tech/">Tech</a></li><li class="breadcrumb-item active">SpringCloud学习笔记</li></ol>
+</nav><article class="post row surface"><div class="post-panel-wrapper">
+  <div class="post-panel d-flex flex-column">
+    <a id="sidebarToggler" class="action d-none d-lg-block" role="button">
+  <i class="fas fa-fw fa-expand-alt fa-rotate-45"></i>
+</a>
+  
+    
+
+    
+    <a class="action" data-bs-container="body" data-bs-toggle="popover" data-bs-html="true" data-bs-placement="bottom"
+  data-bs-trigger="focus" tabindex="0"
+  data-bs-content="&lt;a target=&#34;_blank&#34; rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh&#34;&gt;CC BY-NC-ND 4.0 &lt;i class=&#34;fab fa-fw fa-creative-commons&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-by&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nc&#34;&gt;&lt;/i&gt;&lt;i class=&#34;fab fa-fw fa-creative-commons-nd&#34;&gt;&lt;/i&gt;&lt;/a&gt;
+">
+  <i class="fas fa-fw fa-copyright"></i>
+</a>
+    <a id="btnTOC" class="fas fa-fw fa-list-alt" data-bs-toggle="offcanvas" href="#offcanvasTOC" aria-controls="offcanvasTOC" role="button">
+</a>
+  </div>
+</div>
+<h1 class="post-title my-3">SpringCloud学习笔记
+</h1><div class="post-meta mb-3">
+  <span class="post-date me-2">
+    <i class="fas fa-fw fa-calendar-alt"></i>2024-05-25
+  </span>
+  <span class="post-reading-time me-2">
+    <i class="fas fa-fw fa-coffee"></i>4 分钟阅读
+  </span>
+<a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-taxonomy">#计算机</a><a href="/series/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-taxonomy">#计算机学习笔记</a></div>
+
+
+
+                
+                <div class="addthis_inline_share_toolbox"></div>
+            <div class="offcanvas offcanvas-end surface" tabindex="-1" id="offcanvasTOC" aria-labelledby="offcanvasTOCLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasTOCLabel">目录</h5>
+    <a role="button" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span class="fas fa-2x fa-fw fa-times"></span>
+    </a>
+  </div>
+  <div class="offcanvas-body">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#说明">说明</a></li>
+    <li><a href="#docker">Docker</a>
+      <ul>
+        <li><a href="#常见命令">常见命令</a></li>
+        <li><a href="#数据卷挂载">数据卷挂载</a></li>
+        <li><a href="#本地目录挂载">本地目录挂载</a></li>
+        <li><a href="#自定义镜像dockerfile">自定义镜像Dockerfile</a></li>
+      </ul>
+    </li>
+    <li><a href="#网络">网络</a></li>
+    <li><a href="#部署项目">部署项目</a>
+      <ul>
+        <li><a href="#部署java应用">部署Java应用</a></li>
+        <li><a href="#部署前端">部署前端</a></li>
+      </ul>
+    </li>
+    <li><a href="#dockercompose">DockerCompose</a></li>
+  </ul>
+</nav>
+  </div>
+</div><div class="post-content mb-3" ><h2 id="说明">说明</h2>
+<p>这里记录不需要在代码中记录&amp;已经存在的笔记的知识点.</p>
+<p>代码的知识点已经打包:</p>
+<p>同时还有一份在线文档:</p>
+<p>需要复习的时候三个部分同时查阅.</p>
+<h2 id="docker">Docker</h2>
+<h3 id="常见命令">常见命令</h3>
+<p>文档: docs.docker.com</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>docker pull <span class="c1">#从镜像仓库将镜像拉取到本地仓库,名字后面跟版本号, 不跟就是latest.</span>
+<span class="ln"> 2</span>docker puth <span class="c1">#将本地仓库的镜像上传到镜像仓库/私服</span>
+<span class="ln"> 3</span>docker images <span class="c1">#查看镜像</span>
+<span class="ln"> 4</span>docker rmi <span class="c1">#删除镜像(remove image)</span>
+<span class="ln"> 5</span>docker build <span class="c1">#构建镜像</span>
+<span class="ln"> 6</span>docker save <span class="c1">#保存镜像到文件</span>
+<span class="ln"> 7</span>docker load <span class="c1">#加载文件中的镜像</span>
+<span class="ln"> 8</span>docker run <span class="c1">#根据镜像开启容器</span>
+<span class="ln"> 9</span>docker inspect <span class="c1">#查看容器详情</span>
+<span class="ln">10</span>docker stop <span class="c1">#停止容器</span>
+<span class="ln">11</span>docker start <span class="c1">#启动容器</span>
+<span class="ln">12</span>docker ps <span class="c1">#查看现存容器(process status)</span>
+<span class="ln">13</span>docker rm <span class="c1">#删除容器</span>
+<span class="ln">14</span>docker logs <span class="c1">#查看日志</span>
+<span class="ln">15</span>docker <span class="nb">exec</span> <span class="c1">#进入容器环境执行命令</span>
+</code></pre></div><p>案例:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln"> 1</span>docker pull nginx <span class="c1">#拉取nginx镜像</span>
+<span class="ln"> 2</span>docker images <span class="c1">#查看镜像</span>
+<span class="ln"> 3</span>docker save -o nginx.tar nginx:latest
+<span class="ln"> 4</span>docker rmi nginx:latest
+<span class="ln"> 5</span>docker load -i nginx.tar 
+<span class="ln"> 6</span>docker run -d --name nginx -p 80:80 nginx <span class="c1">#-d后台,-p端口映射前面是本机后面是容器,最后跟上镜像名</span>
+<span class="ln"> 7</span>docker stop nginx
+<span class="ln"> 8</span>docker start nginx
+<span class="ln"> 9</span>docker logs -f nginx <span class="c1">#-f持续输出日志</span>
+<span class="ln">10</span>docker <span class="nb">exec</span> -it nginx bash <span class="c1">#-it可交互终端 </span>
+<span class="ln">11</span><span class="nb">exit</span>
+<span class="ln">12</span>docker <span class="nb">exec</span> -it mysql mysql -uroot -p
+<span class="ln">13</span>docker rm nginx -f <span class="c1">#-f强制删除,不然需要先stop再删除.</span>
+<span class="ln">14</span>
+</code></pre></div><h3 id="数据卷挂载">数据卷挂载</h3>
+<p>直接进入容器内修改是不可能的, 没有很多命令.于是产生了需求.</p>
+<p>数据卷(volume)是虚拟目录, 映射容器目录和主机目录. 创建数据卷, 那么docker会在/var/lib/docker/volumes下创建文件.这样容器内的文件通过数据卷和主机的文件绑定起来了, docker进行双向绑定.</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>docker volume create <span class="c1">#创建数据卷</span>
+<span class="ln">2</span>docker volume ls <span class="c1">#查看所有数据卷</span>
+<span class="ln">3</span>docker volume rm <span class="c1">#删除指定数据卷</span>
+<span class="ln">4</span>docker volume inspect <span class="c1">#查看某个数据卷详情</span>
+<span class="ln">5</span>docker volume prune <span class="c1">#清除所有未使用的数据卷</span>
+</code></pre></div><p>案例1: 修改nginx的文件, 将静态资源部署到nginx的html目录</p>
+<blockquote>
+<p>执行docker run命令时, 使用-v 数据卷:容器内目录 可以完成数据卷挂载</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>docker run -d --name nginx -p 80:80 -v html:/usr/share/nginx/html nginx
+<span class="ln">2</span>docker volume ls
+<span class="ln">3</span>docker volume inspect html
+<span class="ln">4</span><span class="nb">cd</span> /var/lib/docker/volumes/html/_data
+<span class="ln">5</span>ll
+<span class="ln">6</span><span class="c1">#修改html文件,可以成功修改容器内文件.</span>
+<span class="ln">7</span><span class="c1">#上传静态文件, 容器内也有了这个文件</span>
+</code></pre></div><h3 id="本地目录挂载">本地目录挂载</h3>
+<p>案例2: 查看mysql容器, 看看是否有数据卷挂载(是,匿名卷); 基于宿主机目录实现mysql数据目录,配置文件,初始化脚本的挂载</p>
+<ul>
+<li>挂载/root/mysql/data 到容器内的/var/lib/mysql</li>
+<li>挂载/root/mysql/init到容器内的/docker-entrypoint-initdb.d目录.携带课前准备的sql脚本</li>
+<li>挂载/root/mysql/conf到容器内的/etc/mysql/conf.d目录,携带课前准备的配置文件.</li>
+</ul>
+<blockquote>
+<p>执行docker run命令时, 使用 -v 本地目录:容器内目录 可以完成本地目录挂载</p>
+<p>本地目录必须以/ or ./开头. 这是为了区分数据卷</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>docker run -d<span class="se">\
+</span><span class="ln">2</span><span class="se"></span> --name mysql <span class="se">\
+</span><span class="ln">3</span><span class="se"></span> -p 3306:3306 <span class="se">\
+</span><span class="ln">4</span><span class="se"></span> -e <span class="nv">TZ</span><span class="o">=</span>Asia/Shanghai <span class="se">\
+</span><span class="ln">5</span><span class="se"></span> -v /root/mysql/data:/var/lib/mysql
+<span class="ln">6</span> -v /root/mysql/init:/docker-entrypoint-initdb.d
+<span class="ln">7</span> -v /root/mysql/conf:/etc/mysql/conf.d
+<span class="ln">8</span> mysql
+</code></pre></div><p>即便删掉了容器, 数据依然存在, 实现了数据的持久保存, 下次创建容器时只需要直接指定挂载便实现了数据迁移. 而默认的匿名卷模式目录太深, 容器删除后数据卷在那里, 但是重新创建后又会生成新的匿名卷, 迁移还需要手动转移.</p>
+<h3 id="自定义镜像dockerfile">自定义镜像Dockerfile</h3>
+<p>参考资料</p>
+<h2 id="网络">网络</h2>
+<p>默认情况下, 所有容器都是以bridge方式连接到Docker的一个虚拟网桥上. 但是这样Ip地址可能会变动</p>
+<p>加入自定义网络才可以通过容器名互相访问, Docker的网络操作命令如下:</p>
+<table>
+<thead>
+<tr>
+<th><strong>命令</strong></th>
+<th><strong>说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docker network create</td>
+<td>创建一个网络</td>
+</tr>
+<tr>
+<td>docker network ls</td>
+<td>查看所有网络</td>
+</tr>
+<tr>
+<td>docker network rm</td>
+<td>删除指定网络</td>
+</tr>
+<tr>
+<td>docker network prune</td>
+<td>清除未使用的网络</td>
+</tr>
+<tr>
+<td>docker network connect</td>
+<td>使指定容器连接加入某网络</td>
+</tr>
+<tr>
+<td>docker network disconnect</td>
+<td>使指定容器连接离开某网络</td>
+</tr>
+<tr>
+<td>docker network inspect</td>
+<td>查看网络详细信息</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>docker network create heima
+<span class="ln">2</span>docker network connect heima mysql
+<span class="ln">3</span>docker network connect heima dd
+<span class="ln">4</span>docker run -d --name mysql -p 3306:3306 --network heima mysql <span class="c1">#创建时加入网络</span>
+<span class="ln">5</span>docker <span class="nb">exec</span> -it dd bash
+<span class="ln">6</span>ping mysql <span class="c1">#可以直接用容器名ping</span>
+</code></pre></div><h2 id="部署项目">部署项目</h2>
+<h3 id="部署java应用">部署Java应用</h3>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="ln">1</span>docker build -t hmall .
+<span class="ln">2</span>docker images
+<span class="ln">3</span>docker run -d --name hm -p 80:80 --network heima hmall
+<span class="ln">4</span>docker ps
+<span class="ln">5</span>docker logs -f hm
+</code></pre></div><h3 id="部署前端">部署前端</h3>
+<p>创建额nginx容器, 将提供的nginx.conf, html目录和容器挂载</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>docker run -d \
+<span class="ln">2</span>	--name nginx \
+<span class="ln">3</span>	-p 18080:18080 \
+<span class="ln">4</span>	-p 18081:18081 \
+<span class="ln">5</span>	-v /root/nginx/html:/usr/share/nginx/html \
+<span class="ln">6</span>	-v /root/nginx/nginx.conf:/etc/ngnix.conf \
+<span class="ln">7</span>	--network heima
+<span class="ln">8</span>	nginx
+</code></pre></div><h2 id="dockercompose">DockerCompose</h2>
+<p>Docker Compose通过一个单独的docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器，帮助我们实现多个相互关联的Docker容器的快速部署。</p>
+<div class="highlight"><pre class="chroma"><code class="language-docker-compose.yml" data-lang="docker-compose.yml"><span class="ln"> 1</span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;3.8&#34;</span><span class="w">
+</span><span class="ln"> 2</span><span class="w">
+</span><span class="ln"> 3</span><span class="w"></span><span class="nt">services</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 4</span><span class="w">  </span><span class="nt">mysql</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 5</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span><span class="ln"> 6</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">mysql</span><span class="w">
+</span><span class="ln"> 7</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="ln"> 8</span><span class="w">      </span>- <span class="s2">&#34;3306:3306&#34;</span><span class="w">
+</span><span class="ln"> 9</span><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span><span class="ln">10</span><span class="w">      </span><span class="nt">TZ</span><span class="p">:</span><span class="w"> </span><span class="l">Asia/Shanghai</span><span class="w">
+</span><span class="ln">11</span><span class="w">      </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="m">123</span><span class="w">
+</span><span class="ln">12</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="ln">13</span><span class="w">      </span>- <span class="s2">&#34;./mysql/conf:/etc/mysql/conf.d&#34;</span><span class="w">
+</span><span class="ln">14</span><span class="w">      </span>- <span class="s2">&#34;./mysql/data:/var/lib/mysql&#34;</span><span class="w">
+</span><span class="ln">15</span><span class="w">      </span>- <span class="s2">&#34;./mysql/init:/docker-entrypoint-initdb.d&#34;</span><span class="w">
+</span><span class="ln">16</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="ln">17</span><span class="w">      </span>- <span class="l">hm-net</span><span class="w">
+</span><span class="ln">18</span><span class="w">  </span><span class="nt">hmall</span><span class="p">:</span><span class="w">
+</span><span class="ln">19</span><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span><span class="ln">20</span><span class="w">       </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l">.</span><span class="w">
+</span><span class="ln">21</span><span class="w">       </span><span class="nt">dockerfile</span><span class="p">:</span><span class="w"> </span><span class="l">Dockerfile</span><span class="w">
+</span><span class="ln">22</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">hmall</span><span class="w">
+</span><span class="ln">23</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="ln">24</span><span class="w">      </span>- <span class="s2">&#34;8080:8080&#34;</span><span class="w">
+</span><span class="ln">25</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="ln">26</span><span class="w">      </span>- <span class="l">hm-net</span><span class="w">
+</span><span class="ln">27</span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span><span class="ln">28</span><span class="w">      </span>- <span class="l">mysql</span><span class="w">
+</span><span class="ln">29</span><span class="w">  </span><span class="nt">nginx</span><span class="p">:</span><span class="w">
+</span><span class="ln">30</span><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">nginx</span><span class="w">
+</span><span class="ln">31</span><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l">nginx</span><span class="w">
+</span><span class="ln">32</span><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span><span class="ln">33</span><span class="w">      </span>- <span class="s2">&#34;18080:18080&#34;</span><span class="w">
+</span><span class="ln">34</span><span class="w">      </span>- <span class="s2">&#34;18081:18081&#34;</span><span class="w">
+</span><span class="ln">35</span><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span><span class="ln">36</span><span class="w">      </span>- <span class="s2">&#34;./nginx/nginx.conf:/etc/nginx/nginx.conf&#34;</span><span class="w">
+</span><span class="ln">37</span><span class="w">      </span>- <span class="s2">&#34;./nginx/html:/usr/share/nginx/html&#34;</span><span class="w">
+</span><span class="ln">38</span><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span><span class="ln">39</span><span class="w">      </span>- <span class="l">hmall</span><span class="w">
+</span><span class="ln">40</span><span class="w">    </span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="ln">41</span><span class="w">      </span>- <span class="l">hm-net</span><span class="w">
+</span><span class="ln">42</span><span class="w"></span><span class="nt">networks</span><span class="p">:</span><span class="w">
+</span><span class="ln">43</span><span class="w">  </span><span class="nt">hm-net</span><span class="p">:</span><span class="w">
+</span><span class="ln">44</span><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">hmall</span><span class="w">
+</span></code></pre></div><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-f</td>
+<td>指定compose文件的路径和名称</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>指定project名称</td>
+</tr>
+<tr>
+<td>up</td>
+<td>创建并启动所有service容器</td>
+</tr>
+<tr>
+<td>down</td>
+<td>停止并移除所有容器、网络</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>列出所有启动的容器</td>
+</tr>
+<tr>
+<td>logs</td>
+<td>查看指定容器的日志</td>
+</tr>
+<tr>
+<td>stop</td>
+<td>停止容器</td>
+</tr>
+<tr>
+<td>start</td>
+<td>启动容器</td>
+</tr>
+<tr>
+<td>restart</td>
+<td>重启容器</td>
+</tr>
+<tr>
+<td>top</td>
+<td>查看运行的进程</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>在指定的运行中容器中执行命令</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>docker compose up -d  #就在本目录, 则不需要-f指定文件
+<span class="ln">2</span>docker compose down  #全部都给移除了, 干干净净.
+</code></pre></div></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+  <div class="post-nav w-50"><div class="prev-post btn btn-sm">
+      <a href="/posts/tech/java-1-thread/">Java多线程
+</a>
+    </div></div>
+  <div class="post-nav flex-row-reverse"><div class="next-post btn btn-sm">
+      <a href="/posts/tech/java-2-mysql/">MySQL学习笔记
+</a>
+    </div></div>
+</div><section class="related-posts">
+    <h3>相关文章</h3>
+    <ul class="related-posts"><li><a href="/posts/tech/java-2-mysql/">MySQL学习笔记
+</a></li><li><a href="/posts/tech/java-1-thread/">Java多线程
+</a></li><li><a href="/posts/tech/20240321/">3.21-23学习记录
+</a></li><li><a href="/posts/anime/bokugashinouto/">僕が死のうと思ったのは
+</a></li><li><a href="/posts/anime/shinainaru/"> 親愛なる世界へ
+</a></li></ul>
+  </section></article>
+
+
+
+
+<div id="vcomments" class="post-comments surface row">
+</div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '18xpdRPZMKmyTjmjtMIK8zyB-gzGzoHsz',
+            appKey: 'haH3Ysz9ic7RFcoqbIvPDh8H',
+            avatar:'retro',
+            visitor:true,
+            placeholder:'有什么想说的吗？'
+
+        });
+
+        var count = 0;
+        var domTimer = setInterval(function () {
+            if (++count > 50) clearInterval(domTimer);
+            if (document.querySelector('#veditor')) {
+                clearInterval(domTimer);
+                var cdraw = new CaveDraw({
+                    element: "#veditor",
+                    readOnlyMode: false, 
+                    afterUpdateEditor: ()=>{ 
+                        document.querySelector('#veditor').focus();
+                        document.querySelector('#veditor').blur();
+                    },
+                    controls: ['brush', 'eraser', 'bucket', 'clear', 'undo', 'redo', 'save']
+                });
+            }
+        }, 200);
+    </script></div>
+</div><aside class="col-lg-4 sidebar d-flex">
+  <div class="container"><section class="profile surface row">
+  <div class="col-xl-6 d-flex align-items-center justify-content-center">
+    <img class="profile-avatar img-fluid" src="/images/profile4.jpg" alt="理想奈" loading="lazy">
+  </div>
+  <div class="col-xl-6">
+    <h5 class="profile-name my-2">理想奈</h5><div class="profile-bio mb-2">motto是什么，可以吃吗？我的motto待不了几天，因为我的想法一直在变化</div>
+    
+  </div>
+</section><section class="recent-posts row surface">
+  <h4>最近文章</h4>
+  <ul><li><a href="/posts/tech/java-4-basic/">Java基础查漏补缺
+</a></li><li><a href="/posts/tech/java-2-mysql/">MySQL学习笔记
+</a></li><li><a href="/posts/tech/java-3-spring-cloud/">SpringCloud学习笔记
+</a></li><li><a href="/posts/tech/java-1-thread/">Java多线程
+</a></li><li><a href="/posts/tech/java-0-audition/">面试准备-Spring
+</a></li><li><a href="/posts/tech/20240324/">3.24学习记录
+</a></li><li><a href="/posts/tech/20240321/">3.21-23学习记录
+</a></li></ul>
+</section><section class="taxonomy-categories row surface">
+      <h4>
+        <a href="/categories">分类</a>
+      </h4>
+      <div><a href="/categories/%E4%BA%8C%E6%AC%A1%E5%85%83/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="二次元">
+          二次元 <span class="badge rounded-pill">24</span>
+        </a><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="计算机">
+          计算机 <span class="badge rounded-pill">11</span>
+        </a><a href="/categories/%E6%96%87%E5%AD%97%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="文字类">
+          文字类 <span class="badge rounded-pill">6</span>
+        </a><a href="/categories/%E6%99%AE%E9%80%9A%E7%B1%BB/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="普通类">
+          普通类 <span class="badge rounded-pill">5</span>
+        </a></div>
+    </section><section class="taxonomy-series row surface">
+      <h4>
+        <a href="/series">专栏</a>
+      </h4>
+      <div><a href="/series/%E5%8A%A8%E6%BC%AB%E6%AD%8C%E6%9B%B2/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="动漫歌曲">
+          动漫歌曲 <span class="badge rounded-pill">21</span>
+        </a><a href="/series/galgame/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="Galgame">
+          Galgame <span class="badge rounded-pill">9</span>
+        </a><a href="/series/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-taxonomy rounded btn btn-sm me-2 mb-2" title="计算机学习笔记">
+          计算机学习笔记 <span class="badge rounded-pill">6</span>
+        </a></div>
+    </section></div>
+</aside>
+</div>
+    </main><footer class="footer mt-auto py-3 text-center container"><nav class="social-links nav my-2 justify-content-center"></nav>
+<div class="copyright mb-2">
+  Copyright © 2021-2024 Unaybaryl. All Rights Reserved.
+</div>
+</footer>
+<a id="btnScrollToTop" class="btn-scroll-to-top">
+  <i class="fas fa-fw fa-chevron-circle-up fa-2x"></i>
+</a>
+
+
+
+              
+            </body>
+</html>

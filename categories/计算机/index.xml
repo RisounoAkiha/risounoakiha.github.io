@@ -6,13 +6,31 @@
     <description>Recent content in 计算机 on さぁ、君、取りたまえ</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>Copyright © 2021-{year} Unaybaryl. All Rights Reserved.</copyright>
-    <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java基础查漏补缺</title>
+      <link>/posts/tech/java-4-basic/</link>
+      <pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/java-4-basic/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>MySQL学习笔记</title>
       <link>/posts/tech/java-2-mysql/</link>
       <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
       
       <guid>/posts/tech/java-2-mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SpringCloud学习笔记</title>
+      <link>/posts/tech/java-3-spring-cloud/</link>
+      <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/tech/java-3-spring-cloud/</guid>
       <description></description>
     </item>
     
