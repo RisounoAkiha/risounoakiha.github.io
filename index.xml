@@ -9,28 +9,28 @@
     <lastBuildDate>Sat, 25 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MySQL学习笔记</title>
-      <link>/posts/tech/java-2/</link>
+      <link>/posts/tech/java-2-mysql/</link>
       <pubDate>Sat, 25 May 2024 00:00:00 +0000</pubDate>
       
-      <guid>/posts/tech/java-2/</guid>
+      <guid>/posts/tech/java-2-mysql/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java多线程</title>
-      <link>/posts/tech/java-1/</link>
+      <link>/posts/tech/java-1-thread/</link>
       <pubDate>Thu, 09 May 2024 00:00:00 +0000</pubDate>
       
-      <guid>/posts/tech/java-1/</guid>
+      <guid>/posts/tech/java-1-thread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>面试准备-Spring</title>
-      <link>/posts/tech/interview-1/</link>
+      <link>/posts/tech/java-0-audition/</link>
       <pubDate>Mon, 29 Apr 2024 00:00:00 +0000</pubDate>
       
-      <guid>/posts/tech/interview-1/</guid>
+      <guid>/posts/tech/java-0-audition/</guid>
       <description></description>
     </item>
     
