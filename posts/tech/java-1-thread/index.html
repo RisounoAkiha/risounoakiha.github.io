@@ -12,7 +12,7 @@
 <meta name="description" content="" /><meta itemprop="name" content="Java多线程">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2024-05-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2024-05-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2308">
+<meta itemprop="wordCount" content="3275">
 <meta itemprop="keywords" content=",,," /><meta property="og:title" content="Java多线程" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
@@ -155,7 +155,7 @@
     <i class="fas fa-fw fa-calendar-alt"></i>2024-05-09
   </span>
   <span class="post-reading-time me-2">
-    <i class="fas fa-fw fa-coffee"></i>5 分钟阅读
+    <i class="fas fa-fw fa-coffee"></i>7 分钟阅读
   </span>
 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-taxonomy">#计算机</a><a href="/series/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-taxonomy">#计算机学习笔记</a></div>
 
@@ -188,11 +188,18 @@
         <li><a href="#lock锁">lock锁</a></li>
       </ul>
     </li>
-    <li><a href="#四-生产者-消费者机制">四. 生产者-消费者机制</a></li>
+    <li><a href="#四-生产者-消费者机制">四. 生产者-消费者机制</a>
+      <ul>
+        <li><a href="#等待唤醒机制">等待唤醒机制</a></li>
+        <li><a href="#阻塞队列实现等待唤醒机制">阻塞队列实现等待唤醒机制</a></li>
+      </ul>
+    </li>
+    <li><a href="#五线程的六种状态">五.线程的六种状态</a></li>
   </ul>
 </nav>
   </div>
-</div><div class="post-content mb-3" ><p>看了一个视频,现对学习到的内容做一个总结.</p>
+</div><div class="post-content mb-3" ><p><a href="https://www.bilibili.com/video/BV1LG4y1T7n2?p=23&amp;vd_source=0885d58575f3c82f15a5a40588fe0cd5" target="_blank">黑马Java进阶教程，全面剖析Java多线程编程，含抢红包、抽奖实战案例</a>
+,现对学习到的内容做一个总结.</p>
 <h2 id="一多线程的三种方式">一.多线程的三种方式</h2>
 <h3 id="1继承thread类">1.继承Thread类</h3>
 <p>继承Thread类,重写run方法.这里重写构造方法是为了方便在初始化的时候快速地设置线程的名称,当然也可以在创建线程后使用setName方法.</p>
@@ -518,7 +525,202 @@
 <span class="ln">45</span>    <span class="o">}</span>
 <span class="ln">46</span><span class="o">}</span>
 </code></pre></div><h2 id="四-生产者-消费者机制">四. 生产者-消费者机制</h2>
-<p>TODO: 将线程的状态粘贴过来.</p></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+<p>生产者消费者模式是一个经典的多线程协作模式.</p>
+<h3 id="等待唤醒机制">等待唤醒机制</h3>
+<p>桌子Desk.class(控制生产者消费者的执行):</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify1</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Desk</span> <span class="o">{</span>
+<span class="ln"> 4</span>    <span class="cm">/*
+</span><span class="ln"> 5</span><span class="cm">    控制生产者和消费者状态
+</span><span class="ln"> 6</span><span class="cm">     */</span>
+<span class="ln"> 7</span>
+<span class="ln"> 8</span>    <span class="c1">//桌子上是否有面条,0表示没有,1表示有
+</span><span class="ln"> 9</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">foodFlag</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">10</span>
+<span class="ln">11</span>    <span class="c1">//总个数
+</span><span class="ln">12</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">10</span><span class="o">;</span>
+<span class="ln">13</span>
+<span class="ln">14</span>    <span class="c1">//锁
+</span><span class="ln">15</span><span class="c1"></span>    <span class="kd">public</span> <span class="kd">static</span> <span class="n">Object</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Object</span><span class="o">();</span>
+<span class="ln">16</span><span class="o">}</span>
+<span class="ln">17</span>
+</code></pre></div><p>消费者Foodie.class:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify1</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Foodie</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+<span class="ln"> 4</span>    <span class="nd">@Override</span>
+<span class="ln"> 5</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 6</span>        <span class="cm">/*
+</span><span class="ln"> 7</span><span class="cm">        1.循环
+</span><span class="ln"> 8</span><span class="cm">        2.同步代码块
+</span><span class="ln"> 9</span><span class="cm">        3.判断共享数据是否到了末尾,到了末尾
+</span><span class="ln">10</span><span class="cm">        4.没有到末尾,执行核心逻辑
+</span><span class="ln">11</span><span class="cm">         */</span>
+<span class="ln">12</span>        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">13</span>            <span class="kd">synchronized</span> <span class="o">(</span><span class="n">Desk</span><span class="o">.</span><span class="na">lock</span><span class="o">){</span>
+<span class="ln">14</span>                <span class="k">if</span> <span class="o">(</span><span class="n">Desk</span><span class="o">.</span><span class="na">count</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
+<span class="ln">15</span>                    <span class="k">break</span><span class="o">;</span>
+<span class="ln">16</span>                <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+<span class="ln">17</span>                    <span class="cm">/*
+</span><span class="ln">18</span><span class="cm">                    判断是否有面条
+</span><span class="ln">19</span><span class="cm">                    没有则等待
+</span><span class="ln">20</span><span class="cm">                    有,吃,然后唤醒厨师,吃的数目减一,修改桌子状态
+</span><span class="ln">21</span><span class="cm">                     */</span>
+<span class="ln">22</span>                    <span class="k">if</span><span class="o">(</span><span class="n">Desk</span><span class="o">.</span><span class="na">foodFlag</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
+<span class="ln">23</span>                        <span class="k">try</span> <span class="o">{</span>
+<span class="ln">24</span>                            <span class="n">Desk</span><span class="o">.</span><span class="na">lock</span><span class="o">.</span><span class="na">wait</span><span class="o">();</span> <span class="c1">//当前线程和锁绑定,方便唤醒
+</span><span class="ln">25</span><span class="c1"></span>                        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">26</span>                            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="ln">27</span>                        <span class="o">}</span>
+<span class="ln">28</span>                    <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+<span class="ln">29</span>                        <span class="n">Desk</span><span class="o">.</span><span class="na">count</span><span class="o">--;</span>
+<span class="ln">30</span>                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eating, left &#34;</span> <span class="o">+</span> <span class="n">Desk</span><span class="o">.</span><span class="na">count</span> <span class="o">+</span> <span class="s">&#34; bowl to eat&#34;</span><span class="o">);</span>
+<span class="ln">31</span>                        <span class="n">Desk</span><span class="o">.</span><span class="na">lock</span><span class="o">.</span><span class="na">notifyAll</span><span class="o">();</span>
+<span class="ln">32</span>                        <span class="n">Desk</span><span class="o">.</span><span class="na">foodFlag</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln">33</span>                    <span class="o">}</span>
+<span class="ln">34</span>                <span class="o">}</span>
+<span class="ln">35</span>            <span class="o">}</span>
+<span class="ln">36</span>        <span class="o">}</span>
+<span class="ln">37</span>    <span class="o">}</span>
+<span class="ln">38</span><span class="o">}</span>
+</code></pre></div><p>生产者Cook.class:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify1</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cook</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+<span class="ln"> 4</span>    <span class="nd">@Override</span>
+<span class="ln"> 5</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln"> 6</span>        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln"> 7</span>            <span class="kd">synchronized</span> <span class="o">(</span><span class="n">Desk</span><span class="o">.</span><span class="na">lock</span><span class="o">){</span>
+<span class="ln"> 8</span>                <span class="k">if</span> <span class="o">(</span><span class="n">Desk</span><span class="o">.</span><span class="na">count</span> <span class="o">==</span> <span class="n">0</span><span class="o">){</span>
+<span class="ln"> 9</span>                    <span class="k">break</span><span class="o">;</span>
+<span class="ln">10</span>                <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+<span class="ln">11</span>                    <span class="k">if</span> <span class="o">(</span><span class="n">Desk</span><span class="o">.</span><span class="na">foodFlag</span> <span class="o">==</span> <span class="n">1</span><span class="o">){</span>
+<span class="ln">12</span>                        <span class="k">try</span> <span class="o">{</span>
+<span class="ln">13</span>                            <span class="n">Desk</span><span class="o">.</span><span class="na">lock</span><span class="o">.</span><span class="na">wait</span><span class="o">();</span>
+<span class="ln">14</span>                        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">15</span>                            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="ln">16</span>                        <span class="o">}</span>
+<span class="ln">17</span>                    <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+<span class="ln">18</span>                        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;Cooking, left &#34;</span> <span class="o">+</span> <span class="n">Desk</span><span class="o">.</span><span class="na">count</span> <span class="o">+</span> <span class="s">&#34; to cook&#34;</span><span class="o">);</span>
+<span class="ln">19</span>                        <span class="n">Desk</span><span class="o">.</span><span class="na">lock</span><span class="o">.</span><span class="na">notifyAll</span><span class="o">();</span>
+<span class="ln">20</span>                        <span class="n">Desk</span><span class="o">.</span><span class="na">foodFlag</span> <span class="o">=</span> <span class="n">1</span><span class="o">;</span>
+<span class="ln">21</span>                    <span class="o">}</span>
+<span class="ln">22</span>                <span class="o">}</span>
+<span class="ln">23</span>            <span class="o">}</span>
+<span class="ln">24</span>        <span class="o">}</span>
+<span class="ln">25</span>    <span class="o">}</span>
+<span class="ln">26</span><span class="o">}</span>
+<span class="ln">27</span>
+</code></pre></div><p>测试代码:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify1</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadDemo</span> <span class="o">{</span>
+<span class="ln"> 4</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 5</span>        <span class="c1">//等待唤醒机制完成生产者-消费者
+</span><span class="ln"> 6</span><span class="c1"></span>        <span class="n">Cook</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cook</span><span class="o">();</span>
+<span class="ln"> 7</span>        <span class="n">Foodie</span> <span class="n">f</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Foodie</span><span class="o">();</span>
+<span class="ln"> 8</span>        <span class="n">c</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Cooker&#34;</span><span class="o">);</span>
+<span class="ln"> 9</span>        <span class="n">f</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&#34;Foodie&#34;</span><span class="o">);</span>
+<span class="ln">10</span>        <span class="n">c</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">11</span>        <span class="n">f</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">12</span>    <span class="o">}</span>
+<span class="ln">13</span><span class="o">}</span>
+<span class="ln">14</span>
+</code></pre></div><h3 id="阻塞队列实现等待唤醒机制">阻塞队列实现等待唤醒机制</h3>
+<p>生产者:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify2</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Cook</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span>    <span class="c1">//成员变量
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span><span class="o">;</span>
+<span class="ln"> 9</span>
+<span class="ln">10</span>    <span class="c1">//构造方法
+</span><span class="ln">11</span><span class="c1"></span>    <span class="kd">public</span> <span class="nf">Cook</span><span class="o">(</span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">12</span>        <span class="k">this</span><span class="o">.</span><span class="na">queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">;</span>
+<span class="ln">13</span>    <span class="o">}</span>
+<span class="ln">14</span>
+<span class="ln">15</span>    <span class="nd">@Override</span>
+<span class="ln">16</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">17</span>        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">18</span>            <span class="k">try</span> <span class="o">{</span>
+<span class="ln">19</span>                <span class="c1">//自带锁,里面会判断当前队列是否是满的
+</span><span class="ln">20</span><span class="c1"></span>                <span class="n">queue</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;noodle&#34;</span><span class="o">);</span>
+<span class="ln">21</span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;put noodle in queue&#34;</span><span class="o">);</span>
+<span class="ln">22</span>            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">23</span>                <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="ln">24</span>            <span class="o">}</span>
+<span class="ln">25</span>
+<span class="ln">26</span>        <span class="o">}</span>
+<span class="ln">27</span>
+<span class="ln">28</span>    <span class="o">}</span>
+<span class="ln">29</span><span class="o">}</span>
+<span class="ln">30</span>
+</code></pre></div><p>消费者:</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify2</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Foodie</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span>    <span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span><span class="o">;</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span>    <span class="kd">public</span> <span class="nf">Foodie</span><span class="o">(</span><span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">10</span>        <span class="k">this</span><span class="o">.</span><span class="na">queue</span> <span class="o">=</span> <span class="n">queue</span><span class="o">;</span>
+<span class="ln">11</span>    <span class="o">}</span>
+<span class="ln">12</span>
+<span class="ln">13</span>    <span class="nd">@Override</span>
+<span class="ln">14</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">15</span>        <span class="k">while</span><span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">16</span>            <span class="k">try</span> <span class="o">{</span>
+<span class="ln">17</span>                <span class="n">String</span> <span class="n">food</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="na">take</span><span class="o">();</span>
+<span class="ln">18</span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;eating a bowl of noodle&#34;</span><span class="o">);</span>
+<span class="ln">19</span>            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">20</span>                <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="ln">21</span>            <span class="o">}</span>
+<span class="ln">22</span>        <span class="o">}</span>
+<span class="ln">23</span>    <span class="o">}</span>
+<span class="ln">24</span><span class="o">}</span>
+<span class="ln">25</span>
+</code></pre></div><p>测试(提供一个阻塞队列):</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">waitandnotify2</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.concurrent.ArrayBlockingQueue</span><span class="o">;</span>
+<span class="ln"> 4</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span>
+<span class="ln"> 7</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadDemo</span> <span class="o">{</span>
+<span class="ln"> 8</span>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln"> 9</span>        <span class="c1">//阻塞队列完成生产者-消费者
+</span><span class="ln">10</span><span class="c1"></span>
+<span class="ln">11</span>        <span class="c1">//创建阻塞队列
+</span><span class="ln">12</span><span class="c1"></span>        <span class="n">ArrayBlockingQueue</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayBlockingQueue</span><span class="o">&lt;&gt;(</span><span class="n">1</span><span class="o">);</span>
+<span class="ln">13</span>        <span class="c1">//创建线程对象,将阻塞队列传入
+</span><span class="ln">14</span><span class="c1"></span>        <span class="n">Cook</span> <span class="n">cook</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Cook</span><span class="o">(</span><span class="n">queue</span><span class="o">);</span>
+<span class="ln">15</span>        <span class="n">Foodie</span> <span class="n">foodie</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Foodie</span><span class="o">(</span><span class="n">queue</span><span class="o">);</span>
+<span class="ln">16</span>        <span class="c1">//开启线程
+</span><span class="ln">17</span><span class="c1"></span>        <span class="n">cook</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">18</span>        <span class="n">foodie</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+<span class="ln">19</span>    <span class="o">}</span>
+<span class="ln">20</span><span class="o">}</span>
+<span class="ln">21</span>
+</code></pre></div><h2 id="五线程的六种状态">五.线程的六种状态</h2>
+<div align=center>
+<img src="/images/java-1-thread-1.png"  width="75%" />  
+</div>
+<p>线程状态:</p>
+<ol>
+<li>新建new,创建线程对象</li>
+<li>就绪runnable,start方法</li>
+<li>阻塞blocked,无法获得锁对象</li>
+<li>等待waiting,wait方法</li>
+<li>计时等待timed_waiting,sleep方法</li>
+<li>结束terminated,全部代码执行完毕.</li>
+</ol>
+<p>作业代码就不贴了, 以后需要复习时重新写.</p></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
   <div class="post-nav w-50"><div class="prev-post btn btn-sm">
       <a href="/posts/tech/java-0-audition/">面试准备-Spring
 </a>
