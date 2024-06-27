@@ -12,7 +12,7 @@
 <meta name="description" content="" /><meta itemprop="name" content="Java多线程">
 <meta itemprop="description" content=""><meta itemprop="datePublished" content="2024-05-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2024-05-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="2064">
+<meta itemprop="wordCount" content="2308">
 <meta itemprop="keywords" content=",,," /><meta property="og:title" content="Java多线程" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="article" />
@@ -173,21 +173,28 @@
   <div class="offcanvas-body">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#1继承thread类">1.继承Thread类</a></li>
-    <li><a href="#2实现runnable接口">2.实现Runnable接口</a></li>
-    <li><a href="#3实现callable接口">3.实现Callable接口</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#同步代码块">同步代码块</a></li>
-    <li><a href="#同步方法">同步方法</a></li>
-    <li><a href="#lock锁">lock锁</a></li>
+    <li><a href="#一多线程的三种方式">一.多线程的三种方式</a>
+      <ul>
+        <li><a href="#1继承thread类">1.继承Thread类</a></li>
+        <li><a href="#2实现runnable接口">2.实现Runnable接口</a></li>
+        <li><a href="#3实现callable接口">3.实现Callable接口</a></li>
+      </ul>
+    </li>
+    <li><a href="#二守护线程出让线程插入线程">二.守护线程,出让线程,插入线程</a></li>
+    <li><a href="#三线程安全线程同步">三.线程安全(线程同步)</a>
+      <ul>
+        <li><a href="#同步代码块">同步代码块</a></li>
+        <li><a href="#同步方法">同步方法</a></li>
+        <li><a href="#lock锁">lock锁</a></li>
+      </ul>
+    </li>
+    <li><a href="#四-生产者-消费者机制">四. 生产者-消费者机制</a></li>
   </ul>
 </nav>
   </div>
 </div><div class="post-content mb-3" ><p>看了一个视频,现对学习到的内容做一个总结.</p>
-<h1 id="一多线程的三种方式">一.多线程的三种方式</h1>
-<h2 id="1继承thread类">1.继承Thread类</h2>
+<h2 id="一多线程的三种方式">一.多线程的三种方式</h2>
+<h3 id="1继承thread类">1.继承Thread类</h3>
 <p>继承Thread类,重写run方法.这里重写构造方法是为了方便在初始化的时候快速地设置线程的名称,当然也可以在创建线程后使用setName方法.</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">mythread1</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -236,7 +243,7 @@
 <span class="ln">24</span>
 <span class="ln">25</span>    <span class="o">}</span>
 <span class="ln">26</span><span class="o">}</span>
-</code></pre></div><h2 id="2实现runnable接口">2.实现Runnable接口</h2>
+</code></pre></div><h3 id="2实现runnable接口">2.实现Runnable接口</h3>
 <p>自定义类实现Runnable接口,重写run方法</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">mythread2</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -286,7 +293,7 @@
 <span class="ln">30</span>    <span class="o">}</span>
 <span class="ln">31</span><span class="o">}</span>
 <span class="ln">32</span>
-</code></pre></div><h2 id="3实现callable接口">3.实现Callable接口</h2>
+</code></pre></div><h3 id="3实现callable接口">3.实现Callable接口</h3>
 <p>自定义类实现Callable接口,重写Call方法.这个Call方法是有返回值的.</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">mythread3</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -332,7 +339,7 @@
 <span class="ln">25</span>    <span class="o">}</span>
 <span class="ln">26</span><span class="o">}</span>
 <span class="ln">27</span>
-</code></pre></div><h1 id="二守护线程出让线程插入线程">二.守护线程,出让线程,插入线程</h1>
+</code></pre></div><h2 id="二守护线程出让线程插入线程">二.守护线程,出让线程,插入线程</h2>
 <p>不太重要</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">mythread4</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -386,8 +393,8 @@
 <span class="ln">12</span>    <span class="o">}</span>
 <span class="ln">13</span><span class="o">}</span>
 <span class="ln">14</span>
-</code></pre></div><h1 id="三线程安全线程同步">三.线程安全(线程同步)</h1>
-<h2 id="同步代码块">同步代码块</h2>
+</code></pre></div><h2 id="三线程安全线程同步">三.线程安全(线程同步)</h2>
+<h3 id="同步代码块">同步代码块</h3>
 <p>同步代码块用synchronized包裹,再括号之后需要放入一个唯一的锁对象,可以使用static修饰,也可以放入当前类的字节码文件</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">threadsafe</span><span class="o">;</span>
 <span class="ln"> 2</span>
@@ -429,7 +436,7 @@
 <span class="ln">38</span>
 <span class="ln">39</span><span class="o">}</span>
 <span class="ln">40</span>
-</code></pre></div><h2 id="同步方法">同步方法</h2>
+</code></pre></div><h3 id="同步方法">同步方法</h3>
 <p>也可以把同步代码块抽取出来形成一个方法,称为同步方法,其实就是用synchronized修饰的方法</p>
 <p>同步方法:非静态的时候锁对象是this;静态的时候锁对象是当前类字节码文件</p>
 <div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">threadsafe</span><span class="o">;</span>
@@ -462,7 +469,56 @@
 <span class="ln">28</span>    <span class="o">}</span>
 <span class="ln">29</span><span class="o">}</span>
 <span class="ln">30</span>
-</code></pre></div><h2 id="lock锁">lock锁</h2></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
+</code></pre></div><h3 id="lock锁">lock锁</h3>
+<p>创建一把静态锁, 然后在需要同步的代码块上使用lock方法, 在代码块结束时使用unlock方法.</p>
+<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="ln"> 1</span><span class="kn">package</span> <span class="nn">threadsafe</span><span class="o">;</span>
+<span class="ln"> 2</span>
+<span class="ln"> 3</span><span class="kn">import</span> <span class="nn">java.util.concurrent.locks.Lock</span><span class="o">;</span>
+<span class="ln"> 4</span><span class="kn">import</span> <span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="o">;</span>
+<span class="ln"> 5</span>
+<span class="ln"> 6</span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyLock</span> <span class="kd">extends</span> <span class="n">Thread</span><span class="o">{</span>
+<span class="ln"> 7</span>    <span class="kd">static</span> <span class="kt">int</span> <span class="n">ticket</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+<span class="ln"> 8</span>
+<span class="ln"> 9</span>    <span class="c1">//多个对象共享同一把锁,加static
+</span><span class="ln">10</span><span class="c1"></span>    <span class="kd">static</span> <span class="n">Lock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReentrantLock</span><span class="o">();</span>
+<span class="ln">11</span>
+<span class="ln">12</span>    <span class="c1">//锁对象,一定是唯一的
+</span><span class="ln">13</span><span class="c1">//    static Object object = new Object();
+</span><span class="ln">14</span><span class="c1"></span>
+<span class="ln">15</span>    <span class="kd">public</span> <span class="nf">MyLock</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">16</span>        <span class="kd">super</span><span class="o">();</span>
+<span class="ln">17</span>    <span class="o">}</span>
+<span class="ln">18</span>
+<span class="ln">19</span>    <span class="kd">public</span> <span class="nf">MyLock</span><span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">20</span>        <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+<span class="ln">21</span>    <span class="o">}</span>
+<span class="ln">22</span>
+<span class="ln">23</span>    <span class="nd">@Override</span>
+<span class="ln">24</span>    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+<span class="ln">25</span>        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">){</span>
+<span class="ln">26</span>            <span class="c1">//同步代码块
+</span><span class="ln">27</span><span class="c1"></span>            <span class="c1">//synchronized (MyLock.class){
+</span><span class="ln">28</span><span class="c1"></span>            <span class="n">lock</span><span class="o">.</span><span class="na">lock</span><span class="o">();</span>
+<span class="ln">29</span>            <span class="k">try</span> <span class="o">{</span>
+<span class="ln">30</span>                <span class="k">if</span> <span class="o">(</span><span class="n">ticket</span> <span class="o">&lt;=</span> <span class="n">100</span><span class="o">){</span>
+<span class="ln">31</span>                    <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="n">100</span><span class="o">);</span>
+<span class="ln">32</span>                    <span class="n">ticket</span><span class="o">++;</span>
+<span class="ln">33</span>                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&#34;selling ticket &#34;</span> <span class="o">+</span> <span class="n">ticket</span><span class="o">);</span>
+<span class="ln">34</span>                <span class="o">}</span><span class="k">else</span> <span class="o">{</span>
+<span class="ln">35</span>                    <span class="k">break</span><span class="o">;</span>
+<span class="ln">36</span>                <span class="o">}</span>
+<span class="ln">37</span>            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+<span class="ln">38</span>                <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+<span class="ln">39</span>            <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="ln">40</span>                <span class="c1">//锁一定会被释放
+</span><span class="ln">41</span><span class="c1"></span>                <span class="n">lock</span><span class="o">.</span><span class="na">unlock</span><span class="o">();</span>
+<span class="ln">42</span>            <span class="o">}</span>
+<span class="ln">43</span>            <span class="c1">//}
+</span><span class="ln">44</span><span class="c1"></span>        <span class="o">}</span>
+<span class="ln">45</span>    <span class="o">}</span>
+<span class="ln">46</span><span class="o">}</span>
+</code></pre></div><h2 id="四-生产者-消费者机制">四. 生产者-消费者机制</h2>
+<p>TODO: 将线程的状态粘贴过来.</p></div><hr /><div class="post-navs d-flex mb-3 justify-content-between">
   <div class="post-nav w-50"><div class="prev-post btn btn-sm">
       <a href="/posts/tech/java-0-audition/">面试准备-Spring
 </a>
